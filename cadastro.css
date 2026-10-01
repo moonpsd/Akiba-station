@@ -1,0 +1,25 @@
+.menu {
+    display: flex;
+    flex-direction: row;
+
+    gap: 50px;
+    margin-left: 5px;  
+    margin-right: auto;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.menu img {
+    height: 45px;
+}
+
+.login {
+    display: flex;
+    flex-direction: row;
+
+    gap: 50px;
+    margin-left: auto;  
+    margin-right: 50px;
+    align-items: center;
+    justify-content: flex-end;
+}
