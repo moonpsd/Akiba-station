@@ -447,33 +447,31 @@ li a:hover {
 .reviews-panel {
   min-height: 0;
   height: auto;
+  position: relative;
   align-self: stretch;
   box-sizing: border-box;
-  border: 5px solid var(--primary-pink);
+  border: 3px solid var(--primary-pink);
   background: #050505;
   overflow: hidden;
-  padding: 10px;
-  position: relative;
+  padding: 14px;
 }
 
 .reviews-window {
   position: absolute;
-  inset: 15px;
+  inset: 14px;
   overflow: hidden;
-
   -webkit-mask-image: linear-gradient(
     to bottom,
     transparent 0%,
-    black 5%,
-    black 90%,
+    black 4%,
+    black 96%,
     transparent 100%
   );
-
   mask-image: linear-gradient(
     to bottom,
     transparent 0%,
-    black 5%,
-    black 90%,
+    black 4%,
+    black 96%,
     transparent 100%
   );
 }
@@ -481,52 +479,75 @@ li a:hover {
 .reviews-track {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0;
   will-change: transform;
 }
 
-.review-card {
+.reviews-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
   flex-shrink: 0;
-  display: grid;
-  grid-template-columns: 105px 1fr;
-  gap: 14px;
-  min-height: 125px;
-  padding: 10px;
-  box-sizing: border-box;
-  border: 1px solid #222;
-  background: #080808;
 }
 
-.review-card img {
-  width: 105px;
-  height: 105px;
+.review-card {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 14px;
+  padding: 20px 8px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #242424;
+  background: transparent;
+  flex-shrink: 0;
+}
+
+.review-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
   object-fit: cover;
 }
 
-.review-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.review-content {
+  min-width: 0;
 }
 
-.review-info h3 {
-  margin: 0;
-  font-size: 1.35rem;
+.review-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 5px;
+}
+
+.review-user {
   color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .review-rating {
-  margin: 2px 0 7px;
   color: var(--primary-pink);
-  font-size: 1rem;
-  font-weight: 800;
+  font-size: 0.85rem;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
-.review-info p {
+.review-anime {
+  margin: 0 0 7px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.review-text {
   margin: 0;
-  color: #b7b7b7;
-  line-height: 1.25;
-  font-size: 0.76rem;
+  color: #999;
+  font-size: 0.78rem;
+  line-height: 1.5;
 }
 
 .dubbed-section,
@@ -645,12 +666,34 @@ li a:hover {
   }
 
   .review-card {
-    grid-template-columns: 80px 1fr;
+    grid-template-columns: 42px 1fr;
+    gap: 12px;
+    padding: 16px 6px;
   }
 
-  .review-card img {
-    width: 80px;
-    height: 80px;
+  .review-avatar {
+    width: 42px;
+    height: 42px;
+  }
+
+  .review-header {
+    gap: 10px;
+  }
+
+  .review-user {
+    font-size: 0.82rem;
+  }
+
+  .review-rating {
+    font-size: 0.78rem;
+  }
+
+  .review-anime {
+    font-size: 0.9rem;
+  }
+
+  .review-text {
+    font-size: 0.72rem;
   }
 
   .footer {

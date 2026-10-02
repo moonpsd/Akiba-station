@@ -1,7 +1,3 @@
-// ======================================================
-// HERO SLIDER
-// ======================================================
-
 document.addEventListener("DOMContentLoaded", () => {
   const slides = document.querySelectorAll(".slide");
   const prevBtn = document.getElementById("prevBtn");
@@ -13,16 +9,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const slideDuration = 6000;
   let slideInterval;
 
-  // ======================================================
-  // CRIAR INDICADORES
-  // ======================================================
-
   if (indicatorsContainer) {
     slides.forEach((_, index) => {
       const indicator = document.createElement("button");
 
       indicator.classList.add("indicator");
-
       indicator.setAttribute("aria-label", `Ir para slide ${index + 1}`);
 
       const progressBar = document.createElement("div");
@@ -33,7 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       indicator.addEventListener("click", () => {
         goToSlide(index);
-
         resetAutoPlay();
       });
 
@@ -42,10 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const indicators = document.querySelectorAll(".indicator");
-
-  // ======================================================
-  // ATUALIZAR SLIDES
-  // ======================================================
 
   function updateSlides() {
     slides.forEach((slide, idx) => {
@@ -61,29 +47,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (idx < currentIndex) {
         bar.style.width = "100%";
-
         indicator.classList.remove("active");
       } else if (idx === currentIndex) {
         bar.style.width = "0%";
-
         indicator.classList.add("active");
 
         void bar.offsetWidth;
 
         bar.style.transition = `width ${slideDuration}ms linear`;
-
         bar.style.width = "100%";
       } else {
         bar.style.width = "0%";
-
         indicator.classList.remove("active");
       }
     });
   }
-
-  // ======================================================
-  // IR PARA SLIDE
-  // ======================================================
 
   function goToSlide(index) {
     if (index < 0) {
@@ -97,25 +75,13 @@ document.addEventListener("DOMContentLoaded", () => {
     updateSlides();
   }
 
-  // ======================================================
-  // PRÓXIMO
-  // ======================================================
-
   function nextSlide() {
     goToSlide(currentIndex + 1);
   }
 
-  // ======================================================
-  // ANTERIOR
-  // ======================================================
-
   function prevSlide() {
     goToSlide(currentIndex - 1);
   }
-
-  // ======================================================
-  // AUTOPLAY
-  // ======================================================
 
   function startAutoPlay() {
     clearInterval(slideInterval);
@@ -131,51 +97,34 @@ document.addEventListener("DOMContentLoaded", () => {
     clearInterval(slideInterval);
 
     const activeBar = document.querySelector(
-      ".indicator.active .indicator-progress",
+      ".indicator.active .indicator-progress"
     );
 
     if (activeBar) {
       const computedWidth = window.getComputedStyle(activeBar).width;
 
       activeBar.style.transition = "none";
-
       activeBar.style.width = computedWidth;
     }
   }
 
   function resetAutoPlay() {
     stopAutoPlay();
-
     startAutoPlay();
   }
 
-  // ======================================================
-  // BOTÕES HERO
-  // ======================================================
-
   nextBtn?.addEventListener("click", () => {
     nextSlide();
-
     resetAutoPlay();
   });
 
   prevBtn?.addEventListener("click", () => {
     prevSlide();
-
     resetAutoPlay();
   });
 
-  // ======================================================
-  // PAUSAR NO HOVER
-  // ======================================================
-
   heroSlider?.addEventListener("mouseenter", stopAutoPlay);
-
   heroSlider?.addEventListener("mouseleave", startAutoPlay);
-
-  // ======================================================
-  // TOUCH / SWIPE
-  // ======================================================
 
   let touchStartX = 0;
   let touchEndX = 0;
@@ -187,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       passive: true,
-    },
+    }
   );
 
   heroSlider?.addEventListener(
@@ -199,7 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       passive: true,
-    },
+    }
   );
 
   function handleSwipe() {
@@ -207,33 +156,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (touchStartX - touchEndX > swipeThreshold) {
       nextSlide();
-
       resetAutoPlay();
     } else if (touchEndX - touchStartX > swipeThreshold) {
       prevSlide();
-
       resetAutoPlay();
     }
   }
-
-  // ======================================================
-  // INICIAR HERO
-  // ======================================================
 
   if (slides.length > 0) {
     startAutoPlay();
   }
 });
 
-// ======================================================
-// ======================================================
-// ANIMES
-// ======================================================
-// ======================================================
-
-// ======================================================
-// EM ALTA
-// ======================================================
 
 const trendingAnimes = [
   {
@@ -321,71 +255,81 @@ const trendingAnimes = [
   },
 ];
 
-// ======================================================
-// EM BREVE
-// ======================================================
 
 const comingAnimes = [
   {
     title: "Firefly Wedding",
-    image: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx205909-DM0fAzNQulod.jpg",
+    image:
+      "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx205909-DM0fAzNQulod.jpg",
     info: "A estréia da série será no dia 9/10",
   },
 
   {
-    title: "Hello, I am a Witch and my Crush Wants me to Make a Love Potion! ",
-    image: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b207191-MV0uJNxN7LNY.jpg",
+    title: "Hello, I am a Witch and my Crush Wants me to Make a Love Potion!",
+    image:
+      "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b207191-MV0uJNxN7LNY.jpg",
     info: "A estréia da série será no dia 5/10",
   },
 
   {
     title: "Paw & Palaces",
-    image: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx166443-0DPdxpZYHRWk.jpg",
+    image:
+      "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx166443-0DPdxpZYHRWk.jpg",
     info: "A estréia da série será no dia 10/10",
   },
 
   {
-    title: "Even Though I'm a Super Timid Noble Girl, I Accepted the Bet From My Cunning Fiancé",
-    image: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx200455-P3XStRQMJ7Di.png",
+    title:
+      "Even Though I'm a Super Timid Noble Girl, I Accepted the Bet From My Cunning Fiancé",
+    image:
+      "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx200455-P3XStRQMJ7Di.png",
     info: "A estréia da série será no dia 4/10",
   },
 
   {
     title: "Uncle's Obsession with Cute Things",
-    image: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx202079-nwBpDUms0Bab.png",
+    image:
+      "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx202079-nwBpDUms0Bab.png",
     info: "A estréia da série será no dia 4/10",
   },
 
   {
     title: "A Tale of the Secret Saint",
-    image: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx187402-ReKkLwFmMV3q.jpg",
+    image:
+      "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx187402-ReKkLwFmMV3q.jpg",
     info: "A estréia da série será no dia 3/10",
   },
 
   {
-    title: "Reborn as a Space Mercenary: I Woke Up Piloting the Strongest Starship!",
-    image: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx186541-caYpLsLmbCh7.jpg",
+    title:
+      "Reborn as a Space Mercenary: I Woke Up Piloting the Strongest Starship!",
+    image:
+      "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx186541-caYpLsLmbCh7.jpg",
     info: "A estréia da série será no dia 4/10",
   },
 
   {
     title: "The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life",
-    image: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b207329-6VPeZIDfF4Sr.png",
+    image:
+      "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b207329-6VPeZIDfF4Sr.png",
     info: "A estréia da série será no dia 6/10",
   },
 
   {
     title: "The Vermilion Mask",
-    image: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx195571-fvj7u5GI7BRT.jpg",
+    image:
+      "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx195571-fvj7u5GI7BRT.jpg",
     info: "A estréia da série será no dia 10/10",
   },
 
   {
     title: "Romelia War Chronicle",
-    image: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx180894-o3pz4DWFm3je.png",
+    image:
+      "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx180894-o3pz4DWFm3je.png",
     info: "A estréia da série será no dia 3/10",
   },
 ];
+
 
 const inspiredAnime = [
   {
@@ -461,9 +405,6 @@ const inspiredAnime = [
   },
 ];
 
-// ======================================================
-// DUBLAGENS
-// ======================================================
 
 const dubbedAnimes = [
   {
@@ -539,35 +480,27 @@ const dubbedAnimes = [
   },
 ];
 
-// ======================================================
-// CRIAR CARD
-// ======================================================
 
 function createAnimeCard(anime) {
   return `
-        <article class="anime-card">
+    <article class="anime-card">
 
-            <div class="anime-card-image">
+      <div class="anime-card-image">
+        <img
+          src="${anime.image}"
+          alt="${anime.title}"
+          loading="lazy"
+        >
+      </div>
 
-                <img
-                    src="${anime.image}"
-                    alt="${anime.title}"
-                    loading="lazy"
-                >
+      <h3>${anime.title}</h3>
 
-            </div>
+      <p>${anime.info}</p>
 
-            <h3>${anime.title}</h3>
-
-            <p>${anime.info}</p>
-
-        </article>
-    `;
+    </article>
+  `;
 }
 
-// ======================================================
-// RENDERIZAR CARDS
-// ======================================================
 
 function renderAnimeCards(list, elementId) {
   const container = document.getElementById(elementId);
@@ -577,27 +510,12 @@ function renderAnimeCards(list, elementId) {
   container.innerHTML = list.map(createAnimeCard).join("");
 }
 
-// ======================================================
-// RENDERIZAÇÃO
-// ======================================================
 
 renderAnimeCards(trendingAnimes, "trendingTrack");
-
 renderAnimeCards(comingAnimes, "comingTrack");
-
 renderAnimeCards(inspiredAnime, "inspiTrack");
-
 renderAnimeCards(dubbedAnimes, "dubbedTrack");
 
-// ======================================================
-// ======================================================
-// CARROSSEL INFINITO
-// ======================================================
-// ======================================================
-
-// ======================================================
-// DISTÂNCIA DE UM CARD
-// ======================================================
 
 function getCardDistance(slider) {
   const card = slider.querySelector(".anime-card");
@@ -611,9 +529,6 @@ function getCardDistance(slider) {
   return card.getBoundingClientRect().width + gap;
 }
 
-// ======================================================
-// PREPARAR LOOP INFINITO
-// ======================================================
 
 function setupInfiniteSlider(slider) {
   const originalCards = [...slider.children];
@@ -622,7 +537,6 @@ function setupInfiniteSlider(slider) {
 
   slider.dataset.originalCount = originalCards.length;
 
-  // Duplica todos os cards
   originalCards.forEach((card) => {
     const clone = card.cloneNode(true);
 
@@ -632,9 +546,6 @@ function setupInfiniteSlider(slider) {
   });
 }
 
-// ======================================================
-// PRÓXIMO CARD
-// ======================================================
 
 function nextCards(slider) {
   const distance = getCardDistance(slider);
@@ -645,39 +556,21 @@ function nextCards(slider) {
 
   const originalWidth = distance * originalCount;
 
-  /*
-        Se já estivermos na segunda sequência,
-        voltamos instantaneamente para a primeira.
-
-        Como os cards são idênticos,
-        o usuário não percebe.
-    */
-
   if (slider.scrollLeft >= originalWidth - 5) {
     slider.scrollTo({
       left: slider.scrollLeft - originalWidth,
-
       behavior: "instant",
     });
   }
 
-  /*
-        Esperamos 1 frame antes
-        de executar a animação.
-    */
-
   requestAnimationFrame(() => {
     slider.scrollBy({
       left: distance,
-
       behavior: "smooth",
     });
   });
 }
 
-// ======================================================
-// CARD ANTERIOR
-// ======================================================
 
 function prevCards(slider) {
   const distance = getCardDistance(slider);
@@ -688,17 +581,9 @@ function prevCards(slider) {
 
   const originalWidth = distance * originalCount;
 
-  /*
-        Se estivermos no primeiro card
-        e clicarmos para voltar,
-        pulamos invisivelmente para
-        a segunda sequência.
-    */
-
   if (slider.scrollLeft <= 5) {
     slider.scrollTo({
       left: originalWidth,
-
       behavior: "instant",
     });
   }
@@ -706,15 +591,11 @@ function prevCards(slider) {
   requestAnimationFrame(() => {
     slider.scrollBy({
       left: -distance,
-
       behavior: "smooth",
     });
   });
 }
 
-// ======================================================
-// CORRIGIR POSIÇÃO APÓS SCROLL
-// ======================================================
 
 function normalizeSliderPosition(slider) {
   const distance = getCardDistance(slider);
@@ -727,30 +608,17 @@ function normalizeSliderPosition(slider) {
 
   const originalWidth = distance * originalCount;
 
-  /*
-        Quando chegarmos muito longe
-        na cópia dos cards,
-        retornamos para a sequência original.
-    */
-
   if (slider.scrollLeft >= originalWidth) {
     slider.scrollLeft -= originalWidth;
   }
 }
 
-// ======================================================
-// INICIALIZAR CARROSSÉIS
-// ======================================================
 
 const animeSliders = document.querySelectorAll(".cards-track");
 
+
 animeSliders.forEach((slider) => {
   setupInfiniteSlider(slider);
-
-  /*
-        Também verifica caso o usuário
-        faça scroll manual.
-    */
 
   let scrollTimer;
 
@@ -763,9 +631,6 @@ animeSliders.forEach((slider) => {
   });
 });
 
-// ======================================================
-// BOTÕES DOS CARROSSÉIS
-// ======================================================
 
 document.querySelectorAll(".cards-arrow").forEach((button) => {
   button.addEventListener("click", () => {
@@ -783,236 +648,222 @@ document.querySelectorAll(".cards-arrow").forEach((button) => {
   });
 });
 
-// ======================================================
-// ======================================================
-// REVIEWS
-// ======================================================
-// ======================================================
 
 const reviews = [
   {
-    user: "User 00",
-
-    avatar: "./imgs/users/user-1.jpg",
-
-    anime: "Jujutsu Kaisen",
-
-    rating: "4.8",
-
-    text: "A animação das lutas é absurda. Gostei bastante da temporada e dos personagens.",
-  },
-
-  {
-    user: "User 00",
-
-    avatar: "./imgs/users/user-2.jpg",
-
-    anime: "Solo Leveling",
-
-    rating: "4.9",
-
-    text: "Animação excelente e batalhas muito bem construídas. Uma das melhores adaptações recentes.",
-  },
-
-  {
-    user: "User 00",
-
-    avatar: "./imgs/users/user-3.jpg",
-
-    anime: "MF Ghost",
-
-    rating: "4.4",
-
-    text: "Muito bom para quem gosta de automobilismo. As corridas ficaram muito legais.",
-  },
-
-  {
-    user: "User 00",
-
-    avatar: "./imgs/users/user-4.jpg",
-
-    anime: "Chainsaw Man",
-
-    rating: "4.6",
-
-    text: "Visual incrível, personagens interessantes e uma direção completamente diferente.",
-  },
-
-  {
-    user: "User 00",
-
-    avatar: "./imgs/users/user-5.jpg",
-
-    anime: "Kusuriya no Hitorigoto",
-
-    rating: "4.9",
-
-    text: "Maomao é uma protagonista excelente. Os mistérios deixam cada episódio interessante.",
-  },
-
-  {
-    user: "User 00",
-
-    avatar: "./imgs/users/user-6.jpg",
-
-    anime: "Attack on Titan",
-
+    user: "Gabriel Nakamura",
+    avatar: "./imgs/Avatar-Reviews/av-1.jpg",
+    anime: "Sangatsu no Raion",
     rating: "5.0",
-
-    text: "Uma história marcante, complexa e cheia de momentos memoráveis.",
+    text:
+      "Um retrato realista da vida. Todos os aspectos bons e ruins são explorados de forma minuciosa, com direção e produção excepcionais.",
   },
 
   {
     user: "User 00",
+    avatar: "./imgs/Avatar-Reviews/av-2.jpg",
+    anime: "Houkago Teibou Nisshi",
+    rating: "4.5",
+    text:
+      "Uma série relaxante sobre a alegria de descobrir uma nova paixão que, infelizmente, passou despercebida devido à sua premissa.",
+  },
 
-    avatar: "./imgs/users/user-7.jpg",
+  {
+    user: "Matsumura",
+    avatar: "./imgs/Avatar-Reviews/av-3.png",
+    anime: "Kusuriya no Hitorigoto",
+    rating: "5.0",
+    text:
+      "Hilária, cativante e envolvente — Maomao faz de tudo.",
+  },
 
-    anime: "Dandadan",
-
+  {
+    user: "PVMNS",
+    avatar: "./imgs/Avatar-Reviews/av-4.png",
+    anime: "The Exiled Heavy Knight Knows How to Game the System",
     rating: "4.7",
+    text:
+      "Anime divertido, com boas lutas e um protagonista carismático. A evolução é bem interessante!",
+  },
 
-    text: "Muito divertido e completamente maluco. A animação ficou incrível.",
+  {
+    user: "User 00",
+    avatar: "./imgs/users/user-5.jpg",
+    anime: "Kusuriya no Hitorigoto",
+    rating: "4.9",
+    text:
+      "Maomao é uma protagonista excelente. Os mistérios deixam cada episódio interessante.",
+  },
+
+  {
+    user: "User 00",
+    avatar: "./imgs/users/user-6.jpg",
+    anime: "Attack on Titan",
+    rating: "5.0",
+    text:
+      "Uma história marcante, complexa e cheia de momentos memoráveis.",
+  },
+
+  {
+    user: "User 00",
+    avatar: "./imgs/users/user-7.jpg",
+    anime: "Dandadan",
+    rating: "4.7",
+    text:
+      "Muito divertido e completamente maluco. A animação ficou incrível.",
   },
 ];
 
-// ======================================================
-// CRIAR REVIEW
-// ======================================================
 
 function createReview(review) {
   return `
-        <article class="review-card">
+    <article class="review-card">
 
-            <img
-                class="review-avatar"
-                src="${review.avatar}"
-                alt="${review.user}"
-                loading="lazy"
-            >
+      <img
+        class="review-avatar"
+        src="${review.avatar}"
+        alt="Avatar de ${review.user}"
+        loading="lazy"
+      >
 
-            <div class="review-info">
+      <div class="review-content">
 
-                <h3>
-                    ${review.anime}
-                </h3>
+        <div class="review-header">
 
-                <div class="review-rating">
-                    ★ ${review.rating}
-                </div>
+          <span class="review-user">
+            ${review.user}
+          </span>
 
-                <p>
-                    ${review.text}
-                </p>
+          <span class="review-rating">
+            ★ ${review.rating}
+          </span>
 
-            </div>
+        </div>
 
-        </article>
-    `;
+        <h3 class="review-anime">
+          ${review.anime}
+        </h3>
+
+        <p class="review-text">
+          ${review.text}
+        </p>
+
+      </div>
+
+    </article>
+  `;
 }
 
-// ======================================================
-// RENDERIZAR REVIEWS
-// ======================================================
+
+function createReviewsGroup(className, hidden = false) {
+  const group = document.createElement("div");
+
+  group.className = `reviews-group ${className}`;
+
+  if (hidden) {
+    group.setAttribute("aria-hidden", "true");
+  }
+
+  group.innerHTML = reviews.map(createReview).join("");
+
+  return group;
+}
+
 
 function renderReviews() {
   const track = document.getElementById("reviewsTrack");
 
   if (!track) return;
 
-  /*
-        Duplica as reviews para
-        permitir animação infinita.
-    */
+  track.innerHTML = "";
 
-  const duplicatedReviews = [...reviews, ...reviews];
+  const originalGroup = createReviewsGroup(
+    "reviews-group-original"
+  );
 
-  track.innerHTML = duplicatedReviews
+  const clonedGroup = createReviewsGroup(
+    "reviews-group-clone",
+    true
+  );
 
-    .map(createReview)
-
-    .join("");
+  track.appendChild(originalGroup);
+  track.appendChild(clonedGroup);
 }
 
-// ======================================================
-// PAUSAR REVIEW NO HOVER
-// ======================================================
 
 let reviewsPaused = false;
 
+
 const reviewsPanel = document.querySelector(".reviews-panel");
+
 
 reviewsPanel?.addEventListener("mouseenter", () => {
   reviewsPaused = true;
 });
 
+
 reviewsPanel?.addEventListener("mouseleave", () => {
   reviewsPaused = false;
 });
 
-// ======================================================
-// ANIMAÇÃO INFINITA REVIEWS
-// ======================================================
 
 function startReviewsAnimation() {
   const track = document.getElementById("reviewsTrack");
 
-  if (!track) return;
+  const originalGroup = track?.querySelector(
+    ".reviews-group-original"
+  );
+
+  if (!track || !originalGroup) {
+    return;
+  }
 
   let position = 0;
+  let lastTime = performance.now();
 
-  /*
-        VELOCIDADE
+  const pixelsPerSecond = 18;
 
-        0.15 = lento
-        0.30 = normal
-        0.50 = rápido
-        1.00 = muito rápido
-    */
+  function animate(currentTime) {
+    const deltaTime = Math.min(
+      currentTime - lastTime,
+      50
+    );
 
-  const speed = 0.3;
+    lastTime = currentTime;
 
-  function animate() {
     if (!reviewsPaused) {
-      position += speed;
+      position +=
+        pixelsPerSecond *
+        (deltaTime / 1000);
 
-      const halfHeight = track.scrollHeight / 2;
+      const loopHeight =
+        originalGroup.offsetHeight;
 
-      /*
-                Quando chega na metade,
-                volta invisivelmente
-                para o começo.
-            */
-
-      if (position >= halfHeight) {
-        position = 0;
+      if (
+        loopHeight > 0 &&
+        position >= loopHeight
+      ) {
+        position -= loopHeight;
       }
 
-      track.style.transform = `translate3d(
-                    0,
-                    -${position}px,
-                    0
-                )`;
+      track.style.transform =
+        `translate3d(0, -${position}px, 0)`;
     }
 
     requestAnimationFrame(animate);
   }
 
-  animate();
+  requestAnimationFrame(animate);
 }
 
-// ======================================================
-// INICIAR REVIEWS
-// ======================================================
 
 renderReviews();
+
 
 window.addEventListener("load", () => {
   startReviewsAnimation();
 });
 
-// ======================================================
-// LUCIDE
-// ======================================================
 
 if (typeof lucide !== "undefined") {
   lucide.createIcons();
