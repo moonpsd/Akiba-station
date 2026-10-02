@@ -1,0 +1,258 @@
+/* =========================================
+   VARIÁVEIS GERAIS (Baseadas no Documento)
+   ========================================= */
+:root {
+    --primary-pink: #ff00aa;
+    --hover-pink: #ff7ed4;
+    --dark-bg: #141519;
+    --card-bg: #23252b;
+    --text-muted: #a0a0a0;
+}
+
+/* =========================================
+   RESETS E BODY
+   ========================================= */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--dark-bg);
+    color: #ffffff;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-pink);
+}
+
+/* =========================================
+   CABEÇALHO (NAVBAR)
+   ========================================= */
+.navbar-principal {
+    margin: 0;
+    padding: 0 5%;
+    width: 90%;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #121212;
+}
+
+.logo-area img {
+    height: 45px;
+    margin-right: 50px;
+}
+
+.menus {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.menus a.ativo {
+    color: var(--primary-pink);
+    font-weight: bold;
+}
+
+.area-usuario {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    margin-left: auto;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.icone-perfil {
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    /* Filtro para ícones brancos caso necessário, conforme referência */
+    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(346deg) brightness(104%) contrast(97%);
+}
+
+/* =========================================
+   CONTEÚDO PRINCIPAL (MAIN)
+   ========================================= */
+main {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 5%;
+}
+
+/* =========================================
+   DESTAQUE PRINCIPAL
+   ========================================= */
+.destaque-principal article {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+
+.destaque-principal figure {
+    margin: 0;
+    width: 100%;
+    height: 400px;
+}
+
+.destaque-principal figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.info-noticia {
+    padding: 30px;
+}
+
+.categoria {
+    display: inline-block;
+    background-color: var(--primary-pink);
+    color: #000;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 2px;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+}
+
+.info-noticia h2 {
+    font-size: 2.2rem;
+    font-weight: 900;
+    margin: 0 0 12px 0;
+    line-height: 1.2;
+}
+
+.meta-dados {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+}
+
+.info-noticia p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 40px 0;
+}
+
+/* =========================================
+   GRADE DE NOTÍCIAS RECENTES
+   ========================================= */
+.noticias-recentes h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.grade-noticias {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.card-noticia {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+}
+
+.card-noticia:hover {
+    transform: translateY(-5px);
+}
+
+.card-noticia figure {
+    margin: 0;
+    width: 100%;
+    height: 200px;
+}
+
+.card-noticia figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.info-card {
+    padding: 20px;
+}
+
+.info-card h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 10px 0;
+    line-height: 1.3;
+}
+
+.info-card h3 a {
+    color: #ffffff;
+}
+
+.info-card h3 a:hover {
+    color: var(--primary-pink);
+}
+
+/* =========================================
+   BOTÃO "CARREGAR MAIS"
+   ========================================= */
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 12px 28px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: var(--primary-pink);
+    color: #000000;
+}
+
+button:hover {
+    background-color: var(--hover-pink);
+    transform: translateY(-2px);
+}
+
+/* =========================================
+   RODAPÉ (FOOTER)
+   ========================================= */
+footer {
+    background-color: #121212;
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 50px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}

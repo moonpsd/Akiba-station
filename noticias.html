@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notícias - Seu Projeto</title>
+    <link rel = "stylesheet" href = "noticias.css"
+</head>
+<body>
+
+    <header>
+        <nav class="navbar-principal">
+            
+            <div class="logo-area">
+                <!-- COLOQUE SUA LOGO ROSA AQUI -->
+                <img src="Akiba-station/imgs/heads.png" alt="Logo do Site" width="100">
+            </div>
+            
+            <!-- MENUS DE NAVEGAÇÃO DO SEU SITE -->
+            <ul class="menus">
+                <li><a href="#">Novidades</a></li>
+                <li><a href="#">Populares</a></li>
+                <li><a href="#">Categorias</a></li>
+                <!-- Como esta é a página de notícias, deixei uma classe "ativo" para você estilizar depois -->
+                <li><a href="#" class="ativo">Noticias</a></li> 
+            </ul>
+
+            <!-- ÁREA DO USUÁRIO NO CANTO DIREITO -->
+            <div class="area-usuario">
+                <a href="#">Cadastro</a>
+                <a href="#">Entrar</a>
+                <!-- COLOQUE O ÍCONE DE PERFIL AQUI (aquela bolinha com o boneco) -->
+                <img src="Akiba-station/imgs/user.png" alt="Perfil" class="icone-perfil">
+            </div>
+
+        </nav>
+    </header>
+
+    <!-- CONTEÚDO DA PÁGINA DE NOTÍCIAS (Estilo Crunchyroll) -->
+    <main>
+        
+        <!-- DESTAQUE PRINCIPAL (Notícia grande no topo) -->
+        <section class="destaque-principal">
+            <article>
+                <figure>
+                    <!-- COLOQUE A IMAGEM GRANDE DA NOTÍCIA DE DESTAQUE AQUI -->
+                    <img src="COLOQUE_IMAGEM_DESTAQUE.jpg" alt="Imagem destaque da notícia">
+                </figure>
+                
+                <div class="info-noticia">
+                    <span class="categoria">Destaque</span>
+                    <h2><a href="#">Nova temporada de Solo Leveling é anunciada com trailer inédito!</a></h2>
+                    
+                    <div class="meta-dados">
+                        <span class="autor">Por: Redação</span> | 
+                        <span class="data">1 de Outubro de 2026</span>
+                    </div>
+                    
+                    <p>Confira os primeiros detalhes da continuação da jornada de Sung Jinwoo e o que esperar dos próximos episódios animados pela A-1 Pictures...</p>
+                </div>
+            </article>
+        </section>
+
+        <hr>
+
+        <!-- GRADE DE NOTÍCIAS RECENTES -->
+        <section class="noticias-recentes">
+            <h2>Últimas Notícias</h2>
+            
+            <div class="grade-noticias">
+                
+                <!-- NOTÍCIA 1 -->
+                <article class="card-noticia">
+                    <figure>
+                        <!-- COLOQUE A IMAGEM DA NOTÍCIA 1 AQUI -->
+                        <img src="COLOQUE_IMAGEM_NOTICIA_1.jpg" alt="Anime novo">
+                    </figure>
+                    <div class="info-card">
+                        <span class="categoria">Lançamento</span>
+                        <h3><a href="#">Estúdio MAPPA revela visual de seu novo projeto original</a></h3>
+                        <div class="meta-dados">
+                            <span class="tempo">há 2 horas</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- NOTÍCIA 2 -->
+                <article class="card-noticia">
+                    <figure>
+                        <!-- COLOQUE A IMAGEM DA NOTÍCIA 2 AQUI -->
+                        <img src="COLOQUE_IMAGEM_NOTICIA_2.jpg" alt="Mangá">
+                    </figure>
+                    <div class="info-card">
+                        <span class="categoria">Mangás</span>
+                        <h3><a href="#">Criador de Jujutsu Kaisen fala sobre a reta final da obra</a></h3>
+                        <div class="meta-dados">
+                            <span class="tempo">há 5 horas</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- NOTÍCIA 3 -->
+                <article class="card-noticia">
+                    <figure>
+                        <!-- COLOQUE A IMAGEM DA NOTÍCIA 3 AQUI -->
+                        <img src="COLOQUE_IMAGEM_NOTICIA_3.jpg" alt="Eventos">
+                    </figure>
+                    <div class="info-card">
+                        <span class="categoria">Eventos</span>
+                        <h3><a href="#">Dubladores brasileiros marcam presença em evento de cultura pop</a></h3>
+                        <div class="meta-dados">
+                            <span class="tempo">há 8 horas</span>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+            
+            <button type="button">Ver Mais Notícias</button>
+            
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ DO SEU SITE -->
+    <footer>
+        <p>&copy; 2026 Seu Projeto. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
