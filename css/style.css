@@ -12,6 +12,7 @@ body {
     padding: 0;
 
     font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
 }
 
 nav {
@@ -64,7 +65,12 @@ li a:hover {
 }
 
 .profile {
-  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(346deg) brightness(104%) contrast(97%);
+filter: brightness(0) saturate(0%) invert(100%);
+  transition: filter 0.2s ease-in-out;
+}
+
+.profile:hover {
+  filter: brightness(100) saturate(100%);
 }
 
 .hero-slider {
@@ -309,32 +315,473 @@ li a:hover {
   transition: width linear;
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-  .hero-slider {
-    height: 70vh;
-  }
+/* ======================================================
+   HOME
+====================================================== */
 
-  .slide-title {
+.home-content {
+    background-color: #050505;
+
+    background-image:
+        linear-gradient(45deg, #0e0e0e 25%, transparent 25%),
+        linear-gradient(-45deg, #0e0e0e 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #0e0e0e 75%),
+        linear-gradient(-45deg, transparent 75%, #0e0e0e 75%);
+
+    background-size: 80px 80px;
+    background-position:
+        0 0,
+        0 40px,
+        40px -40px,
+        -40px 0;
+
+    color: white;
+
+    padding: 35px 4% 60px;
+}
+
+
+/* ======================================================
+   GRID PRINCIPAL
+====================================================== */
+
+.content-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(300px, 380px);
+
+    gap: 45px;
+
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+
+/* ======================================================
+   SEÇÕES
+====================================================== */
+
+.anime-section {
+    margin-bottom: 45px;
+}
+
+.anime-section h2 {
+    margin: 0 0 25px;
+
+    color: white;
+
     font-size: 2rem;
-  }
+    font-weight: 800;
+}
 
-  .slide-description {
-    font-size: 0.85rem;
-  }
 
-  .btn {
-    padding: 10px 18px;
-    font-size: 0.85rem;
-  }
+/* ======================================================
+   SLIDER DE CARDS
+====================================================== */
 
-  .nav-arrow {
-    width: 35px;
-    height: 50px;
-  }
+.cards-slider {
+    position: relative;
+}
 
-  .slider-indicators {
-    right: 50%;
-    transform: translateX(50%);
-  }
+.cards-viewport {
+    overflow: hidden;
+}
+
+.cards-track {
+    display: flex;
+
+    gap: 25px;
+
+    scroll-behavior: smooth;
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+
+    scroll-snap-type: x mandatory;
+}
+
+.cards-track::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* ======================================================
+   CARD
+====================================================== */
+
+.anime-card {
+    flex: 0 0 calc((100% - 75px) / 4);
+
+    min-width: 0;
+
+    scroll-snap-align: start;
+
+    cursor: pointer;
+}
+
+.anime-card-image {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+
+    overflow: hidden;
+
+    background: #151515;
+}
+
+.anime-card-image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition:
+        transform .35s ease,
+        filter .35s ease;
+}
+
+.anime-card:hover .anime-card-image img {
+    transform: scale(1.04);
+    filter: brightness(1.08);
+}
+
+.anime-card h3 {
+    margin: 12px 0 2px;
+
+    color: white;
+
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+.anime-card p {
+    margin: 0;
+
+    color: #555;
+
+    font-size: .85rem;
+}
+
+
+/* ======================================================
+   SETAS DOS CARDS
+====================================================== */
+
+.cards-arrow {
+    position: absolute;
+
+    top: 42%;
+
+    transform: translateY(-50%);
+
+    z-index: 10;
+
+    width: 40px;
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+
+    background: rgba(0, 0, 0, .75);
+
+    color: white;
+
+    cursor: pointer;
+
+    transition:
+        background .25s ease,
+        color .25s ease;
+}
+
+.cards-arrow:hover {
+    background: var(--primary-pink);
+    color: black;
+}
+
+.cards-prev {
+    left: -20px;
+}
+
+.cards-next {
+    right: -20px;
+}
+
+
+/* ======================================================
+   REVIEWS
+====================================================== */
+
+.reviews-panel {
+    border: 5px solid var(--primary-pink);
+
+    background: #050505;
+
+    height: 810px;
+
+    overflow: hidden;
+
+    padding: 10px;
+}
+
+.reviews-window {
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    position: relative;
+
+    /* fade inferior/superior */
+    -webkit-mask-image:
+        linear-gradient(
+            to bottom,
+            transparent 0%,
+            black 5%,
+            black 90%,
+            transparent 100%
+        );
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            transparent 0%,
+            black 5%,
+            black 90%,
+            transparent 100%
+        );
+}
+
+.reviews-track {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+
+    will-change: transform;
+}
+
+
+/* ======================================================
+   REVIEW INDIVIDUAL
+====================================================== */
+
+.review-card {
+    flex-shrink: 0;
+
+    display: grid;
+
+    grid-template-columns: 105px 1fr;
+
+    gap: 14px;
+
+    min-height: 125px;
+
+    padding: 10px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #222;
+
+    background: #080808;
+}
+
+.review-card img {
+    width: 105px;
+    height: 105px;
+
+    object-fit: cover;
+}
+
+.review-info {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+.review-info h3 {
+    margin: 0;
+
+    font-size: 1.35rem;
+
+    color: white;
+}
+
+.review-rating {
+    margin: 2px 0 7px;
+
+    color: var(--primary-pink);
+
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.review-info p {
+    margin: 0;
+
+    color: #b7b7b7;
+
+    line-height: 1.25;
+
+    font-size: .76rem;
+}
+
+
+/* ======================================================
+   DUBLAGENS
+====================================================== */
+
+.dubbed-section {
+    max-width: 1600px;
+
+    margin:
+        15px auto
+        0;
+}
+
+.dubbed-section .anime-card {
+    flex: 0 0 calc((100% - 125px) / 6);
+}
+
+
+/* ======================================================
+   FOOTER
+====================================================== */
+
+.footer {
+    min-height: 170px;
+
+    padding: 0 5%;
+
+    display: flex;
+
+    align-items: center;
+
+    background: var(--primary-pink);
+
+    color: white;
+}
+
+.footer .socials {
+    display: flex;
+
+    gap: 28px;
+}
+
+.footer .socials a {
+    display: flex;
+
+    color: white;
+
+    transition: transform .2s ease;
+}
+
+.footer .socials a:hover {
+    transform: translateY(-3px);
+}
+
+.footer .socials svg {
+    width: 30px;
+    height: 30px;
+
+    stroke-width: 3;
+}
+
+.footer p {
+    margin: 0 auto;
+
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+
+/* ======================================================
+   RESPONSIVIDADE
+====================================================== */
+
+@media (max-width: 1200px) {
+
+    .content-grid {
+        grid-template-columns:
+            minmax(0, 1fr)
+            310px;
+
+        gap: 30px;
+    }
+
+    .anime-card {
+        flex-basis:
+            calc((100% - 50px) / 3);
+    }
+
+    .dubbed-section .anime-card {
+        flex-basis:
+            calc((100% - 75px) / 4);
+    }
+}
+
+
+@media (max-width: 900px) {
+
+    .content-grid {
+        display: block;
+    }
+
+    .reviews-panel {
+        height: 500px;
+
+        margin-bottom: 50px;
+    }
+
+    .anime-card {
+        flex-basis:
+            calc((100% - 25px) / 2);
+    }
+
+    .dubbed-section .anime-card {
+        flex-basis:
+            calc((100% - 50px) / 3);
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .home-content {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .anime-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .anime-card {
+        flex-basis: 70%;
+    }
+
+    .dubbed-section .anime-card {
+        flex-basis: 70%;
+    }
+
+    .footer {
+        flex-direction: column;
+
+        justify-content: center;
+
+        gap: 25px;
+    }
+
+    .footer p {
+        margin: 0;
+
+        text-align: center;
+    }
 }
