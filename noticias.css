@@ -1,6 +1,3 @@
-/* =========================================
-   VARIÁVEIS GERAIS (Baseadas no Documento)
-   ========================================= */
 :root {
     --primary-pink: #ff00aa;
     --hover-pink: #ff7ed4;
@@ -9,9 +6,6 @@
     --text-muted: #a0a0a0;
 }
 
-/* =========================================
-   RESETS E BODY
-   ========================================= */
 body {
     margin: 0;
     padding: 0;
@@ -30,9 +24,6 @@ a:hover {
     color: var(--primary-pink);
 }
 
-/* =========================================
-   CABEÇALHO (NAVBAR)
-   ========================================= */
 .navbar-principal {
     margin: 0;
     padding: 0 5%;
@@ -78,22 +69,15 @@ a:hover {
     height: 35px;
     width: 35px;
     border-radius: 50%;
-    /* Filtro para ícones brancos caso necessário, conforme referência */
     filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(346deg) brightness(104%) contrast(97%);
 }
 
-/* =========================================
-   CONTEÚDO PRINCIPAL (MAIN)
-   ========================================= */
 main {
     max-width: 1200px;
     margin: 40px auto;
-    padding: 0 5%;
+    padding: 0;
 }
 
-/* =========================================
-   DESTAQUE PRINCIPAL
-   ========================================= */
 .destaque-principal article {
     background-color: var(--card-bg);
     border-radius: 8px;
@@ -107,12 +91,18 @@ main {
     margin: 0;
     width: 100%;
     height: 400px;
+    overflow: hidden;
 }
 
 .destaque-principal figure img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.destaque-principal article:hover figure img {
+    transform: scale(1.05); /* Efeito de Zoom na imagem principal */
 }
 
 .info-noticia {
@@ -161,9 +151,6 @@ hr {
     margin: 40px 0;
 }
 
-/* =========================================
-   GRADE DE NOTÍCIAS RECENTES
-   ========================================= */
 .noticias-recentes h2 {
     font-size: 1.8rem;
     font-weight: 800;
@@ -182,23 +169,30 @@ hr {
     background-color: var(--card-bg);
     border-radius: 8px;
     overflow: hidden;
-    transition: transform 0.2s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card-noticia:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
 }
 
 .card-noticia figure {
     margin: 0;
     width: 100%;
     height: 200px;
+    overflow: hidden; /* Necessário para o zoom da imagem não sair do card */
 }
 
 .card-noticia figure img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card-noticia:hover figure img {
+    transform: scale(1.1); /* Animação de zoom na imagem ao passar o rato */
 }
 
 .info-card {
@@ -220,9 +214,35 @@ hr {
     color: var(--primary-pink);
 }
 
-/* =========================================
-   BOTÃO "CARREGAR MAIS"
-   ========================================= */
+/* Animações Keyframes */
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 0, 170, 0.6); }
+    70% { box-shadow: 0 0 0 10px rgba(255, 0, 170, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 0, 170, 0); }
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 button {
     display: flex;
     align-items: center;
@@ -233,21 +253,20 @@ button {
     font-weight: 700;
     text-transform: uppercase;
     border: none;
-    border-radius: 3px;
+    border-radius: 4px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
     background-color: var(--primary-pink);
     color: #000000;
+    animation: pulse 2s infinite; /* Adicionado efeito de pulso */
 }
 
 button:hover {
     background-color: var(--hover-pink);
     transform: translateY(-2px);
+    animation: none; /* Pára o pulso ao passar o rato */
 }
 
-/* =========================================
-   RODAPÉ (FOOTER)
-   ========================================= */
 footer {
     background-color: #121212;
     text-align: center;
@@ -255,4 +274,71 @@ footer {
     margin-top: 50px;
     color: var(--text-muted);
     font-size: 0.9rem;
+}
+
+/* ESTILOS DO MODAL (POP-UP) */
+.modal-overlay {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); 
+    align-items: center; 
+    justify-content: center; 
+    backdrop-filter: blur(5px); /* Desfoca o fundo atrás do modal */
+}
+
+.modal-conteudo {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 12px;
+    width: 80%;
+    max-width: 800px;
+    max-height: 85vh;
+    overflow-y: auto; 
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    animation: modalFadeIn 0.4s ease-out forwards; /* Animação de entrada do Modal */
+}
+
+.modal-conteudo img {
+    width: 100%;
+    border-radius: 8px;
+    max-height: 400px;
+    object-fit: contain; 
+}
+
+.modal-corpo h2 {
+    margin-top: 15px;
+    font-size: 2rem;
+    color: #fff;
+}
+
+.modal-corpo p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+.botao-fechar {
+    color: var(--text-muted);
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.2s;
+}
+
+.botao-fechar:hover {
+    color: var(--primary-pink);
+    transform: scale(1.2) rotate(90deg); /* Animação ao passar o rato no X */
+}
+
+.noticia-extra {
+    display: none;
 }
