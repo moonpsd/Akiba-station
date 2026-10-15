@@ -333,150 +333,162 @@ const comingAnimes = [
 
 const inspiredAnime = [
   {
-    title: "MF Ghost",
-    image: "./imgs/mf-ghost.jpg",
+    title: "MASHLE",
+    image: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx177704-y10Nw7MUXCHD.jpg",
     info: "Dub | Leg",
   },
 
   {
-    title: "Jujutsu Kaisen",
-    image: "./imgs/jujutsu.jpg",
+    title: "Shangri-La Frontier",
+    image: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx189323-gHXhqIOBUY8F.jpg",
     info: "Dub",
   },
 
   {
-    title: "Solo Leveling",
-    image: "./imgs/solo-leveling.jpg",
+    title: "Sekai Saikou no Ansatsusha",
+    image: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx169579-KxMH0iq7jlPr.png",
     info: "Dub",
   },
 
   {
-    title: "Chainsaw Man",
-    image: "./imgs/chainsaw.jpg",
+    title: "Ki ni Natteru Hito ga Otoko ja Nakatta",
+    image: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx186822-9zsR5NtOP0yJ.jpg",
     info: "Dub",
   },
 
   {
-    title: "Attack on Titan",
-    image: "./imgs/aot.jpg",
+    title: "THE ONE PIECE",
+    image: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx171630-2U7Y5OIWwXJJ.jpg",
     info: "Dub",
   },
 
   {
-    title: "Kusuriya no Hitorigoto",
-    image: "./imgs/kusuriya.jpg",
+    title: "Shingeki no Kyojin",
+    image: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx16498-buvcRTBx4NSm.jpg",
     info: "Dub",
   },
 
   {
-    title: "NegaPosi Angler",
-    image: "./imgs/negaposi.jpg",
-    info: "Dub",
+    title: "Uncle's Obsession with Cute Things",
+    image:
+      "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx202079-nwBpDUms0Bab.png",
+    info: "A estréia da série será no dia 4/10",
   },
 
   {
-    title: "Dandadan",
-    image: "./imgs/dandadan.jpg",
-    info: "Dub",
+    title: "A Tale of the Secret Saint",
+    image:
+      "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx187402-ReKkLwFmMV3q.jpg",
+    info: "A estréia da série será no dia 3/10",
   },
 
   {
-    title: "Kaiju No. 8",
-    image: "./imgs/kaiju.jpg",
-    info: "Dub",
+    title:
+      "Reborn as a Space Mercenary: I Woke Up Piloting the Strongest Starship!",
+    image:
+      "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx186541-caYpLsLmbCh7.jpg",
+    info: "A estréia da série será no dia 4/10",
   },
 
   {
-    title: "Demon Slayer",
-    image: "./imgs/demon-slayer.jpg",
-    info: "Dub",
+    title: "The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life",
+    image:
+      "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b207329-6VPeZIDfF4Sr.png",
+    info: "A estréia da série será no dia 6/10",
   },
 
   {
-    title: "Blue Lock",
-    image: "./imgs/blue-lock.jpg",
-    info: "Dub",
-  },
-
-  {
-    title: "Spy x Family",
-    image: "./imgs/spy-family.jpg",
-    info: "Dub",
+    title: "The Vermilion Mask",
+    image:
+      "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx195571-fvj7u5GI7BRT.jpg",
+    info: "A estréia da série será no dia 10/10",
   },
 ];
 
 
 const dubbedAnimes = [
+    {
+    title: "Black Cover",
+    image:
+      "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx97940-fyh8o7gNbha0.png",
+    info: "Dub | Leg",
+  },
+
   {
-    title: "MF Ghost",
-    image: "./imgs/mf-ghost.jpg",
+    title: "Attack on Titan",
+    image:
+      "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx110277-sKUNXAsWMNFw.jpg",
+    info: "Dub | Leg",
+  },
+
+  {
+    title: "Kusuriya no Hitorigoto",
+    image:
+      "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx176301-TIGmldLffQGX.jpg",
+    info: "Dub | Leg",
+  },
+
+  {
+    title: "Mushoku Tensei: Jobless Reincarnation",
+    image:
+      "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx178789-hNXjKFzUq7mk.jpg",
+    info: "Leg",
+  },
+
+  {
+    title: "Re:Zero",
+    image:
+      "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx189046-yaHWtS5FII46.jpg",
+    info: "Dub | Leg",
+  },
+
+  {
+    title: "The time I Got Reincarned as a Slime",
+    image:
+      "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx101280-tDxCVJm714nt.jpg",
+    info: "Dub | Leg",
+  },
+
+  {
+    title: "The Exiled Heavy Knight Knows How to Game th System",
+    image:
+      "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx180136-gtMTCRlOD4OE.jpg",
+    info: "Dub | Leg",
+  },
+
+  {
+    title: "Boku no Hero",
+    image:
+      "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx182896-mvxTVHGdDB4q.jpg",
     info: "Dub | Leg",
   },
 
   {
     title: "Jujutsu Kaisen",
-    image: "./imgs/jujutsu.jpg",
-    info: "Dub",
+    image:
+      "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx113415-LHBAeoZDIsnF.jpg",
+    info: "Dub | Leg",
   },
 
   {
     title: "Solo Leveling",
-    image: "./imgs/solo-leveling.jpg",
-    info: "Dub",
+    image:
+      "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx151807-it355ZgzquUd.png",
+    info: "Dub | Leg",
   },
 
   {
-    title: "Chainsaw Man",
-    image: "./imgs/chainsaw.jpg",
-    info: "Dub",
+    title: "Clevatess",
+    image:
+      "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx178869-qiEz0gQD8H5N.png",
+    info: "Dub | Leg",
   },
 
   {
-    title: "Attack on Titan",
-    image: "./imgs/aot.jpg",
-    info: "Dub",
-  },
-
-  {
-    title: "Kusuriya no Hitorigoto",
-    image: "./imgs/kusuriya.jpg",
-    info: "Dub",
-  },
-
-  {
-    title: "NegaPosi Angler",
-    image: "./imgs/negaposi.jpg",
-    info: "Dub",
-  },
-
-  {
-    title: "Dandadan",
-    image: "./imgs/dandadan.jpg",
-    info: "Dub",
-  },
-
-  {
-    title: "Kaiju No. 8",
-    image: "./imgs/kaiju.jpg",
-    info: "Dub",
-  },
-
-  {
-    title: "Demon Slayer",
-    image: "./imgs/demon-slayer.jpg",
-    info: "Dub",
-  },
-
-  {
-    title: "Blue Lock",
-    image: "./imgs/blue-lock.jpg",
-    info: "Dub",
-  },
-
-  {
-    title: "Spy x Family",
-    image: "./imgs/spy-family.jpg",
-    info: "Dub",
+    title: "Dragon Ball Z",
+    image:
+      "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx813-ZhnFNOeCU5dQ.png",
+    info: "Dub | Leg",
   },
 ];
 
