@@ -1,11 +1,204 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>moonpsd | Akiba Station</title>
+  <link rel="icon" href="./icons/he.ico">
+  <link rel="stylesheet" href="./css/perfil.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
-    <h1>Aqui é a página de perfil</h1>
+
+  <nav class="navbar">
+    <ul class="menu">
+      <li><a href="index.html"><img src="./imgs/heads.png" alt="Logo"></a></li>
+      <li><a href="#">Novidades</a></li>
+      <li><a href="#">Populares</a></li>
+      <li><a href="#">Notícias</a></li>
+      <li><a href="#">Minha Lista</a></li>
+    </ul>
+    <ul class="login">
+        <li><a href="cadastro.html">Cadastro</a></li>
+        <li><a href="entrar.html">Entrar</a></li>
+        <li><a href="admin.html">Admin</a></li>
+        <li><a href="profile.html" class="active-link">Perfil</a></li>
+    </ul>
+  </nav>
+
+  <header class="banner" id="banner">
+    <div class="banner-shadow"></div>
+    <div class="banner-content">
+      <img id="avatar" class="avatar" src="" alt="Avatar de moonpsd">
+      <div>
+        <h1>moonpsd</h1>
+        <span>Perfil de usuário</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="profile-nav">
+    <button class="nav-tab active" data-tab="overview">Visão Geral</button>
+    <button class="nav-tab" data-tab="anime">Anime List</button>
+    <button class="nav-tab" data-tab="manga">Manga List</button>
+    <button class="nav-tab" data-tab="favorites">Favoritos</button>
+    <button class="nav-tab" data-tab="stats">Stats</button>
+  </div>
+
+  <main class="container">
+
+    <section id="overview" class="tab-page active">
+      <div class="layout">
+
+        <aside class="sidebar">
+
+          <div class="about-card" id="aboutCard">
+            <h3>Sobre mim</h3>
+            <p>Bem-vindo ao meu perfil!</p>
+            <a href="https://anilist.co/user/moonpsd/" target="_blank" rel="noopener noreferrer">
+              Ver perfil no AniList
+            </a>
+          </div>
+
+          <section class="section">
+            <h2>Histórico de Atividade</h2>
+            <div class="panel">
+              <div class="history-grid" id="historyGrid"></div>
+              <div class="history-legend">
+                <span>Menos</span>
+                <i class="level-0"></i>
+                <i class="level-1"></i>
+                <i class="level-2"></i>
+                <i class="level-3"></i>
+                <i class="level-4"></i>
+                <span>Mais</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2>Gêneros Favoritos</h2>
+            <div class="panel">
+              <div class="genre-grid">
+                <div class="genre comedy"><strong>Comedy</strong><span>20 Entries</span></div>
+                <div class="genre drama"><strong>Drama</strong><span>13 Entries</span></div>
+                <div class="genre slice"><strong>Slice of Life</strong><span>13 Entries</span></div>
+                <div class="genre action"><strong>Action</strong><span>12 Entries</span></div>
+              </div>
+              <div class="genre-bar">
+                <span style="flex:20;background:#67d44b"></span>
+                <span style="flex:13;background:#009cff"></span>
+                <span style="flex:13;background:#9b55e9"></span>
+                <span style="flex:12;background:#f36b89"></span>
+              </div>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2>Anime</h2>
+            <div class="panel">
+              <div class="poster-grid" id="animePreview"></div>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2>Manga</h2>
+            <div class="panel">
+              <div class="poster-grid" id="mangaPreview"></div>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2>Characters</h2>
+            <div class="panel">
+              <div class="character-grid" id="characterPreview"></div>
+            </div>
+          </section>
+
+        </aside>
+
+        <div class="main-column">
+
+          <section class="stats-panel">
+            <div class="stats-row">
+              <div class="stat"><strong>54</strong><span>Total Anime</span></div>
+              <div class="stat"><strong>26.5</strong><span>Days Watched</span></div>
+              <div class="stat"><strong>85.1</strong><span>Mean Score</span></div>
+            </div>
+            <div class="stat-progress"><span style="width:54%"></span></div>
+            <div class="stats-scale"><span>10</span><span>30</span><span>50</span></div>
+
+            <div class="stats-row manga-stats">
+              <div class="stat"><strong>7</strong><span>Total Manga</span></div>
+              <div class="stat"><strong>1747</strong><span>Chapters Read</span></div>
+              <div class="stat"><strong>81.4</strong><span>Mean Score</span></div>
+            </div>
+            <div class="stat-progress"><span style="width:29%"></span></div>
+            <div class="stats-scale"><span>1000</span><span>3000</span><span>5000</span></div>
+          </section>
+
+          <section class="section">
+            <div class="section-title">
+              <h2>Atividade</h2>
+              <select id="activityFilter">
+                <option value="all">Todos</option>
+                <option value="completed">Concluídos</option>
+                <option value="watched">Assistidos</option>
+                <option value="planning">Planejados</option>
+              </select>
+            </div>
+            <div class="activity-list" id="activityList"></div>
+            <button class="load-more" id="loadMore">Carregar mais</button>
+          </section>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="anime" class="tab-page">
+      <div class="page-heading">
+        <h2>Anime List</h2>
+        <input type="search" id="animeSearch" placeholder="Buscar anime...">
+      </div>
+      <div class="full-grid" id="animeList"></div>
+    </section>
+
+    <section id="manga" class="tab-page">
+      <div class="page-heading"><h2>Manga List</h2></div>
+      <div class="full-grid" id="mangaList"></div>
+    </section>
+
+    <section id="favorites" class="tab-page">
+      <div class="page-heading"><h2>Favoritos</h2></div>
+      <h3>Animes</h3>
+      <div class="full-grid" id="favoriteAnime"></div>
+      <h3>Personagens</h3>
+      <div class="full-grid" id="favoriteCharacters"></div>
+    </section>
+
+    <section id="stats" class="tab-page">
+      <div class="page-heading"><h2>Estatísticas</h2></div>
+      <div class="stats-detail">
+        <div class="detail-card"><strong>54</strong><span>Animes</span></div>
+        <div class="detail-card"><strong>26.5</strong><span>Dias assistidos</span></div>
+        <div class="detail-card"><strong>85.1</strong><span>Nota média anime</span></div>
+        <div class="detail-card"><strong>7</strong><span>Mangás</span></div>
+        <div class="detail-card"><strong>1747</strong><span>Capítulos lidos</span></div>
+        <div class="detail-card"><strong>81.4</strong><span>Nota média mangá</span></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 - Akiba Station</p>
+    <div class="socials">
+      <a href="index.html">Início</a>
+      <a href="https://anilist.co/user/moonpsd/" target="_blank" rel="noopener noreferrer">AniList</a>
+    </div>
+  </footer>
+
+  <script src="./js/perfil.js"></script>
 </body>
 </html>
