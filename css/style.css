@@ -8,63 +8,63 @@
 }
 
 body {
-    margin: 0;
-    padding: 0;
-
-    font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
 }
 
 nav {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 80px;   
-
-    flex-direction: row;
-    display: flex;
-
-    background-color: #121212;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  background-color: #121212;
 }
 
 li a {
-    text-decoration: none;
-    color: white;
-
-    transition: color 0.3s ease;
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s ease;
 }
 
 li a:hover {
-    color: var(--primary-pink);
+  color: var(--primary-pink);
 }
 
 .menu {
-    display: flex;
-    flex-direction: row;
-
-    gap: 50px;
-    margin-left: 5px;  
-    margin-right: auto;
-    align-items: center;
-    justify-content: flex-start;
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  margin-left: 5px;
+  margin-right: auto;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .menu img {
-    height: 45px;
+  height: 45px;
 }
 
 .login {
-    display: flex;
-    flex-direction: row;
-
-    gap: 50px;
-    margin-left: auto;  
-    margin-right: 50px;
-    align-items: center;
-    justify-content: flex-end;
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  margin-left: auto;
+  margin-right: 50px;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .profile {
-  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(346deg) brightness(104%) contrast(97%);
+  filter: brightness(0) saturate(0%) invert(100%);
+  transition: filter 0.2s ease-in-out;
+}
+
+.profile:hover {
+  filter: brightness(100) saturate(100%);
 }
 
 .hero-slider {
@@ -93,7 +93,10 @@ li a:hover {
   background-position: center top;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out, transform 8s ease-out;
+  transition:
+    opacity 0.8s ease-in-out,
+    visibility 0.8s ease-in-out,
+    transform 8s ease-out;
   transform: scale(1.05);
   display: flex;
   align-items: flex-end;
@@ -108,19 +111,15 @@ li a:hover {
 .slide-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0.95) 0%,
-    rgba(0, 0, 0, 0.7) 40%,
-    rgba(0, 0, 0, 0.2) 70%,
-    rgba(0, 0, 0, 0.8) 100%
-  ),
-  linear-gradient(
-    to top,
-    #000000 0%,
-    rgba(0, 0, 0, 0.4) 30%,
-    transparent 70%
-  );
+  background:
+    linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.95) 0%,
+      rgba(0, 0, 0, 0.7) 40%,
+      rgba(0, 0, 0, 0.2) 70%,
+      rgba(0, 0, 0, 0.8) 100%
+    ),
+    linear-gradient(to top, #000000 0%, rgba(0, 0, 0, 0.4) 30%, transparent 70%);
   z-index: 1;
 }
 
@@ -137,6 +136,7 @@ li a:hover {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -189,14 +189,12 @@ li a:hover {
   font-size: 0.75rem;
 }
 
-/* Sinopse */
 .slide-description {
   font-size: 1rem;
   line-height: 1.5;
   color: var(--text-muted);
   margin-bottom: 25px;
   display: -webkit-box;
-
   overflow: hidden;
 }
 
@@ -207,7 +205,7 @@ li a:hover {
 }
 
 .slide-actions a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .btn {
@@ -271,8 +269,13 @@ li a:hover {
   background: var(--primary-pink);
 }
 
-.nav-arrow.prev { left: 0; }
-.nav-arrow.next { right: 0; }
+.nav-arrow.prev {
+  left: 0;
+}
+
+.nav-arrow.next {
+  right: 0;
+}
 
 .slider-indicators {
   position: absolute;
@@ -304,37 +307,403 @@ li a:hover {
 }
 
 .indicator.active .indicator-progress {
-  /* Animação via JS para tempo sincronizado */
   width: 100%;
   transition: width linear;
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-  .hero-slider {
-    height: 70vh;
+.home-content {
+  background-color: #050505;
+  color: white;
+  padding: 35px 4% 60px;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(300px, 380px);
+  gap: 45px;
+  max-width: 1600px;
+  margin: 0 auto;
+  align-items: stretch;
+}
+
+.anime-sections {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.anime-section {
+  margin-bottom: 45px;
+}
+
+.anime-sections .anime-section:last-child {
+  margin-bottom: 0;
+}
+
+.anime-section h2 {
+  margin: 0 0 25px;
+  color: white;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.cards-slider {
+  position: relative;
+}
+
+.cards-viewport {
+  overflow: hidden;
+}
+
+.cards-track {
+  display: flex;
+  gap: 25px;
+  scroll-behavior: smooth;
+  overflow-x: auto;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+}
+
+.cards-track::-webkit-scrollbar {
+  display: none;
+}
+
+.anime-card {
+  flex: 0 0 calc((100% - 75px) / 4);
+  min-width: 0;
+  scroll-snap-align: start;
+  cursor: pointer;
+}
+
+.anime-card-image {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  background: #151515;
+}
+
+.anime-card-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition:
+    transform 0.35s ease,
+    filter 0.35s ease;
+}
+
+.anime-card:hover .anime-card-image img {
+  transform: scale(1.04);
+  filter: brightness(1.08);
+}
+
+.anime-card h3 {
+  margin: 12px 0 2px;
+  color: white;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.anime-card p {
+  margin: 0;
+  color: #555;
+  font-size: 0.85rem;
+}
+
+.cards-arrow {
+  position: absolute;
+  top: 42%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 40px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: rgba(0, 0, 0, 0.75);
+  color: white;
+  cursor: pointer;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+.cards-arrow:hover {
+  background: var(--primary-pink);
+  color: black;
+}
+
+.cards-prev {
+  left: -20px;
+}
+
+.cards-next {
+  right: -20px;
+}
+
+.reviews-panel {
+  min-height: 0;
+  height: auto;
+  position: relative;
+  align-self: stretch;
+  box-sizing: border-box;
+  border: 3px solid var(--primary-pink);
+  background: #050505;
+  overflow: hidden;
+  padding: 14px;
+}
+
+.reviews-window {
+  position: absolute;
+  inset: 14px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 4%,
+    black 96%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 4%,
+    black 96%,
+    transparent 100%
+  );
+}
+
+.reviews-track {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  will-change: transform;
+}
+
+.reviews-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex-shrink: 0;
+}
+
+.review-card {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 14px;
+  padding: 20px 8px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #242424;
+  background: transparent;
+  flex-shrink: 0;
+}
+
+.review-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.review-content {
+  min-width: 0;
+}
+
+.review-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 5px;
+}
+
+.review-user {
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.review-rating {
+  color: var(--primary-pink);
+  font-size: 0.85rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.review-anime {
+  margin: 0 0 7px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.review-text {
+  margin: 0;
+  color: #999;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.dubbed-section,
+.inspired-section {
+  max-width: 1600px;
+  margin: 45px auto 0;
+}
+
+.dubbed-section .anime-card,
+.inspired-section .anime-card {
+  flex: 0 0 calc((100% - 125px) / 6);
+}
+
+.footer {
+  min-height: 120px;
+  padding: 30px 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background: var(--primary-pink);
+  color: white;
+}
+
+.footer .socials {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+}
+
+.footer .socials a {
+  color: white;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.footer .socials a:hover {
+  transform: translateY(-3px);
+}
+
+.footer p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.footer > p {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+@media (max-width: 1200px) {
+  .content-grid {
+    grid-template-columns:
+      minmax(0, 1fr)
+      310px;
+    gap: 30px;
   }
 
-  .slide-title {
-    font-size: 2rem;
+  .anime-card {
+    flex-basis: calc((100% - 50px) / 3);
   }
 
-  .slide-description {
-    font-size: 0.85rem;
+  .dubbed-section .anime-card,
+  .inspired-section .anime-card {
+    flex-basis: calc((100% - 75px) / 4);
+  }
+}
+
+@media (max-width: 900px) {
+  .content-grid {
+    display: block;
   }
 
-  .btn {
-    padding: 10px 18px;
-    font-size: 0.85rem;
+  .reviews-panel {
+    height: 500px;
+    margin-top: 45px;
+    margin-bottom: 50px;
   }
 
-  .nav-arrow {
-    width: 35px;
-    height: 50px;
+  .anime-card {
+    flex-basis: calc((100% - 25px) / 2);
   }
 
-  .slider-indicators {
-    right: 50%;
-    transform: translateX(50%);
+  .dubbed-section .anime-card,
+  .inspired-section .anime-card {
+    flex-basis: calc((100% - 50px) / 3);
+  }
+}
+
+@media (max-width: 600px) {
+  .home-content {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .anime-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .anime-card {
+    flex-basis: 70%;
+  }
+
+  .dubbed-section .anime-card,
+  .inspired-section .anime-card {
+    flex-basis: 70%;
+  }
+
+  .reviews-panel {
+    height: 450px;
+  }
+
+  .review-card {
+    grid-template-columns: 42px 1fr;
+    gap: 12px;
+    padding: 16px 6px;
+  }
+
+  .review-avatar {
+    width: 42px;
+    height: 42px;
+  }
+
+  .review-header {
+    gap: 10px;
+  }
+
+  .review-user {
+    font-size: 0.82rem;
+  }
+
+  .review-rating {
+    font-size: 0.78rem;
+  }
+
+  .review-anime {
+    font-size: 0.9rem;
+  }
+
+  .review-text {
+    font-size: 0.72rem;
+  }
+
+  .footer {
+    flex-direction: column;
+    justify-content: center;
+    gap: 25px;
+  }
+
+  .footer p {
+    margin: 0;
+    text-align: center;
   }
 }
