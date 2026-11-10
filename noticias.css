@@ -1,95 +1,188 @@
+
+/* =========================================
+   1. CONFIGURAÇÕES GERAIS
+========================================= */
+
 :root {
     --primary-pink: #ff00aa;
     --hover-pink: #ff7ed4;
+
     --dark-bg: #141519;
+    --navbar-bg: #121212;
     --card-bg: #23252b;
+
+    --text-color: #ffffff;
     --text-muted: #a0a0a0;
+
+    --border-color: rgba(255, 255, 255, 0.1);
+
+    --transition: 0.3s ease;
+    --border-radius: 10px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', Arial, sans-serif;
     background-color: var(--dark-bg);
-    color: #ffffff;
+    color: var(--text-color);
+    min-height: 100vh;
+    line-height: 1.5;
 }
 
 a {
+    color: var(--text-color);
     text-decoration: none;
-    color: white;
-    transition: color 0.3s ease;
+    transition: color var(--transition);
 }
 
 a:hover {
     color: var(--primary-pink);
 }
 
+img {
+    max-width: 100%;
+    display: block;
+}
+
+
+/* =========================================
+   2. NAVBAR
+========================================= */
+
 .navbar-principal {
-    margin: 0;
-    padding: 0 5%;
-    width: 90%;
-    height: 80px;
+    width: 100%;
+    min-height: 65px;
+    padding: 5px 30px;
+
     display: flex;
-    flex-direction: row;
     align-items: center;
-    background-color: #121212;
+    justify-content: space-between;
+
+    background-color: var(--navbar-bg);
+    gap: 25px;
+}
+
+/* Logo */
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
 }
 
 .logo-area img {
-    height: 45px;
-    margin-right: 50px;
+    width: 100px;
+    height: 55px;
+    object-fit: contain;
+    transition: transform var(--transition),
+                filter var(--transition);
 }
+
+.logo-area img:hover {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 8px var(--primary-pink));
+}
+
+/* Menu */
 
 .menus {
     display: flex;
-    flex-direction: row;
-    gap: 50px;
+    align-items: center;
+    justify-content: center;
+
+    gap: 38px;
+
+    list-style: none;
     margin: 0;
     padding: 0;
-    list-style: none;
-    align-items: center;
-    justify-content: flex-start;
+}
+
+.menus a {
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
 }
 
 .menus a.ativo {
     color: var(--primary-pink);
-    font-weight: bold;
 }
+
+/* Área do usuário */
 
 .area-usuario {
     display: flex;
-    flex-direction: row;
-    gap: 50px;
-    margin-left: auto;
     align-items: center;
     justify-content: flex-end;
+
+    gap: 30px;
+    flex-shrink: 0;
 }
+
+.area-usuario a {
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Ícone de perfil */
 
 .icone-perfil {
-    height: 35px;
-    width: 35px;
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
     border-radius: 50%;
-    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(346deg) brightness(104%) contrast(97%);
+
+    filter: brightness(0) saturate(100%)
+            invert(100%) sepia(0%)
+            saturate(0%) brightness(104%);
+
+    transition: transform var(--transition);
 }
+
+.icone-perfil:hover {
+    transform: scale(1.1);
+}
+
+
+/* =========================================
+   3. CONTEÚDO PRINCIPAL
+========================================= */
 
 main {
+    width: 100%;
     max-width: 1200px;
+
     margin: 40px auto;
-    padding: 0;
+    padding: 0 24px;
 }
 
+
+/* =========================================
+   4. NOTÍCIA EM DESTAQUE
+========================================= */
+
 .destaque-principal article {
-    background-color: var(--card-bg);
-    border-radius: 8px;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
+
+    background-color: var(--card-bg);
+
+    border-radius: var(--border-radius);
+    overflow: hidden;
+
     margin-bottom: 40px;
 }
 
 .destaque-principal figure {
-    margin: 0;
-    width: 100%;
     height: 400px;
     overflow: hidden;
 }
@@ -98,127 +191,416 @@ main {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
 }
 
 .destaque-principal article:hover figure img {
-    transform: scale(1.05); /* Efeito de Zoom na imagem principal */
+    transform: scale(1.04);
 }
 
 .info-noticia {
     padding: 30px;
 }
 
-.categoria {
-    display: inline-block;
-    background-color: var(--primary-pink);
-    color: #000;
-    font-size: 0.75rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    padding: 4px 10px;
-    border-radius: 2px;
-    margin-bottom: 12px;
-    letter-spacing: 1px;
-}
-
 .info-noticia h2 {
     font-size: 2.2rem;
-    font-weight: 900;
-    margin: 0 0 12px 0;
+    font-weight: 800;
     line-height: 1.2;
+
+    margin-bottom: 12px;
+}
+
+.info-noticia p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   5. CATEGORIAS E INFORMAÇÕES
+========================================= */
+
+.categoria {
+    display: inline-block;
+
+    background-color: var(--primary-pink);
+    color: #000000;
+
+    font-size: 0.75rem;
+    font-weight: 800;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    padding: 5px 10px;
+    border-radius: 3px;
+
+    margin-bottom: 12px;
 }
 
 .meta-dados {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+
     gap: 15px;
-    font-size: 0.9rem;
+
     color: var(--text-muted);
+    font-size: 0.9rem;
+
     margin-bottom: 15px;
 }
 
-.info-noticia p {
-    font-size: 1rem;
-    line-height: 1.5;
-    color: var(--text-muted);
-    margin: 0;
-}
+
+/* =========================================
+   6. DIVISÓRIAS E TÍTULOS
+========================================= */
 
 hr {
     border: none;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid var(--border-color);
+
     margin: 40px 0;
 }
 
 .noticias-recentes h2 {
     font-size: 1.8rem;
     font-weight: 800;
+
     text-transform: uppercase;
+
     margin-bottom: 30px;
 }
 
+
+/* =========================================
+   7. GRADE DE NOTÍCIAS
+========================================= */
+
 .grade-noticias {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+
     gap: 25px;
+
     margin-bottom: 40px;
 }
 
 .card-noticia {
     background-color: var(--card-bg);
-    border-radius: 8px;
+
+    border-radius: var(--border-radius);
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    transition: transform var(--transition),
+                box-shadow var(--transition);
 }
 
 .card-noticia:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    transform: translateY(-6px);
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 }
 
+/* Imagens dos cards */
+
 .card-noticia figure {
-    margin: 0;
     width: 100%;
     height: 200px;
-    overflow: hidden; /* Necessário para o zoom da imagem não sair do card */
+
+    overflow: hidden;
 }
 
 .card-noticia figure img {
     width: 100%;
     height: 100%;
+
     object-fit: cover;
+
     transition: transform 0.5s ease;
 }
 
 .card-noticia:hover figure img {
-    transform: scale(1.1); /* Animação de zoom na imagem ao passar o rato */
+    transform: scale(1.08);
 }
+
+/* Informações dos cards */
 
 .info-card {
     padding: 20px;
 }
 
 .info-card h3 {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     font-weight: 700;
-    margin: 10px 0;
-    line-height: 1.3;
+    line-height: 1.4;
+
+    margin-top: 8px;
 }
 
 .info-card h3 a {
-    color: #ffffff;
+    color: var(--text-color);
 }
 
 .info-card h3 a:hover {
     color: var(--primary-pink);
 }
 
-/* Animações Keyframes */
+
+/* =========================================
+   8. BOTÃO CARREGAR MAIS
+========================================= */
+
+#btn-carregar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto;
+    padding: 13px 30px;
+
+    background-color: var(--primary-pink);
+    color: #000000;
+
+    border: none;
+    border-radius: 5px;
+
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition: background-color var(--transition),
+                transform var(--transition),
+                box-shadow var(--transition);
+
+    animation: pulse 2s infinite;
+}
+
+#btn-carregar:hover {
+    background-color: var(--hover-pink);
+
+    transform: translateY(-3px);
+
+    animation: none;
+}
+
+#btn-carregar:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 4px;
+}
+
+
+/* =========================================
+   9. MODAL DE NOTÍCIAS
+========================================= */
+
+.modal-overlay {
+    display: none;
+
+    position: fixed;
+    z-index: 1000;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 20px;
+
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgba(0, 0, 0, 0.85);
+
+    backdrop-filter: blur(5px);
+}
+
+.modal-conteudo {
+    position: relative;
+
+    width: 100%;
+    max-width: 800px;
+
+    max-height: 85vh;
+
+    padding: 30px;
+
+    overflow-y: auto;
+
+    background-color: var(--card-bg);
+
+    border-radius: 12px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+
+    animation: modalFadeIn 0.4s ease-out forwards;
+}
+
+/* Imagem do modal */
+
+.modal-conteudo img {
+    width: 100%;
+    max-height: 400px;
+
+    object-fit: contain;
+
+    border-radius: 8px;
+}
+
+/* Título do modal */
+
+.modal-corpo h2 {
+    margin-top: 15px;
+
+    color: var(--text-color);
+
+    font-size: 2rem;
+    line-height: 1.3;
+}
+
+/* Texto do modal */
+
+.modal-corpo p {
+    color: var(--text-muted);
+
+    font-size: 1.05rem;
+    line-height: 1.7;
+
+    margin-top: 12px;
+}
+
+/* Botão fechar */
+
+.botao-fechar {
+    position: absolute;
+
+    top: 10px;
+    right: 20px;
+
+    color: var(--text-muted);
+
+    font-size: 35px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: color var(--transition),
+                transform var(--transition);
+}
+
+.botao-fechar:hover {
+    color: var(--primary-pink);
+
+    transform: scale(1.2) rotate(90deg);
+}
+
+
+/* =========================================
+   10. NOTÍCIAS ESCONDIDAS
+========================================= */
+
+.noticia-extra {
+    display: none;
+}
+
+
+/* =========================================
+   11. FOOTER
+========================================= */
+
+
+/* =========================================
+   RODAPÉ
+========================================= */
+
+.rodape {
+    width: 100%;
+    min-height: 110px;
+
+    background-color: var(--primary-pink);
+    color: #000000;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    padding: 20px;
+    text-align: center;
+}
+
+.rodape-copy {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.links-curriculos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    gap: 18px;
+
+    font-size: 0.85rem;
+}
+
+.links-curriculos span {
+    font-weight: 700;
+}
+
+.links-curriculos a {
+    color: #000000;
+    font-weight: 700;
+
+    text-decoration: underline;
+    text-underline-offset: 4px;
+
+    transition: opacity 0.3s ease;
+}
+
+.links-curriculos a:hover {
+    color: #ffffff;
+    opacity: 0.9;
+}
+
+/* Rodapé no celular */
+
+@media (max-width: 600px) {
+    .rodape {
+        padding: 25px 15px;
+    }
+
+    .links-curriculos {
+        gap: 12px;
+    }
+}
+
+
+
+/* =========================================
+   12. ANIMAÇÕES
+========================================= */
+
 @keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(255, 0, 170, 0.6); }
-    70% { box-shadow: 0 0 0 10px rgba(255, 0, 170, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(255, 0, 170, 0); }
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 0, 170, 0.5);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 0, 170, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 0, 170, 0);
+    }
 }
 
 @keyframes modalFadeIn {
@@ -226,6 +608,7 @@ hr {
         opacity: 0;
         transform: translateY(-30px) scale(0.95);
     }
+
     to {
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -237,108 +620,156 @@ hr {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-    padding: 12px 28px;
-    font-size: 0.95rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    background-color: var(--primary-pink);
-    color: #000000;
-    animation: pulse 2s infinite; /* Adicionado efeito de pulso */
+
+/* =========================================
+   13. RESPONSIVIDADE - TABLETS
+========================================= */
+
+@media (max-width: 900px) {
+
+    .navbar-principal {
+        gap: 15px;
+        padding: 8px 20px;
+    }
+
+    .menus {
+        gap: 18px;
+    }
+
+    .area-usuario {
+        gap: 15px;
+    }
+
+    .menus a,
+    .area-usuario a {
+        font-size: 12px;
+    }
+
+    .info-noticia h2 {
+        font-size: 1.8rem;
+    }
+
 }
 
-button:hover {
-    background-color: var(--hover-pink);
-    transform: translateY(-2px);
-    animation: none; /* Pára o pulso ao passar o rato */
+
+/* =========================================
+   14. RESPONSIVIDADE - CELULARES
+========================================= */
+
+@media (max-width: 650px) {
+
+    .navbar-principal {
+        min-height: auto;
+
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        padding: 10px 15px;
+        gap: 12px;
+    }
+
+    .logo-area img {
+        width: 85px;
+        height: 45px;
+    }
+
+    .area-usuario {
+        gap: 12px;
+    }
+
+    .menus {
+        order: 3;
+
+        width: 100%;
+
+        justify-content: center;
+        flex-wrap: wrap;
+
+        gap: 15px;
+
+        padding: 10px 0 5px;
+    }
+
+    .menus a,
+    .area-usuario a {
+        font-size: 12px;
+    }
+
+    .icone-perfil {
+        width: 25px;
+        height: 25px;
+    }
+
+    main {
+        margin: 25px auto;
+        padding: 0 15px;
+    }
+
+    .destaque-principal figure {
+        height: 230px;
+    }
+
+    .info-noticia {
+        padding: 20px;
+    }
+
+    .info-noticia h2 {
+        font-size: 1.5rem;
+    }
+
+    .noticias-recentes h2 {
+        font-size: 1.4rem;
+    }
+
+    .grade-noticias {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .card-noticia figure {
+        height: 210px;
+    }
+
+    .modal-conteudo {
+        padding: 25px 18px;
+        max-height: 90vh;
+    }
+
+    .modal-corpo h2 {
+        font-size: 1.4rem;
+    }
+
+    .modal-corpo p {
+        font-size: 0.95rem;
+    }
+
+    .modal-conteudo img {
+        max-height: 250px;
+    }
+
 }
 
-footer {
-    background-color: #121212;
-    text-align: center;
-    padding: 30px 0;
-    margin-top: 50px;
-    color: var(--text-muted);
-    font-size: 0.9rem;
-}
 
-/* ESTILOS DO MODAL (POP-UP) */
-.modal-overlay {
-    display: none; 
-    position: fixed; 
-    z-index: 1000; 
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.85); 
-    align-items: center; 
-    justify-content: center; 
-    backdrop-filter: blur(5px); /* Desfoca o fundo atrás do modal */
-}
+/* =========================================
+   15. ACESSIBILIDADE
+========================================= */
 
-.modal-conteudo {
-    background-color: var(--card-bg);
-    padding: 30px;
-    border-radius: 12px;
-    width: 80%;
-    max-width: 800px;
-    max-height: 85vh;
-    overflow-y: auto; 
-    position: relative;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-    animation: modalFadeIn 0.4s ease-out forwards; /* Animação de entrada do Modal */
-}
+@media (prefers-reduced-motion: reduce) {
 
-.modal-conteudo img {
-    width: 100%;
-    border-radius: 8px;
-    max-height: 400px;
-    object-fit: contain; 
-}
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 
-.modal-corpo h2 {
-    margin-top: 15px;
-    font-size: 2rem;
-    color: #fff;
-}
-
-.modal-corpo p {
-    color: var(--text-muted);
-    line-height: 1.6;
-    font-size: 1.1rem;
-}
-
-.botao-fechar {
-    color: var(--text-muted);
-    position: absolute;
-    top: 15px;
-    right: 25px;
-    font-size: 35px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: color 0.3s, transform 0.2s;
-}
-
-.botao-fechar:hover {
-    color: var(--primary-pink);
-    transform: scale(1.2) rotate(90deg); /* Animação ao passar o rato no X */
-}
-
-.noticia-extra {
-    display: none;
 }

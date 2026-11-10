@@ -10,8 +10,10 @@
 <header>
     <nav class="navbar-principal">
         <div class="logo-area">
-            <img src="Akiba-station/imgs/heads.png" alt="Logo do Site" width="100">
-        </div>
+    <a href="index.html">
+        <img src="img/heads.png" alt="Logo do Site">
+    </a>
+</div>
         <ul class="menus">
             <li><a href="#">Novidades</a></li>
             <li><a href="#">Populares</a></li>
@@ -21,7 +23,7 @@
         <div class="area-usuario">
             <a href="#">Cadastro</a>
             <a href="#">Entrar</a>
-            <img src="Akiba-station/imgs/user.png" alt="Perfil" class="icone-perfil">
+            <img src="img/user.png" alt="Perfil" class="icone-perfil">
         </div>
     </nav>
 </header>
@@ -29,7 +31,7 @@
     <!-- DESTAQUE PRINCIPAL -->
     <section class="destaque-principal">
         <article>
-            <figure><img src="img-noticias/megane.jpg" alt="Destaque"></figure>
+            <figure><img src="img-noticias/yodorokiii.png" alt="Destaque"></figure>
             <div class="info-noticia">
                 <span class="categoria">Destaque Trailer</span>
                 <h2><a href="#" onclick="abrirModal(event, 'Megane, Tokidoki, Yankee-kun ganha 1º trailer e confirma estreia!', 'Destaque', 'img-noticias/megane.jpg', 'O site oficial da adaptação em anime liberou o 1º trailer para a obra. O vídeo traz detalhes da história e dos personagens.')">Megane, Tokidoki, Yankee-kun ganha 1º trailer e confirma estreia!</a></h2>
@@ -166,46 +168,31 @@
     </div>
 </div>
 
-<footer>
-    <p>&copy; 2026 Seu Projeto. Todos os direitos reservados.</p>
+
+<footer class="rodape">
+    <p class="rodape-copy">
+        © 2026 Seu Projeto. Todos os direitos reservados.
+    </p>
+
+    <div class="links-curriculos">
+        <span>Conheça os desenvolvedores:</span>
+
+        <a href="curriculos/gabriel-a.pdf" target="_blank">
+            Gabriel A.
+        </a>
+
+        <a href="curriculos/gabriel-f.pdf" target="_blank">
+            Gabriel F.
+        </a>
+
+        <a href="curriculos/eduardo-m.pdf" target="_blank">
+            Eduardo M.
+        </a>
+    </div>
 </footer>
 
-<script>
-    function abrirModal(event, titulo, categoria, imagem, texto) {
-        event.preventDefault();
-        document.getElementById('modal-tit').innerText = titulo;
-        document.getElementById('modal-cat').innerText = categoria;
-        document.getElementById('modal-img').src = imagem;
-        document.getElementById('modal-texto').innerText = texto;
-        
-        // Remove a classe de animação e adiciona novamente para reiniciar a animação
-        let modalConteudo = document.querySelector('.modal-conteudo');
-        modalConteudo.style.animation = 'none';
-        modalConteudo.offsetHeight; // Força um reflow (recalculo) do navegador
-        modalConteudo.style.animation = null; 
-        
-        document.getElementById('meuModal').style.display = 'flex';
-    }
 
-    function fecharModal() {
-        document.getElementById('meuModal').style.display = 'none';
-    }
+<script src="noticias.js"></script>
 
-    window.onclick = function(event) {
-        var modal = document.getElementById('meuModal');
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-
-    function mostrarMaisNoticias() {
-        let noticiasEscondidas = document.querySelectorAll('.noticia-extra');
-        noticiasEscondidas.forEach(function(noticia) {
-            noticia.style.display = 'block';
-            noticia.style.animation = 'fadeUp 0.5s ease-out forwards'; // Animação ao revelar
-        });
-        document.getElementById('btn-carregar').style.display = 'none';
-    }
-</script>
 </body>
 </html>
