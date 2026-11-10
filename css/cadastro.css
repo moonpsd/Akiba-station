@@ -1,25 +1,343 @@
-.menu {
-    display: flex;
-    flex-direction: row;
+:root {
+  --primary-pink: #ff00aa;
+  --hover-pink: #ff7ed4;
+  --dark-bg: #0a0a0c;
+  --text-muted: #a0a0a0;
+  --erro: #ff5c5c;
+  --sucesso: #4ade80;
+}
 
-    gap: 50px;
-    margin-left: 5px;  
-    margin-right: auto;
-    align-items: center;
-    justify-content: flex-start;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+  background-color: #050505;
+  color: white;
+}
+
+nav {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  background-color: #050505;
+}
+
+li a {
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+li a:hover {
+  color: var(--primary-pink);
+}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  margin-left: 5px;
+  margin-right: auto;
+  align-items: center;
+  justify-content: flex-start;
+  list-style: none;
 }
 
 .menu img {
-    height: 45px;
+  height: 45px;
 }
 
 .login {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  margin-left: auto;
+  margin-right: 50px;
+  align-items: center;
+  justify-content: flex-end;
+  list-style: none;
+}
 
-    gap: 50px;
-    margin-left: auto;  
-    margin-right: 50px;
-    align-items: center;
-    justify-content: flex-end;
+/* Título centralizado */
+form h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 35px;
+}
+
+/* Centraliza o formulário na tela */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 200px);
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Formulário transparente, sem caixa atrás */
+form {
+  background: transparent;
+  padding: 0;
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+/* Cada campo do formulário */
+.campo {
+  position: relative;
+  margin-top: 28px;
+  width: 100%;
+}
+
+/* Campos de entrada com linha rosa inferior */
+.campo input {
+  width: 100%;
+  padding: 10px 0;
+  padding-right: 80px;
+  border: none;
+  border-bottom: 2px solid var(--primary-pink);
+  border-radius: 0;
+  outline: none;
+  background: transparent !important;
+  color: #fff;
+  font-family: inherit;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+/* Rótulo alinhado com a linha */
+.campo label {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+/* Animação do label ao focar ou preencher */
+.campo input:focus ~ label,
+.campo input:not(:placeholder-shown) ~ label {
+  top: -10px;
+  font-size: 12px;
+  color: var(--primary-pink);
+}
+
+/* Campo de data: o navegador sempre mostra "dd/mm/aaaa",
+   então o label fica sempre no topo */
+.campo_data label {
+  top: -10px;
+  font-size: 12px;
+  color: var(--primary-pink);
+}
+
+.campo_data input {
+  color-scheme: dark; /* ícone do calendário claro */
+  padding-right: 0;
+}
+
+/* Campo com erro */
+.campo.invalido input {
+  border-bottom-color: var(--erro);
+}
+
+.campo.invalido label {
+  color: var(--erro);
+}
+
+/* Botão Mostrar/Ocultar senha */
+.btn_senha {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--primary-pink);
+  cursor: pointer;
+  font-weight: bold;
+  font-family: inherit;
+}
+
+/* Mensagem de erro/sucesso */
+.mensagem {
+  min-height: 20px;
+  margin: 18px 0 0;
+  font-size: 0.9rem;
+  text-align: center;
+  color: var(--erro);
+}
+
+.mensagem.sucesso {
+  color: var(--sucesso);
+}
+
+button[type="submit"] {
+  width: 100%;
+  margin-top: 15px;
+  padding: 12px;
+  background-color: transparent;
+  border: 2px solid var(--primary-pink);
+  color: var(--primary-pink);
+  border-radius: 25px;
+  font-weight: bold;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--primary-pink);
+  color: #ffffff;
+}
+
+/* Link "Já tem conta?" */
+.link_alternativo {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.link_alternativo a {
+  color: var(--primary-pink);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.link_alternativo a:hover {
+  color: var(--hover-pink);
+}
+
+.footer {
+  min-height: 120px;
+  padding: 30px 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background: var(--primary-pink);
+  color: white;
+}
+
+.footer .socials {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+}
+
+.footer .socials a {
+  color: white;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.footer .socials a:hover {
+  transform: translateY(-3px);
+}
+
+.footer p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Autocompletar do navegador no fundo escuro */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px var(--dark-bg) inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* ===== Cadastro em etapas ===== */
+.oculto {
+  display: none !important;
+}
+
+.progresso {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.barra {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background: #2a2a2e;
+  transition: background 0.3s ease;
+}
+
+.barra.ativa {
+  background: var(--primary-pink);
+}
+
+.texto_etapa {
+  margin: 0 0 5px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* Animação ao trocar de etapa */
+.etapa {
+  animation: entrada 0.35s ease;
+}
+
+@keyframes entrada {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Botão principal (Continuar / Cadastrar) */
+.btn_principal {
+  width: 100%;
+  margin-top: 15px;
+  padding: 12px;
+  background-color: transparent;
+  border: 2px solid var(--primary-pink);
+  color: var(--primary-pink);
+  border-radius: 25px;
+  font-weight: bold;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn_principal:hover {
+  background-color: var(--primary-pink);
+  color: #ffffff;
+}
+
+/* Botão secundário (Voltar) */
+.btn_voltar {
+  width: 100%;
+  margin-top: 12px;
+  padding: 8px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-family: inherit;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.btn_voltar:hover {
+  color: var(--hover-pink);
 }
