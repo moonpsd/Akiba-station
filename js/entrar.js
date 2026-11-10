@@ -1,24 +1,61 @@
 document.addEventListener("DOMContentLoaded", function () {
+    var form = document.getElementById("formEntrar");
     var emailInput = document.getElementById("email");
     var containerSenha = document.getElementById("container-senha");
     var senhaInput = document.getElementById("senha");
     var btnEntrar = document.getElementById("btnEntrar");
+    var mensagem = document.getElementById("mensagem");
 
-    // Evento para mostrar a senha após pressionar Enter no e-mail
+    mensagem.style.textAlign = "center";
+    mensagem.style.minHeight = "20px";
+    mensagem.style.fontSize = "0.9rem";
+
+    function mostrarMensagem(texto, sucesso) {
+        mensagem.textContent = texto;
+        mensagem.style.color = sucesso ? "#4ade80" : "#ff5c5c";
+    }
+
+    // Mostra a senha após pressionar Enter no e-mail
     emailInput.addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
-            event.preventDefault(); // Evita a submissão imediata do formulário
+            event.preventDefault();
 
             if (emailInput.value.trim() !== "") {
-                // Exibe o campo de senha e o botão de entrar
                 containerSenha.classList.remove("oculto");
                 btnEntrar.classList.remove("oculto");
 
-                // Habilita e coloca o foco direto no campo de senha
                 senhaInput.disabled = false;
                 senhaInput.focus();
             }
         }
+    });
+
+    // Limpa a mensagem ao digitar
+    emailInput.addEventListener("input", function () { mostrarMensagem(""); });
+    senhaInput.addEventListener("input", function () { mostrarMensagem(""); });
+
+    // Login: confere e-mail e senha cadastrados
+    form.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        if (senhaInput.disabled || senhaInput.value === "") {
+            return;
+        }
+
+        btnEntrar.disabled = true;
+        var resultado = await Usuarios.entrar(emailInput.value, senhaInput.value);
+        btnEntrar.disabled = false;
+
+        if (!resultado.ok) {
+            mostrarMensagem(resultado.erro, false);
+            senhaInput.focus();
+            return;
+        }
+
+        mostrarMensagem("Bem-vindo(a), " + resultado.nome + "!", true);
+        setTimeout(function () {
+            window.location.href = "index.html";
+        }, 800);
     });
 });
 

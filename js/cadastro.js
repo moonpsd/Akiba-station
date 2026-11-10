@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var btnContinuar = document.getElementById("btnContinuar");
     var btnVoltar = document.getElementById("btnVoltar");
+    var btnCadastrar = document.getElementById("btnCadastrar");
 
     var etapaAtual = 1;
 
@@ -36,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
             input.parentElement.classList.remove("invalido");
             mensagem1.textContent = "";
             mensagem2.textContent = "";
+            mensagem2.classList.remove("sucesso");
         });
     });
 
@@ -47,20 +49,19 @@ document.addEventListener("DOMContentLoaded", function () {
         irParaEtapa(1);
     });
 
-    form.addEventListener("submit", function (event) {
-        // Enter na etapa 1 avança em vez de enviar o formulário
+    form.addEventListener("submit", async function (event) {
+        event.preventDefault(); // o cadastro é salvo pelo JS (Usuarios.cadastrar)
+
+        // Enter na etapa 1 avança em vez de cadastrar
         if (etapaAtual === 1) {
-            event.preventDefault();
             avancar();
             return;
         }
 
-        // Na etapa 2, valida tudo antes de enviar
+        // Na etapa 2, valida tudo antes de salvar
         var erro = validarEtapa1() || validarEtapa2();
 
         if (erro) {
-            event.preventDefault();
-
             // Se o erro for de um campo da etapa 1, volta para ela
             if (etapa1.contains(erro.campo)) {
                 irParaEtapa(1);
@@ -68,7 +69,37 @@ document.addEventListener("DOMContentLoaded", function () {
             } else {
                 mostrarErro(erro, mensagem2);
             }
+            return;
         }
+
+        btnCadastrar.disabled = true;
+        var resultado = await Usuarios.cadastrar({
+            nome: nome.value,
+            usuario: usuario.value,
+            nascimento: nascimento.value,
+            email: email.value,
+            senha: senha.value
+        });
+        btnCadastrar.disabled = false;
+
+        if (!resultado.ok) {
+            var campo = resultado.campo === "usuario" ? usuario : email;
+            var erroSalvar = { campo: campo, texto: resultado.erro };
+
+            if (etapa1.contains(campo)) {
+                irParaEtapa(1);
+                mostrarErro(erroSalvar, mensagem1);
+            } else {
+                mostrarErro(erroSalvar, mensagem2);
+            }
+            return;
+        }
+
+        mensagem2.classList.add("sucesso");
+        mensagem2.textContent = "Cadastro realizado! Redirecionando para o login...";
+        setTimeout(function () {
+            window.location.href = "entrar.html";
+        }, 1500);
     });
 
     function avancar() {
