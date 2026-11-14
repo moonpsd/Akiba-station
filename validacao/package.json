@@ -1,0 +1,11 @@
+{
+    "name": "akiba-validacao-noticias",
+    "private": true,
+    "scripts": {
+        "test": "node testes-noticias.cjs"
+    },
+    "devDependencies": {
+        "axe-core": "4.14.0",
+        "playwright": "1.62.1"
+    }
+}

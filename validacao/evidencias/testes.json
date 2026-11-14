@@ -1,0 +1,88 @@
+{
+  "browser": "Chromium",
+  "viewports": [
+    {
+      "width": 1920,
+      "overflow": false,
+      "initialCards": 14,
+      "totalCards": 26,
+      "modal": "OK",
+      "menu": "OK",
+      "images": "OK"
+    },
+    {
+      "width": 1366,
+      "overflow": false,
+      "initialCards": 14,
+      "totalCards": 26,
+      "modal": "OK",
+      "menu": "OK",
+      "images": "OK"
+    },
+    {
+      "width": 1024,
+      "overflow": false,
+      "initialCards": 14,
+      "totalCards": 26,
+      "modal": "OK",
+      "menu": "OK",
+      "images": "OK"
+    },
+    {
+      "width": 768,
+      "overflow": false,
+      "initialCards": 14,
+      "totalCards": 26,
+      "modal": "OK",
+      "menu": "OK",
+      "images": "OK"
+    },
+    {
+      "width": 430,
+      "overflow": false,
+      "initialCards": 14,
+      "totalCards": 26,
+      "modal": "OK",
+      "menu": "OK",
+      "images": "OK"
+    },
+    {
+      "width": 390,
+      "overflow": false,
+      "initialCards": 14,
+      "totalCards": 26,
+      "modal": "OK",
+      "menu": "OK",
+      "images": "OK"
+    },
+    {
+      "width": 360,
+      "overflow": false,
+      "initialCards": 14,
+      "totalCards": 26,
+      "modal": "OK",
+      "menu": "OK",
+      "images": "OK"
+    }
+  ],
+  "checks": [
+    "1920px: grade, imagens, navegação, teclado, três formas de fechar modal, foco e carregamento",
+    "axe-core: página e dialog sem violações automáticas WCAG A/AA detectadas",
+    "1366px: grade, imagens, navegação, teclado, três formas de fechar modal, foco e carregamento",
+    "1024px: grade, imagens, navegação, teclado, três formas de fechar modal, foco e carregamento",
+    "768px: grade, imagens, navegação, teclado, três formas de fechar modal, foco e carregamento",
+    "430px: grade, imagens, navegação, teclado, três formas de fechar modal, foco e carregamento",
+    "390px: grade, imagens, navegação, teclado, três formas de fechar modal, foco e carregamento",
+    "360px: grade, imagens, navegação, teclado, três formas de fechar modal, foco e carregamento",
+    "Redimensionamento desktop/celular com foco seguro",
+    "prefers-reduced-motion respeitado",
+    "Sem JavaScript: notícias e navegação permanecem visíveis",
+    "Defensividade: sem-extras, sem erros JavaScript",
+    "Defensividade: sem-modal, sem erros JavaScript",
+    "Defensividade: grade-vazia, sem erros JavaScript"
+  ],
+  "errors": [],
+  "requestsFailed": [],
+  "browserVersion": "156.0.8078.79",
+  "status": "APROVADO"
+}

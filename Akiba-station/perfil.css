@@ -1,0 +1,226 @@
+:root {
+  --primary-pink: #ff00aa;
+  --hover-pink: #ff7ed4;
+  --dark-bg: #0a0a0c; /* Tom praticamente preto */
+  --text-muted: #a0a0a0;
+  --slider-height: 80vh;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+  background-color: #050505;
+  color: white;
+}
+
+nav {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  background-color: #050505;
+}
+
+li a {
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+li a:hover {
+  color: var(--primary-pink);
+}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  margin-left: 5px;
+  margin-right: auto;
+  align-items: center;
+  justify-content: flex-start;
+  list-style: none;
+}
+
+.menu img {
+  height: 45px;
+}
+
+.login {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  margin-left: auto;
+  margin-right: 50px;
+  align-items: center;
+  justify-content: flex-end;
+  list-style: none;
+}
+
+/* Centraliza o título "Entrar" e aumenta o tamanho da fonte */
+form h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 45px; /* Aumentado para criar mais distância do campo de e-mail */
+}
+
+/* Garante que o container centralize perfeitamente todo o formulário na tela */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 200px); /* Ocupa a altura entre o topo e o rodapé */
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Largura e alinhamento do formulário */
+form {
+  background: transparent;
+  padding: 0;
+  width: 100%;
+  max-width: 380px; /* Largura levemente maior para melhor visualização */
+  margin: 0 auto;
+}
+
+/* Formulário transparente, sem caixa cinza atrás */
+form {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  width: 100%;
+  max-width: 350px;
+}
+
+.oculto {
+  display: none !important;
+}
+
+.container_email,
+.container_senha {
+  position: relative;
+  margin-top: 25px;
+  width: 100%;
+}
+
+/* Campos de entrada em linha rosa inferior */
+.container_email input,
+.container_senha input {
+  width: 100%;
+  padding: 10px 0;
+  padding-right: 80px;
+  border: none;
+  border-bottom: px solid var(--primary-pink);
+  border-radius: 0;
+  outline: none;
+  background: transparent !important;
+  color: #fff;
+  box-sizing: border-box;
+}
+
+/* Rótulo alinhado com a linha */
+.container_email label,
+.container_senha label {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+/* Animação do label ao focar ou preencher */
+.container_email input:focus ~ label,
+.container_email input:not(:placeholder-shown) ~ label,
+.container_senha input:focus ~ label,
+.container_senha input:not(:placeholder-shown) ~ label {
+  top: -10px;
+  font-size: 12px;
+  color: var(--primary-pink);
+  background-color: transparent;
+  padding: 0;
+}
+
+#btnSenha {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--primary-pink);
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button[type="submit"] {
+  width: 100%;
+  margin-top: 30px;
+  padding: 12px;
+  background-color: transparent; /* Remove o preenchimento */
+  border: 2px solid var(--primary-pink); /* Define apenas o contorno rosa */
+  color: var(--primary-pink); /* Deixa a cor do texto rosa */
+  border-radius: 25px; /* Mantém os cantos arredondados no formato pílula */
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Efeito ao passar o mouse (opcional: preenche suavemente ao passar o ponteiro) */
+button[type="submit"]:hover {
+  background-color: var(--primary-pink);
+  color: #ffffff;
+}
+
+.footer {
+  min-height: 120px;
+  padding: 30px 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background: var(--primary-pink);
+  color: white;
+}
+
+.footer .socials {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+}
+
+.footer .socials a {
+  color: white;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.footer .socials a:hover {
+  transform: translateY(-3px);
+}
+
+.footer p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Ajuste do autocompletar do navegador para o novo fundo escuro */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px var(--dark-bg) inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+  transition: background-color 5000s ease-in-out 0s;
+}

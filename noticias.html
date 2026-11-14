@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta
+            name="description"
+            content="Notícias de anime, mangá, cinema e cultura japonesa. Acompanhe trailers, lançamentos e novidades no Akiba.">
+        <meta name="theme-color" content="#0e0e11">
+        <title>Notícias | Akiba</title>
+        <link rel="stylesheet" href="css/noticias.css">
+        <link rel="icon" href="img/heads.png" type="image/png">
+        <script src="js/noticias.js" defer></script>
+    </head>
+    <body>
+        <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+        <header class="cabecalho">
+            <nav class="navbar-principal container" aria-label="Navegação principal">
+                <a class="logo-area" href="index.html" aria-label="Akiba — página inicial">
+                    <img src="imgs/heads.png" alt="" width="1694" height="1138">
+                    <span class="logo-nome">AKIBA<span aria-hidden="true">.</span></span>
+                </a>
+                <button
+                    class="botao-menu"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="menu-principal"
+                    hidden
+                >
+                    <svg
+                        viewBox="0 0 24 24"
+                        width="22"
+                        height="22"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        aria-hidden="true"
+                    >
+                        <path d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <span>Menu</span>
+                </button>
+                <div id="menu-principal" class="navegacao">
+                    <ul class="menus">
+                        <li><a href="#">Novidades</a></li>
+                        <li><a href="#">Populares</a></li>
+                        <li><a href="#">Categorias</a></li>
+                        <li><a href="#" class="ativo" aria-current="page">Notícias</a></li>
+                    </ul>
+                    <div class="area-usuario">
+                        <a href="cadastro.html">Cadastro</a>
+                        <a class="link-entrar" href="#">Entrar</a>
+                        <img
+                            src="imgs/user.png"
+                            alt="Perfil"
+                            class="icone-perfil"
+                            width="28"
+                            height="28">
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main id="conteudo" class="container" tabindex="-1">
+            <header class="abertura">
+                <div>
+                    <p class="sobretitulo">NO RADAR</p>
+                    <h1>Notícias<span aria-hidden="true">.</span></h1>
+                    <p class="abertura-descricao">O que acontece no seu universo favorito.</p>
+                </div>
+                <p class="abertura-assuntos">
+                    Anime, mangá e cultura japonesa.<br><span
+                        >As novidades se encontram aqui.</span
+                    >
+                </p>
+            </header>
+
+            <section class="destaque-principal" aria-labelledby="titulo-destaque">
+                <h2 id="titulo-destaque" class="sr-only">Notícia em destaque</h2>
+                <article
+                    id="noticia-destaque"
+                    class="noticia-destaque"
+                    data-noticia
+                    data-texto="O site oficial da adaptação em anime liberou o 1º trailer para a obra. O vídeo traz detalhes da história e dos personagens."
+                    data-imagem-modal="assets/images/optimized/destaque-1280.webp"
+                >
+                    <figure class="imagem-destaque">
+                        <img
+                            src="assets/images/optimized/destaque-1280.webp"
+                            srcset="
+                                assets/images/optimized/destaque-768.webp   768w,
+                                assets/images/optimized/destaque-1280.webp 1280w
+                            "
+                            sizes="(max-width: 899px) calc(100vw - 40px), 720px"
+                            width="1280"
+                            height="720"
+                            alt="Personagens de Megane, Tokidoki, Yankee-kun sobre fundo vermelho"
+                            fetchpriority="high"
+                            decoding="async">
+                        <figcaption>EM DESTAQUE</figcaption>
+                    </figure>
+                    <div class="info-noticia">
+                        <span class="categoria">Trailer</span>
+                        <h3>
+                            <a
+                                href="#noticia-destaque"
+                                data-abrir-noticia
+                                aria-haspopup="dialog"
+                                aria-controls="meuModal"
+                                >Megane, Tokidoki, Yankee-kun ganha 1º trailer e confirma
+                                estreia!</a
+                            >
+                        </h3>
+                        <p class="meta-dados">
+                            <span>Por <strong>IntoxiAnime</strong></span>
+                            <time datetime="2026-10">Outubro de 2026</time>
+                        </p>
+                        <p class="resumo-destaque">
+                            O site oficial da adaptação em anime liberou o 1º trailer da obra. O
+                            vídeo traz detalhes da história e dos personagens.
+                        </p>
+                        <span class="chamada-leitura" aria-hidden="true"
+                            >Ler notícia completa
+                            <span
+                                ><svg
+                                    class="icone-seta"
+                                    viewBox="0 0 24 24"
+                                    width="16"
+                                    height="16"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="1.6"
+                                    aria-hidden="true"
+                                >
+                                    <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                        ></span>
+                    </div>
+                </article>
+            </section>
+
+            <section class="noticias-recentes" aria-labelledby="titulo-recentes">
+                <header class="cabecalho-secao">
+                    <h2 id="titulo-recentes">Últimas notícias</h2>
+                    <span class="quantidade-noticias" aria-hidden="true"
+                        >Anime &amp; cultura geek</span
+                    >
+                </header>
+                <noscript
+                    ><p class="aviso-sem-js">
+                        Todas as notícias estão listadas abaixo. Ative o JavaScript para abrir os
+                        detalhes em uma janela de leitura.
+                    </p></noscript
+                >
+                <div id="grade-noticias" class="grade-noticias">
+                    <article
+                        id="noticia-jujutsu"
+                        class="card-noticia"
+                        data-noticia
+                        data-texto="Os fãs já podem marcar no calendário para o anúncio do MAPPA."
+                        data-imagem-modal="assets/images/optimized/jujutsu-736.webp"
+                    >
+                        <figure class="noticia-imagem noticia-imagem--poster">
+                            <img
+                                src="assets/images/optimized/jujutsu-453.webp"
+                                srcset="
+                                    assets/images/optimized/jujutsu-453.webp 453w,
+                                    assets/images/optimized/jujutsu-736.webp 736w
+                                "
+                                sizes="(max-width: 599px) calc(100vw - 40px), (max-width: 999px) 45vw, 285px"
+                                width="453"
+                                height="640"
+                                alt="Pôster de Jujutsu Kaisen com os personagens da série"
+                                loading="lazy"
+                                decoding="async">
+                        </figure>
+                        <div class="info-card">
+                            <span class="categoria">Anime</span>
+                            <h3>
+                                <a
+                                    href="#noticia-jujutsu"
+                                    data-abrir-noticia
+                                    aria-haspopup="dialog"
+                                    aria-controls="meuModal"
+                                    >Jujutsu Kaisen: Temporada 4 ganha data para novo anúncio</a
+                                >
+                            </h3>
+                            <span class="card-leitura" aria-hidden="true"
+                                >Ler notícia
+                                <span
+                                    ><svg
+                                        class="icone-seta"
+                                        viewBox="0 0 24 24"
+                                        width="16"
+                                        height="16"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                            ></span>
+                        </div>
+                    </article>
+                    <article
+                        id="noticia-isekai"
+                        class="card-noticia"
+                        data-noticia
+                        data-texto="Confira os 10 melhores Isekais da temporada."
+                        data-imagem-modal="assets/images/optimized/isekai-736.webp"
+                    >
+                        <figure class="noticia-imagem noticia-imagem--paisagem">
+                            <img
+                                src="assets/images/optimized/isekai-480.webp"
+                                srcset="
+                                    assets/images/optimized/isekai-480.webp 480w,
+                                    assets/images/optimized/isekai-736.webp 736w
+                                "
+                                sizes="(max-width: 599px) calc(100vw - 40px), (max-width: 999px) 45vw, 285px"
+                                width="480"
+                                height="344"
+                                alt="Personagens de animes isekai reunidos em uma ilustração"
+                                loading="lazy"
+                                decoding="async">
+                        </figure>
+                        <div class="info-card">
+                            <span class="categoria">Listas</span>
+                            <h3>
+                                <a
+                                    href="#noticia-isekai"
+                                    data-abrir-noticia
+                                    aria-haspopup="dialog"
+                                    aria-controls="meuModal"
+                                    >10 melhores animes Isekai que estreiam em Outubro 2026</a
+                                >
+                            </h3>
+                            <span class="card-leitura" aria-hidden="true"
+                                >Ler notícia
+                                <span
+                                    ><svg
+                                        class="icone-seta"
+                                        viewBox="0 0 24 24"
+                                        width="16"
+                                        height="16"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                            ></span>
+                        </div>
+                    </article>
+                    <article
+                        id="noticia-pochita"
+                        class="card-noticia"
+                        data-noticia
+                        data-texto="Nova colaboração de calçados do anime."
+                        data-imagem-modal="assets/images/optimized/pochita-860.webp"
+                    >
+                        <figure class="noticia-imagem noticia-imagem--paisagem">
+                            <img
+                                src="assets/images/optimized/pochita-480.webp"
+                                srcset="
+                                    assets/images/optimized/pochita-480.webp 480w,
+                                    assets/images/optimized/pochita-860.webp 860w
+                                "
+                                sizes="(max-width: 599px) calc(100vw - 40px), (max-width: 999px) 45vw, 285px"
+                                width="480"
+                                height="336"
+                                alt="Crocs amarelos inspirados no Pochita, de Chainsaw Man"
+                                loading="lazy"
+                                decoding="async">
+                        </figure>
+                        <div class="info-card">
+                            <span class="categoria">Merch</span>
+                            <h3>
+                                <a
+                                    href="#noticia-pochita"
+                                    data-abrir-noticia
+                                    aria-haspopup="dialog"
+                                    aria-controls="meuModal"
+                                    >Chainsaw Man ganha Crocs com motosserra incluída</a
+                                >
+                            </h3>
+                            <span class="card-leitura" aria-hidden="true"
+                                >Ler notícia
+                                <span
+                                    ><svg
+                                        class="icone-seta"
+                                        viewBox="0 0 24 24"
+                                        width="16"
+                                        height="16"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                            ></span>
+                        </div>
+                    </article>
+                    <article
+                        id="noticia-fujimoto"
+                        class="card-noticia"
+                        data-noticia
+                        data-texto="Tatsuki Fujimoto está em um novo projeto."
+                        data-imagem-modal="assets/images/optimized/fujimoto-447.webp"
+                    >
+                        <figure class="noticia-imagem noticia-imagem--poster">
+                            <img
+                                src="assets/images/optimized/fujimoto-447.webp"
+                                srcset="assets/images/optimized/fujimoto-447.webp 447w"
+                                sizes="(max-width: 599px) calc(100vw - 40px), (max-width: 999px) 45vw, 285px"
+                                width="447"
+                                height="488"
+                                alt="Ilustração de personagens de uma obra de Tatsuki Fujimoto"
+                                loading="lazy"
+                                decoding="async">
+                        </figure>
+                        <div class="info-card">
+                            <span class="categoria">Mangá</span>
+                            <h3>
+                                <a
+                                    href="#noticia-fujimoto"
+                                    data-abrir-noticia
+                                    aria-haspopup="dialog"
+                                    aria-controls="meuModal"
+                                    >Autor de Chainsaw Man já trabalha num novo mangá</a
+                                >
+                            </h3>
+                            <span class="card-leitura" aria-hidden="true"
+                                >Ler notícia
+                                <span
+                                    ><svg
+                                        class="icone-seta"
+                                        viewBox="0 0 24 24"
+                                        width="16"
+                                        height="16"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                            ></span>
+                        </div>
+                    </article>
+                    <article
+                        id="noticia-historie"
+                        class="card-noticia"
+                        data-noticia
+                        data-texto="O aclamado mangá finalmente ganha trailer."
+                        data-imagem-modal="assets/images/optimized/historie-225.webp"
+                    >
+                        <figure class="noticia-imagem noticia-imagem--poster">
+                            <img
+                                src="assets/images/optimized/historie-225.webp"
+                                srcset="assets/images/optimized/historie-225.webp 225w"
+                                sizes="(max-width: 599px) calc(100vw - 40px), (max-width: 999px) 45vw, 285px"
+                                width="225"
+                                height="320"
+                                alt="Capa do mangá Historie com Eumenes"
+                                loading="lazy"
+                                decoding="async">
+                        </figure>
+                        <div class="info-card">
+                            <span class="categoria">Estreia</span>
+                            <h3>
+                                <a
+                                    href="#noticia-historie"
+                                    data-abrir-noticia
+                                    aria-haspopup="dialog"
+                                    aria-controls="meuModal"
+                                    >Historie: Anime do autor de Kiseiju ganha estúdio e trailer</a
+                                >
+                            </h3>
+                            <span class="card-leitura" aria-hidden="true"
+                                >Ler notícia
+                                <span
+                                    ><svg
+                                        class="icone-seta"
+                                        viewBox="0 0 24 24"
+                                        width="16"
+                                        height="16"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                            ></span>
+                        </div>
+                    </article>
+                    <article
+                        id="noticia-acao"
+                        class="card-noticia"
+                        data-noticia
+                        data-texto="Melhores estreias de ação do mês."
+                        data-imagem-modal="assets/images/optimized/acao-735.webp"
+                    >
+                        <figure class="noticia-imagem noticia-imagem--paisagem">
+                            <img
+                                src="assets/images/optimized/acao-480.webp"
+                                srcset="
+                                    assets/images/optimized/acao-480.webp 480w,
+                                    assets/images/optimized/acao-735.webp 735w
+                                "
+                                sizes="(max-width: 599px) calc(100vw - 40px), (max-width: 999px) 45vw, 285px"
+                                width="480"
+                                height="259"
+                                alt="Cena de combate entre personagens de anime"
+                                loading="lazy"
+                                decoding="async">
+                        </figure>
+                        <div class="info-card">
+                            <span class="categoria">Listas</span>
+                            <h3>
+                                <a
+                                    href="#noticia-acao"
+                                    data-abrir-noticia
+                                    aria-haspopup="dialog"
+                                    aria-controls="meuModal"
+                                    >8 melhores animes violentos e de ação para Outubro de 2026</a
+                                >
+                            </h3>
+                            <span class="card-leitura" aria-hidden="true"
+                                >Ler notícia
+                                <span
+                                    ><svg
+                                        class="icone-seta"
+                                        viewBox="0 0 24 24"
+                                        width="16"
+                                        height="16"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                            ></span>
+                        </div>
+                    </article>
+                    <article
+                        id="noticia-naruto-anime"
+                        class="card-noticia"
+                        data-noticia
+                        data-texto="Nova série limitada animada."
+                        data-imagem-modal="assets/images/optimized/naruto-anime-516.webp"
+                    >
+                        <figure class="noticia-imagem noticia-imagem--poster">
+                            <img
+                                src="assets/images/optimized/naruto-anime-456.webp"
+                                srcset="
+                                    assets/images/optimized/naruto-anime-456.webp 456w,
+                                    assets/images/optimized/naruto-anime-516.webp 516w
+                                "
+                                sizes="(max-width: 599px) calc(100vw - 40px), (max-width: 999px) 45vw, 285px"
+                                width="456"
+                                height="640"
+                                alt="Arte de Naruto com personagens de diferentes gerações"
+                                loading="lazy"
+                                decoding="async">
+                        </figure>
+                        <div class="info-card">
+                            <span class="categoria">Clássicos</span>
+                            <h3>
+                                <a
+                                    href="#noticia-naruto-anime"
+                                    data-abrir-noticia
+                                    aria-haspopup="dialog"
+                                    aria-controls="meuModal"
+                                    >Naruto vai regressar com nova série anime limitada</a
+                                >
+                            </h3>
+                            <span class="card-leitura" aria-hidden="true"
+                                >Ler notícia
+                                <span
+                                    ><svg
+                                        class="icone-seta"
+                                        viewBox="0 0 24 24"
+                                        width="16"
+                                        height="16"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                            ></span>
+                        </div>
+                    </article>
+                    <article
+                        id="noticia-naruto-cinema"
+                        class="card-noticia"
+                        data-noticia
+                        data-texto="Sinopse oficial revelada."
+                        data-imagem-modal="assets/images/optimized/naruto-cinema-541.webp"
+                    >
+                        <figure class="noticia-imagem noticia-imagem--poster">
+                            <img
+                                src="assets/images/optimized/naruto-cinema-457.webp"
+                                srcset="
+                                    assets/images/optimized/naruto-cinema-457.webp 457w,
+                                    assets/images/optimized/naruto-cinema-541.webp 541w
+                                "
+                                sizes="(max-width: 599px) calc(100vw - 40px), (max-width: 999px) 45vw, 285px"
+                                width="457"
+                                height="640"
+                                alt="Pôster de Naruto diante de uma árvore em chamas"
+                                loading="lazy"
+                                decoding="async">
+                        </figure>
+                        <div class="info-card">
+                            <span class="categoria">Cinema</span>
+                            <h3>
+                                <a
+                                    href="#noticia-naruto-cinema"
+                                    data-abrir-noticia
+                                    aria-haspopup="dialog"
+                                    aria-controls="meuModal"
+                                    >Live-action de Naruto revela a sua primeira sinopse</a
+                                >
+                            </h3>
+                            <span class="card-leitura" aria-hidden="true"
+                                >Ler notícia
+                                <span
+                                    ><svg
+                                        class="icone-seta"
+                                        viewBox="0 0 24 24"
+                                        width="16"
+                                        height="16"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                            ></span>
+                        </div>
+                    </article>
+                    <article
+                        id="noticia-summer-wars"
+                        class="card-noticia"
+                        data-noticia
+                        data-texto="Balanço dos melhores finais."
+                        data-imagem-modal="assets/images/optimized/summer-wars-736.webp"
+                    >
+                        <figure class="noticia-imagem noticia-imagem--poster">
+                            <img
+                                src="assets/images/optimized/summer-wars-427.webp"
+                                srcset="
+                                    assets/images/optimized/summer-wars-427.webp 427w,
+                                    assets/images/optimized/summer-wars-736.webp 736w
+                                "
+                                sizes="(max-width: 599px) calc(100vw - 40px), (max-width: 999px) 45vw, 285px"
+                                width="427"
+                                height="640"
+                                alt="Pôster do filme Summer Wars"
+                                loading="lazy"
+                                decoding="async">
+                        </figure>
+                        <div class="info-card">
+                            <span class="categoria">Review</span>
+                            <h3>
+                                <a
+                                    href="#noticia-summer-wars"
+                                    data-abrir-noticia
+                                    aria-haspopup="dialog"
+                                    aria-controls="meuModal"
+                                    >5 animes da temporada de verão que terminaram em grande</a
+                                >
+                            </h3>
+                            <span class="card-leitura" aria-hidden="true"
+                                >Ler notícia
+                                <span
+                                    ><svg
+                                        class="icone-seta"
+                                        viewBox="0 0 24 24"
+                                        width="16"
+                                        height="16"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                            ></span>
+                        </div>
+                    </article>
+                    <article
+                        id="noticia-haikyu"
+                        class="card-noticia"
+                        data-noticia
+                        data-texto="Trailer focado na Batalha do Lixo."
+                        data-imagem-modal="assets/images/optimized/haikyu-1000.webp"
+                    >
+                        <figure class="noticia-imagem noticia-imagem--paisagem">
+                            <img
+                                src="assets/images/optimized/haikyu-480.webp"
+                                srcset="
+                                    assets/images/optimized/haikyu-480.webp   480w,
+                                    assets/images/optimized/haikyu-1000.webp 1000w
+                                "
+                                sizes="(max-width: 599px) calc(100vw - 40px), (max-width: 999px) 45vw, 285px"
+                                width="480"
+                                height="270"
+                                alt="Hinata e Kageyama na quadra de vôlei em Haikyuu!!"
+                                loading="lazy"
+                                decoding="async">
+                        </figure>
+                        <div class="info-card">
+                            <span class="categoria">Filmes</span>
+                            <h3>
+                                <a
+                                    href="#noticia-haikyu"
+                                    data-abrir-noticia
+                                    aria-haspopup="dialog"
+                                    aria-controls="meuModal"
+                                    >Haikyuu!! Novo filme da franquia recebe trailer emocionante</a
+                                >
+                            </h3>
+                            <span class="card-leitura" aria-hidden="true"
+                                >Ler notícia
+                                <span
+                                    ><svg
+                                        class="icone-seta"
+                                        viewBox="0 0 24 24"
+                                        width="16"
+                                        height="16"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                            ></span>
+                        </div>
+                    </article>
+                    <article
+                        id="noticia-gannibal"
+                        class="card-noticia"
+                        data-noticia
+                        data-texto="Novo volume de terror chega ao ocidente."
+                        data-imagem-modal="assets/images/optimized/gannibal-544.webp"
+                    >
+                        <figure class="noticia-imagem noticia-imagem--poster">
+                            <img
+                                src="assets/images/optimized/gannibal-453.webp"
+                                srcset="
+                                    assets/images/optimized/gannibal-453.webp 453w,
+                                    assets/images/optimized/gannibal-544.webp 544w
+                                "
+                                sizes="(max-width: 599px) calc(100vw - 40px), (max-width: 999px) 45vw, 285px"
+                                width="453"
+                                height="640"
+                                alt="Capa do mangá de terror Gannibal"
+                                loading="lazy"
+                                decoding="async">
+                        </figure>
+                        <div class="info-card">
+                            <span class="categoria">Mangá</span>
+                            <h3>
+                                <a
+                                    href="#noticia-gannibal"
+                                    data-abrir-noticia
+                                    aria-haspopup="dialog"
+                                    aria-controls="meuModal"
+                                    >Gannibal Volume 8 chega oficialmente ao ocidente em outubro</a
+                                >
+                            </h3>
+                            <span class="card-leitura" aria-hidden="true"
+                                >Ler notícia
+                                <span
+                                    ><svg
+                                        class="icone-seta"
+                                        viewBox="0 0 24 24"
+                                        width="16"
+                                        height="16"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                            ></span>
+                        </div>
+                    </article>
+                    <article
+                        id="noticia-iberanime"
+                        class="card-noticia"
+                        data-noticia
+                        data-texto="Cronograma completo do evento."
+                        data-imagem-modal="assets/images/optimized/iberanime-701.webp"
+                    >
+                        <figure class="noticia-imagem noticia-imagem--paisagem">
+                            <img
+                                src="assets/images/optimized/iberanime-480.webp"
+                                srcset="
+                                    assets/images/optimized/iberanime-480.webp 480w,
+                                    assets/images/optimized/iberanime-701.webp 701w
+                                "
+                                sizes="(max-width: 599px) calc(100vw - 40px), (max-width: 999px) 45vw, 285px"
+                                width="480"
+                                height="265"
+                                alt="Participantes e cosplayers reunidos no Iberanime"
+                                loading="lazy"
+                                decoding="async">
+                        </figure>
+                        <div class="info-card">
+                            <span class="categoria">Eventos</span>
+                            <h3>
+                                <a
+                                    href="#noticia-iberanime"
+                                    data-abrir-noticia
+                                    aria-haspopup="dialog"
+                                    aria-controls="meuModal"
+                                    >Iberanime 2026: Programa completo traz grandes nomes</a
+                                >
+                            </h3>
+                            <span class="card-leitura" aria-hidden="true"
+                                >Ler notícia
+                                <span
+                                    ><svg
+                                        class="icone-seta"
+                                        viewBox="0 0 24 24"
+                                        width="16"
+                                        height="16"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                            ></span>
+                        </div>
+                    </article>
+                    <article
+                        id="noticia-solo-leveling"
+                        class="card-noticia"
+                        data-noticia
+                        data-texto="O que esperar das próximas dungeons."
+                        data-imagem-modal="assets/images/optimized/solo-leveling-327.webp"
+                    >
+                        <figure class="noticia-imagem noticia-imagem--poster">
+                            <img
+                                src="assets/images/optimized/solo-leveling-327.webp"
+                                srcset="assets/images/optimized/solo-leveling-327.webp 327w"
+                                sizes="(max-width: 599px) calc(100vw - 40px), (max-width: 999px) 45vw, 285px"
+                                width="327"
+                                height="584"
+                                alt="Capa ilustrada de Solo Leveling com Sung Jinwoo"
+                                loading="lazy"
+                                decoding="async">
+                        </figure>
+                        <div class="info-card">
+                            <span class="categoria">Opinião</span>
+                            <h3>
+                                <a
+                                    href="#noticia-solo-leveling"
+                                    data-abrir-noticia
+                                    aria-haspopup="dialog"
+                                    aria-controls="meuModal"
+                                    >O que esperar da 2ª temporada de Solo Leveling?</a
+                                >
+                            </h3>
+                            <span class="card-leitura" aria-hidden="true"
+                                >Ler notícia
+                                <span
+                                    ><svg
+                                        class="icone-seta"
+                                        viewBox="0 0 24 24"
+                                        width="16"
+                                        height="16"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                            ></span>
+                        </div>
+                    </article>
+                    <article
+                        id="noticia-berserk"
+                        class="card-noticia"
+                        data-noticia
+                        data-texto="Obras que a animação não superou."
+                        data-imagem-modal="assets/images/optimized/berserk-1000.webp"
+                    >
+                        <figure class="noticia-imagem noticia-imagem--paisagem">
+                            <img
+                                src="assets/images/optimized/berserk-480.webp"
+                                srcset="
+                                    assets/images/optimized/berserk-480.webp   480w,
+                                    assets/images/optimized/berserk-1000.webp 1000w
+                                "
+                                sizes="(max-width: 599px) calc(100vw - 40px), (max-width: 999px) 45vw, 285px"
+                                width="480"
+                                height="341"
+                                alt="Cena do mangá Berserk com um eclipse ao fundo"
+                                loading="lazy"
+                                decoding="async">
+                        </figure>
+                        <div class="info-card">
+                            <span class="categoria">Artigos</span>
+                            <h3>
+                                <a
+                                    href="#noticia-berserk"
+                                    data-abrir-noticia
+                                    aria-haspopup="dialog"
+                                    aria-controls="meuModal"
+                                    >Mangás tão bons que nenhum anime conseguiu igualar</a
+                                >
+                            </h3>
+                            <span class="card-leitura" aria-hidden="true"
+                                >Ler notícia
+                                <span
+                                    ><svg
+                                        class="icone-seta"
+                                        viewBox="0 0 24 24"
+                                        width="16"
+                                        height="16"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                            ></span>
+                        </div>
+                    </article>
+                    <article
+                        id="noticia-daima"
+                        class="card-noticia noticia-extra"
+                        data-noticia
+                        data-texto="A nova série de Dragon Ball ganha detalhes impressionantes sobre a expansão do universo e o retorno de Goku à sua forma clássica."
+                        data-imagem-modal="assets/images/optimized/daima-787.webp"
+                    >
+                        <figure class="noticia-imagem noticia-imagem--poster">
+                            <img
+                                src="assets/images/optimized/daima-360.webp"
+                                srcset="
+                                    assets/images/optimized/daima-360.webp 360w,
+                                    assets/images/optimized/daima-787.webp 787w
+                                "
+                                sizes="(max-width: 599px) calc(100vw - 40px), (max-width: 999px) 45vw, 285px"
+                                width="360"
+                                height="640"
+                                alt="Pôster de Dragon Ball Daima com Goku"
+                                loading="lazy"
+                                decoding="async">
+                        </figure>
+                        <div class="info-card">
+                            <span class="categoria">Anime</span>
+                            <h3>
+                                <a
+                                    href="#noticia-daima"
+                                    data-abrir-noticia
+                                    aria-haspopup="dialog"
+                                    aria-controls="meuModal"
+                                    >Dragon Ball Daima: Novo arco revelado para novembro</a
+                                >
+                            </h3>
+                            <span class="card-leitura" aria-hidden="true"
+                                >Ler notícia
+                                <span
+                                    ><svg
+                                        class="icone-seta"
+                                        viewBox="0 0 24 24"
+                                        width="16"
+                                        height="16"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                            ></span>
+                        </div>
+                    </article>
+                    <article
+                        id="noticia-one-piece"
+                        class="card-noticia noticia-extra"
+                        data-noticia
+                        data-texto="O estúdio WIT soltou os primeiros rascunhos de design dos Chapéus de Palha para o aguardado remake de East Blue."
+                        data-imagem-modal="assets/images/optimized/one-piece-1000.webp"
+                    >
+                        <figure class="noticia-imagem noticia-imagem--paisagem">
+                            <img
+                                src="assets/images/optimized/one-piece-480.webp"
+                                srcset="
+                                    assets/images/optimized/one-piece-480.webp   480w,
+                                    assets/images/optimized/one-piece-1000.webp 1000w
+                                "
+                                sizes="(max-width: 599px) calc(100vw - 40px), (max-width: 999px) 45vw, 285px"
+                                width="480"
+                                height="271"
+                                alt="Personagens de The One Piece com o título da série ao fundo"
+                                loading="lazy"
+                                decoding="async">
+                        </figure>
+                        <div class="info-card">
+                            <span class="categoria">Anime</span>
+                            <h3>
+                                <a
+                                    href="#noticia-one-piece"
+                                    data-abrir-noticia
+                                    aria-haspopup="dialog"
+                                    aria-controls="meuModal"
+                                    >The One Piece: Remake revela designs dos Chapéus de Palha</a
+                                >
+                            </h3>
+                            <span class="card-leitura" aria-hidden="true"
+                                >Ler notícia
+                                <span
+                                    ><svg
+                                        class="icone-seta"
+                                        viewBox="0 0 24 24"
+                                        width="16"
+                                        height="16"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                            ></span>
+                        </div>
+                    </article>
+                    <article
+                        id="noticia-oshi-no-ko"
+                        class="card-noticia noticia-extra"
+                        data-noticia
+                        data-texto="A jornada sombria da indústria do entretenimento continua. A terceira temporada ganha data de estreia para o próximo ano."
+                        data-imagem-modal="assets/images/optimized/oshi-no-ko-1000.webp"
+                    >
+                        <figure class="noticia-imagem noticia-imagem--paisagem">
+                            <img
+                                src="assets/images/optimized/oshi-no-ko-480.webp"
+                                srcset="
+                                    assets/images/optimized/oshi-no-ko-480.webp   480w,
+                                    assets/images/optimized/oshi-no-ko-1000.webp 1000w
+                                "
+                                sizes="(max-width: 599px) calc(100vw - 40px), (max-width: 999px) 45vw, 285px"
+                                width="480"
+                                height="268"
+                                alt="Personagens de Oshi no Ko sobre fundo rosa e roxo"
+                                loading="lazy"
+                                decoding="async">
+                        </figure>
+                        <div class="info-card">
+                            <span class="categoria">Estreia</span>
+                            <h3>
+                                <a
+                                    href="#noticia-oshi-no-ko"
+                                    data-abrir-noticia
+                                    aria-haspopup="dialog"
+                                    aria-controls="meuModal"
+                                    >Oshi no Ko: Terceira temporada ganha data de estreia</a
+                                >
+                            </h3>
+                            <span class="card-leitura" aria-hidden="true"
+                                >Ler notícia
+                                <span
+                                    ><svg
+                                        class="icone-seta"
+                                        viewBox="0 0 24 24"
+                                        width="16"
+                                        height="16"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                            ></span>
+                        </div>
+                    </article>
+                    <article
+                        id="noticia-kagurabachi"
+                        class="card-noticia noticia-extra"
+                        data-noticia
+                        data-texto="O mangá que quebrou a internet no lançamento finalmente teve sua adaptação animada confirmada pela Shueisha."
+                        data-imagem-modal="assets/images/optimized/kagurabachi-381.webp"
+                    >
+                        <figure class="noticia-imagem noticia-imagem--poster">
+                            <img
+                                src="assets/images/optimized/kagurabachi-381.webp"
+                                srcset="assets/images/optimized/kagurabachi-381.webp 381w"
+                                sizes="(max-width: 599px) calc(100vw - 40px), (max-width: 999px) 45vw, 285px"
+                                width="381"
+                                height="574"
+                                alt="Capa do mangá Kagurabachi com Chihiro e sua espada"
+                                loading="lazy"
+                                decoding="async">
+                        </figure>
+                        <div class="info-card">
+                            <span class="categoria">Anúncio</span>
+                            <h3>
+                                <a
+                                    href="#noticia-kagurabachi"
+                                    data-abrir-noticia
+                                    aria-haspopup="dialog"
+                                    aria-controls="meuModal"
+                                    >Kagurabachi: Mangá de sucesso anuncia adaptação em anime</a
+                                >
+                            </h3>
+                            <span class="card-leitura" aria-hidden="true"
+                                >Ler notícia
+                                <span
+                                    ><svg
+                                        class="icone-seta"
+                                        viewBox="0 0 24 24"
+                                        width="16"
+                                        height="16"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                            ></span>
+                        </div>
+                    </article>
+                    <article
+                        id="noticia-dandadan"
+                        class="card-noticia noticia-extra"
+                        data-noticia
+                        data-texto="A adaptação da Science SARU se tornou o anime mais assistido globalmente em sua primeira semana de transmissão."
+                        data-imagem-modal="assets/images/optimized/dandadan-736.webp"
+                    >
+                        <figure class="noticia-imagem noticia-imagem--poster">
+                            <img
+                                src="assets/images/optimized/dandadan-428.webp"
+                                srcset="
+                                    assets/images/optimized/dandadan-428.webp 428w,
+                                    assets/images/optimized/dandadan-736.webp 736w
+                                "
+                                sizes="(max-width: 599px) calc(100vw - 40px), (max-width: 999px) 45vw, 285px"
+                                width="428"
+                                height="640"
+                                alt="Capa ilustrada de Dandadan"
+                                loading="lazy"
+                                decoding="async">
+                        </figure>
+                        <div class="info-card">
+                            <span class="categoria">Ranking</span>
+                            <h3>
+                                <a
+                                    href="#noticia-dandadan"
+                                    data-abrir-noticia
+                                    aria-haspopup="dialog"
+                                    aria-controls="meuModal"
+                                    >Dandadan: Anime domina as paradas mundiais na estreia</a
+                                >
+                            </h3>
+                            <span class="card-leitura" aria-hidden="true"
+                                >Ler notícia
+                                <span
+                                    ><svg
+                                        class="icone-seta"
+                                        viewBox="0 0 24 24"
+                                        width="16"
+                                        height="16"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                            ></span>
+                        </div>
+                    </article>
+                    <article
+                        id="noticia-genshin"
+                        class="card-noticia noticia-extra"
+                        data-noticia
+                        data-texto="O estúdio Ufotable (Demon Slayer) divulgou um novo teaser mostrando os visuais deslumbrantes de Teyvat no novo anime."
+                        data-imagem-modal="assets/images/optimized/genshin-707.webp"
+                    >
+                        <figure class="noticia-imagem noticia-imagem--paisagem">
+                            <img
+                                src="assets/images/optimized/genshin-480.webp"
+                                srcset="
+                                    assets/images/optimized/genshin-480.webp 480w,
+                                    assets/images/optimized/genshin-707.webp 707w
+                                "
+                                sizes="(max-width: 599px) calc(100vw - 40px), (max-width: 999px) 45vw, 285px"
+                                width="480"
+                                height="221"
+                                alt="Logotipo de Genshin Impact sobre fundo preto"
+                                loading="lazy"
+                                decoding="async">
+                        </figure>
+                        <div class="info-card">
+                            <span class="categoria">Trailer</span>
+                            <h3>
+                                <a
+                                    href="#noticia-genshin"
+                                    data-abrir-noticia
+                                    aria-haspopup="dialog"
+                                    aria-controls="meuModal"
+                                    >Genshin Impact: Ufotable solta novo teaser deslumbrante</a
+                                >
+                            </h3>
+                            <span class="card-leitura" aria-hidden="true"
+                                >Ler notícia
+                                <span
+                                    ><svg
+                                        class="icone-seta"
+                                        viewBox="0 0 24 24"
+                                        width="16"
+                                        height="16"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                            ></span>
+                        </div>
+                    </article>
+                    <article
+                        id="noticia-blue-box"
+                        class="card-noticia noticia-extra"
+                        data-noticia
+                        data-texto="Analisamos por que a mistura de romance e esportes de Ao no Hako está conquistando até quem não acompanha o genero."
+                        data-imagem-modal="assets/images/optimized/blue-box-590.webp"
+                    >
+                        <figure class="noticia-imagem noticia-imagem--poster">
+                            <img
+                                src="assets/images/optimized/blue-box-480.webp"
+                                srcset="
+                                    assets/images/optimized/blue-box-480.webp 480w,
+                                    assets/images/optimized/blue-box-590.webp 590w
+                                "
+                                sizes="(max-width: 599px) calc(100vw - 40px), (max-width: 999px) 45vw, 285px"
+                                width="480"
+                                height="460"
+                                alt="Chinatsu em uma quadra esportiva, em Blue Box"
+                                loading="lazy"
+                                decoding="async">
+                        </figure>
+                        <div class="info-card">
+                            <span class="categoria">Review</span>
+                            <h3>
+                                <a
+                                    href="#noticia-blue-box"
+                                    data-abrir-noticia
+                                    aria-haspopup="dialog"
+                                    aria-controls="meuModal"
+                                    >Blue Box (Ao no Hako): Romance esportivo é destaque da
+                                    temporada</a
+                                >
+                            </h3>
+                            <span class="card-leitura" aria-hidden="true"
+                                >Ler notícia
+                                <span
+                                    ><svg
+                                        class="icone-seta"
+                                        viewBox="0 0 24 24"
+                                        width="16"
+                                        height="16"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                            ></span>
+                        </div>
+                    </article>
+                    <article
+                        id="noticia-bleach"
+                        class="card-noticia noticia-extra"
+                        data-noticia
+                        data-texto="A épica conclusão da Guerra Sangrenta dos Mil Anos recebe seu primeiro pôster focado em Ichigo e Yhwach."
+                        data-imagem-modal="assets/images/optimized/bleach-720.webp"
+                    >
+                        <figure class="noticia-imagem noticia-imagem--paisagem">
+                            <img
+                                src="assets/images/optimized/bleach-480.webp"
+                                srcset="
+                                    assets/images/optimized/bleach-480.webp 480w,
+                                    assets/images/optimized/bleach-720.webp 720w
+                                "
+                                sizes="(max-width: 599px) calc(100vw - 40px), (max-width: 999px) 45vw, 285px"
+                                width="480"
+                                height="269"
+                                alt="Ichigo e personagens de Bleach em uma ilustração vermelha"
+                                loading="lazy"
+                                decoding="async">
+                        </figure>
+                        <div class="info-card">
+                            <span class="categoria">Anime</span>
+                            <h3>
+                                <a
+                                    href="#noticia-bleach"
+                                    data-abrir-noticia
+                                    aria-haspopup="dialog"
+                                    aria-controls="meuModal"
+                                    >Bleach TYBW: Parte Final ganha pôster épico</a
+                                >
+                            </h3>
+                            <span class="card-leitura" aria-hidden="true"
+                                >Ler notícia
+                                <span
+                                    ><svg
+                                        class="icone-seta"
+                                        viewBox="0 0 24 24"
+                                        width="16"
+                                        height="16"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                            ></span>
+                        </div>
+                    </article>
+                    <article
+                        id="noticia-sao"
+                        class="card-noticia noticia-extra"
+                        data-noticia
+                        data-texto="A A-1 Pictures confirmou a produção de um longa-metragem com história totalmente original supervisionada por Reki Kawahara."
+                        data-imagem-modal="assets/images/optimized/sao-418.webp"
+                    >
+                        <figure class="noticia-imagem noticia-imagem--poster">
+                            <img
+                                src="assets/images/optimized/sao-418.webp"
+                                srcset="assets/images/optimized/sao-418.webp 418w"
+                                sizes="(max-width: 599px) calc(100vw - 40px), (max-width: 999px) 45vw, 285px"
+                                width="418"
+                                height="594"
+                                alt="Pôster de Sword Art Online com os protagonistas"
+                                loading="lazy"
+                                decoding="async">
+                        </figure>
+                        <div class="info-card">
+                            <span class="categoria">Filmes</span>
+                            <h3>
+                                <a
+                                    href="#noticia-sao"
+                                    data-abrir-noticia
+                                    aria-haspopup="dialog"
+                                    aria-controls="meuModal"
+                                    >Sword Art Online: Novo filme original anunciado para 2027</a
+                                >
+                            </h3>
+                            <span class="card-leitura" aria-hidden="true"
+                                >Ler notícia
+                                <span
+                                    ><svg
+                                        class="icone-seta"
+                                        viewBox="0 0 24 24"
+                                        width="16"
+                                        height="16"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                            ></span>
+                        </div>
+                    </article>
+                    <article
+                        id="noticia-rezero"
+                        class="card-noticia noticia-extra"
+                        data-noticia
+                        data-texto="O retorno de Subaru e Emilia superou as expectativas, com a 3ª temporada atingindo números históricos nas TVs japonesas."
+                        data-imagem-modal="assets/images/optimized/rezero-410.webp"
+                    >
+                        <figure class="noticia-imagem noticia-imagem--poster">
+                            <img
+                                src="assets/images/optimized/rezero-410.webp"
+                                srcset="assets/images/optimized/rezero-410.webp 410w"
+                                sizes="(max-width: 599px) calc(100vw - 40px), (max-width: 999px) 45vw, 285px"
+                                width="410"
+                                height="588"
+                                alt="Pôster de Re:Zero com Emilia e personagens da série"
+                                loading="lazy"
+                                decoding="async">
+                        </figure>
+                        <div class="info-card">
+                            <span class="categoria">Sucesso</span>
+                            <h3>
+                                <a
+                                    href="#noticia-rezero"
+                                    data-abrir-noticia
+                                    aria-haspopup="dialog"
+                                    aria-controls="meuModal"
+                                    >Re:Zero: Temporada 3 quebra recorde de audiência no Japão</a
+                                >
+                            </h3>
+                            <span class="card-leitura" aria-hidden="true"
+                                >Ler notícia
+                                <span
+                                    ><svg
+                                        class="icone-seta"
+                                        viewBox="0 0 24 24"
+                                        width="16"
+                                        height="16"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                            ></span>
+                        </div>
+                    </article>
+                    <article
+                        id="noticia-sakamoto"
+                        class="card-noticia noticia-extra"
+                        data-noticia
+                        data-texto="Foram confirmados os Seiyuus (dubladores) que darão vida ao ex-assassino gordinho e sua excêntrica familia."
+                        data-imagem-modal="assets/images/optimized/sakamoto-413.webp"
+                    >
+                        <figure class="noticia-imagem noticia-imagem--poster">
+                            <img
+                                src="assets/images/optimized/sakamoto-413.webp"
+                                srcset="assets/images/optimized/sakamoto-413.webp 413w"
+                                sizes="(max-width: 599px) calc(100vw - 40px), (max-width: 999px) 45vw, 285px"
+                                width="413"
+                                height="585"
+                                alt="Capa amarela de Sakamoto Days com personagem de máscara"
+                                loading="lazy"
+                                decoding="async">
+                        </figure>
+                        <div class="info-card">
+                            <span class="categoria">Elenco</span>
+                            <h3>
+                                <a
+                                    href="#noticia-sakamoto"
+                                    data-abrir-noticia
+                                    aria-haspopup="dialog"
+                                    aria-controls="meuModal"
+                                    >Sakamoto Days: Revelados os dubladores principais do anime</a
+                                >
+                            </h3>
+                            <span class="card-leitura" aria-hidden="true"
+                                >Ler notícia
+                                <span
+                                    ><svg
+                                        class="icone-seta"
+                                        viewBox="0 0 24 24"
+                                        width="16"
+                                        height="16"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                            ></span>
+                        </div>
+                    </article>
+                    <article
+                        id="noticia-vagabond"
+                        class="card-noticia noticia-extra"
+                        data-noticia
+                        data-texto="Uma exibição interativa com as pinturas originais e artes em sumi-e de Takehiko Inoue passará pelo Brasil em breve."
+                        data-imagem-modal="assets/images/optimized/vagabond-391.webp"
+                    >
+                        <figure class="noticia-imagem noticia-imagem--poster">
+                            <img
+                                src="assets/images/optimized/vagabond-391.webp"
+                                srcset="assets/images/optimized/vagabond-391.webp 391w"
+                                sizes="(max-width: 599px) calc(100vw - 40px), (max-width: 999px) 45vw, 285px"
+                                width="391"
+                                height="591"
+                                alt="Capa do mangá Vagabond com retrato de Miyamoto Musashi"
+                                loading="lazy"
+                                decoding="async">
+                        </figure>
+                        <div class="info-card">
+                            <span class="categoria">Eventos</span>
+                            <h3>
+                                <a
+                                    href="#noticia-vagabond"
+                                    data-abrir-noticia
+                                    aria-haspopup="dialog"
+                                    aria-controls="meuModal"
+                                    >Vagabond: Exposição de arte de Takehiko Inoue chegará ao
+                                    Brasil</a
+                                >
+                            </h3>
+                            <span class="card-leitura" aria-hidden="true"
+                                >Ler notícia
+                                <span
+                                    ><svg
+                                        class="icone-seta"
+                                        viewBox="0 0 24 24"
+                                        width="16"
+                                        height="16"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                            ></span>
+                        </div>
+                    </article>
+                </div>
+                <div class="carregar-noticias">
+                    <p
+                        id="status-noticias"
+                        class="status-noticias"
+                        role="status"
+                        aria-live="polite"
+                        aria-atomic="true"
+                    ></p>
+                    <button
+                        type="button"
+                        id="btn-carregar"
+                        class="botao-carregar"
+                        aria-controls="grade-noticias"
+                        hidden
+                    >
+                        Carregar mais notícias <span aria-hidden="true">+</span>
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <dialog id="meuModal" class="modal-noticia" aria-labelledby="modal-tit" aria-modal="true">
+            <article class="modal-conteudo">
+                <header class="modal-cabecalho">
+                    <span class="modal-identidade">AKIBA <span>/ LEITURA</span></span>
+                    <button
+                        type="button"
+                        class="botao-fechar"
+                        aria-label="Fechar notícia"
+                        autofocus
+                    >
+                        <svg
+                            viewBox="0 0 24 24"
+                            width="22"
+                            height="22"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                            aria-hidden="true"
+                        >
+                            <path d="m6 6 12 12M18 6 6 18" />
+                        </svg>
+                    </button>
+                </header>
+                <figure class="modal-imagem">
+                    <img id="modal-img" src="assets/images/optimized/destaque-1280.webp" alt="Imagem da notícia em destaque" width="1280" height="720" loading="lazy">
+                </figure>
+                <div class="modal-corpo">
+                    <span id="modal-cat" class="categoria"></span>
+                    <h2 id="modal-tit" tabindex="-1">Leitura da notícia</h2>
+                    <p id="modal-meta" class="meta-dados" hidden></p>
+                    <p id="modal-texto"></p>
+                </div>
+            </article>
+        </dialog>
+
+        <footer class="rodape">
+            <div class="rodape-conteudo container">
+                <p class="rodape-copy">
+                    <strong>AKIBA.</strong><span>© 2026 Akiba. Todos os direitos reservados.</span>
+                </p>
+                <div class="links-curriculos">
+                    <span>Desenvolvido por</span>
+                    <ul aria-label="Currículos dos desenvolvedores">
+                        <li>
+                            <a
+                                href="curriculos/gabriel-a.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Currículo de Gabriel A. (PDF, abre em nova aba)"
+                                >Gabriel A.
+                                <span aria-hidden="true"
+                                    ><svg
+                                        class="icone-seta"
+                                        viewBox="0 0 24 24"
+                                        width="16"
+                                        height="16"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                            ></a>
+                        </li>
+                        <li>
+                            <a
+                                href="curriculos/gabriel-f.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Currículo de Gabriel F. (PDF, abre em nova aba)"
+                                >Gabriel F.
+                                <span aria-hidden="true"
+                                    ><svg
+                                        class="icone-seta"
+                                        viewBox="0 0 24 24"
+                                        width="16"
+                                        height="16"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                            ></a>
+                        </li>
+                        <li>
+                            <a
+                                href="curriculos/eduardo-m.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Currículo de Eduardo M. (PDF, abre em nova aba)"
+                                >Eduardo M.
+                                <span aria-hidden="true"
+                                    ><svg
+                                        class="icone-seta"
+                                        viewBox="0 0 24 24"
+                                        width="16"
+                                        height="16"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                            ></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
