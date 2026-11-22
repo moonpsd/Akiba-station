@@ -1,3 +1,4 @@
+/* Akiba Station — lógica de profile e efeitos visuais locais. */
 
 const API = "https://graphql.anilist.co";
 const USER = "moonpsd";
@@ -586,3 +587,35 @@ Promise.allSettled([
     lucide.createIcons();
   }
 });
+
+
+/* Cabeçalho e animações exclusivos desta página. */
+/* Progressive visual enhancements. Does not override project business logic. */
+(() => {
+  const init = () => {
+    if (document.querySelector('.retro-masthead')) return;
+    const navigation = document.querySelector('nav.navbar,header.cabecalho');
+    if (!navigation) return;
+    const status = document.createElement('div');
+    status.className = 'retro-status';
+    status.innerHTML = '<span><span class="status-led" aria-hidden="true"></span><strong>AKIBA NETWORK</strong> // conectado ao universo otaku</span><span>EST. 2004 &nbsp; ◆ &nbsp; PORTAL V.2.0</span>';
+    const masthead = document.createElement('div');
+    masthead.className = 'retro-masthead';
+    masthead.innerHTML = '<a class="retro-brand" href="index.html" aria-label="Akiba Station — Página inicial"><img class="retro-main-logo" src="imgs/akiba-logo-rosa.png" alt="Akiba Station"></a>';
+    navigation.before(status, masthead);
+    const ticker = document.createElement('div');
+    ticker.className = 'retro-ticker';
+    ticker.innerHTML = '<span class="retro-ticker-label">◆ AKIBA UPDATE</span><span class="retro-ticker-copy">BEM-VINDO À <b>AKIBA STATION</b> &nbsp; // &nbsp; ANIMES • LANÇAMENTOS • NOTÍCIAS • COMUNIDADE &nbsp; // &nbsp; SUA PRÓXIMA AVENTURA COMEÇA AQUI</span>';
+    navigation.after(ticker);
+    const sections = document.querySelectorAll('.anime-section,.reviews-panel,.noticias-recentes,.noticia-destaque,main form');
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => { if(entry.isIntersecting){entry.target.classList.add('retro-visible');observer.unobserve(entry.target);} });
+      }, {threshold:0.06,rootMargin:'0px 0px 70px 0px'});
+      sections.forEach(el => {el.classList.add('retro-reveal');observer.observe(el);});
+    }
+  };
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init,{once:true});
+  else init();
+})();
+
