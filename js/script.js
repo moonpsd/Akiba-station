@@ -700,8 +700,8 @@ const reviews = [
   },
 
   {
-    user: "User 00",
-    avatar: "./imgs/users/user-5.jpg",
+    user: "User 01",
+    avatar: "./imgs/Avatar-Reviews/av-5.png",
     anime: "Kusuriya no Hitorigoto",
     rating: "4.9",
     text:
@@ -709,8 +709,8 @@ const reviews = [
   },
 
   {
-    user: "User 00",
-    avatar: "./imgs/users/user-6.jpg",
+    user: "Eduardo Milanez",
+    avatar: "./imgs/Avatar-Reviews/av-6.png",
     anime: "Attack on Titan",
     rating: "5.0",
     text:
@@ -718,12 +718,12 @@ const reviews = [
   },
 
   {
-    user: "User 00",
-    avatar: "./imgs/users/user-7.jpg",
-    anime: "Dandadan",
-    rating: "4.7",
+    user: "Gabriel Alberini",
+    avatar: "./imgs/Avatar-Reviews/av-7.png",
+    anime: "Dr. Stone",
+    rating: "4.9",
     text:
-      "Muito divertido e completamente maluco. A animação ficou incrível.",
+      "Dr. Stone transforma ciência em uma aventura épica, emocionante e inspiradora sobre amizade, descobertas e a reconstrução da humanidade.",
   },
 ];
 
@@ -883,7 +883,6 @@ if (typeof lucide !== "undefined") {
 }
 
 /* Cabeçalho e animações exclusivos desta página. */
-/* Progressive visual enhancements. Does not override project business logic. */
 (() => {
   const init = () => {
     if (document.querySelector('.retro-masthead')) return;

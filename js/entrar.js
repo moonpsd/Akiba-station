@@ -5,7 +5,6 @@
   usuarios.js - "banco de dados" do site, sem servidor.
   Os dados ficam no localStorage do navegador (chave "heads_usuarios").
   As senhas NUNCA são guardadas em texto puro: só um hash (PBKDF2) + salt.
-  Carregue este arquivo ANTES dos outros scripts da página.
 */
 var Usuarios = (function () {
     var CHAVE_USUARIOS = "heads_usuarios";
@@ -279,22 +278,20 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// Função para mostrar/ocultar senha ao clicar no botão
-function alternarVisibilidadeSenha() {
-    var senhaInput = document.getElementById("senha");
-    var btnSenha = document.getElementById("btnSenha");
+// Alterna a visibilidade uma vez por clique.
+const botaoMostrarSenha = document.getElementById("btnSenha");
+const campoSenha = document.getElementById("senha");
 
-    if (senhaInput.type === "password") {
-        senhaInput.type = "text";
-        btnSenha.textContent = "Ocultar";
-    } else {
-        senhaInput.type = "password";
-        btnSenha.textContent = "Mostrar";
-    }
-}
+botaoMostrarSenha?.addEventListener("click", () => {
+    if (!campoSenha) return;
+    const visivel = campoSenha.type === "password";
+    campoSenha.type = visivel ? "text" : "password";
+    botaoMostrarSenha.textContent = visivel ? "Ocultar" : "Mostrar";
+    botaoMostrarSenha.setAttribute("aria-pressed", String(visivel));
+    botaoMostrarSenha.setAttribute("aria-label", visivel ? "Ocultar senha" : "Mostrar senha");
+});
 
 /* Cabeçalho e animações exclusivos desta página. */
-/* Progressive visual enhancements. Does not override project business logic. */
 (() => {
   const init = () => {
     if (document.querySelector('.retro-masthead')) return;

@@ -481,8 +481,6 @@ nav.navbar .menu img,.cabecalho .logo-area img{width:43px!important;height:37px!
 /* Sem filtro CRT ou scanlines. */
 body::before,body::after{display:none!important;content:none!important;}
 
-
-
 /* FORM FIX — labels flutuantes e espaçamento interno */
 .campo { position: relative; }
 .campo input:not([type="checkbox"]):not([type="radio"]) {
@@ -524,3 +522,6 @@ body::before,body::after{display:none!important;content:none!important;}
   color: var(--primary-pink, #ff00aa);
 }
 .campo_data input[type="date"] { padding-right: 16px !important; color-scheme: dark; }
+
+/* Aviso de idade mínima no cadastro */
+.idade-aviso { color: var(--text-muted, #a0a0a0); font-size: 12px; margin: 4px 0 14px; }

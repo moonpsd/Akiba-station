@@ -7,9 +7,8 @@
     <title>Página Cadastro</title>
     <link rel="stylesheet" href="css/cadastro.css">
 
-    <script src="js/usuarios.js" defer></script>
     <script src="js/cadastro.js" defer></script>
-  <link rel="stylesheet" href="css/cadastro.css">
+  
 </head>
 
 <body>
@@ -56,6 +55,7 @@
                   <label for="nascimento">Data de nascimento</label>
               </div>
 
+              <p class="idade-aviso">Idade mínima para cadastro: 12 anos.</p>
               <p id="mensagem1" class="mensagem" aria-live="polite"></p>
 
               <button type="button" id="btnContinuar" class="btn_principal">Continuar</button>
@@ -72,14 +72,14 @@
                   <input type="password" id="senha" name="senha" placeholder=" " autocomplete="new-password"
                          minlength="8" required>
                   <label for="senha">Senha</label>
-                  <button type="button" class="btn_senha" data-alvo="senha">Mostrar</button>
+                  <button type="button" class="btn_senha" data-alvo="senha" aria-pressed="false">Mostrar</button>
               </div>
 
               <div class="campo">
                   <input type="password" id="confirmarSenha" name="confirmarSenha" placeholder=" "
                          autocomplete="new-password" minlength="8" required>
                   <label for="confirmarSenha">Confirmar senha</label>
-                  <button type="button" class="btn_senha" data-alvo="confirmarSenha">Mostrar</button>
+                  <button type="button" class="btn_senha" data-alvo="confirmarSenha" aria-pressed="false">Mostrar</button>
               </div>
 
               <p id="mensagem2" class="mensagem" aria-live="polite"></p>
@@ -96,13 +96,20 @@
       <p>© 2026 - Todos os direitos reservados.</p>
 
       <div class="socials">
-        <a href="#"><p>Curriculo Gabriel A.</p></a>
-        <a href="#"><p>Curriculo Eduardo</p></a>
-        <a href="#"><p>Curriculo Gabriel F.</p></a>
+        <a href="#">
+          <p>Curriculo Gabriel A.</p>
+        </a>
+
+        <a href="#">
+          <p>Curriculo Eduardo</p>
+        </a>
+
+        <a href="https://moonpsd.github.io/Curriculo/">
+          <p>Curriculo Gabriel F.</p>
+        </a>
       </div>
     </footer>
 
-  <script src="js/cadastro.js" defer></script>
 </body>
 
 </html>

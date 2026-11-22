@@ -484,8 +484,6 @@ nav.navbar .menu img,.cabecalho .logo-area img{width:43px!important;height:37px!
 /* Sem filtro CRT ou scanlines. */
 body::before,body::after{display:none!important;content:none!important;}
 
-
-
 /* FORM FIX — labels flutuantes e espaçamento interno */
 .campo { position: relative; }
 .campo input:not([type="checkbox"]):not([type="radio"]) {

@@ -1,21 +1,45 @@
-/* Akiba Station — lógica de cadastro e efeitos visuais locais. */
 
-/* Gerenciamento de usuários incorporado nesta página. */
-/*
-  usuarios.js - "banco de dados" do site, sem servidor.
-  Os dados ficam no localStorage do navegador (chave "heads_usuarios").
-  As senhas NUNCA são guardadas em texto puro: só um hash (PBKDF2) + salt.
-  Carregue este arquivo ANTES dos outros scripts da página.
-*/
-var Usuarios = (function () {
-    var CHAVE_USUARIOS = "heads_usuarios";
-    var CHAVE_SESSAO = "heads_sessao";
+/* AKIBA STATION — CADASTRO */
 
-    // ---------- armazenamento ----------
+function calcularIdade(dataStr) {
+    if (typeof dataStr !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(dataStr)) {
+        return NaN;
+    }
+
+    const [ano, mes, dia] = dataStr.split("-").map(Number);
+    const nascimento = new Date(ano, mes - 1, dia);
+
+    if (
+        nascimento.getFullYear() !== ano ||
+        nascimento.getMonth() !== mes - 1 ||
+        nascimento.getDate() !== dia
+    ) {
+        return NaN;
+    }
+
+    const hoje = new Date();
+    let idade = hoje.getFullYear() - ano;
+
+    if (
+        hoje.getMonth() + 1 < mes ||
+        (hoje.getMonth() + 1 === mes && hoje.getDate() < dia)
+    ) {
+        idade--;
+    }
+
+    return idade;
+}
+
+/* GERENCIAMENTO DE USUÁRIOS */
+
+var Usuarios = (() => {
+    const CHAVE_USUARIOS = "heads_usuarios";
+    const CHAVE_SESSAO = "heads_sessao";
+
     function ler() {
         try {
             return JSON.parse(localStorage.getItem(CHAVE_USUARIOS)) || [];
-        } catch (e) {
+        } catch {
             return [];
         }
     }
@@ -29,103 +53,148 @@ var Usuarios = (function () {
     }
 
     function novoId() {
-        return Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+        return Date.now().toString(36) +
+            Math.random().toString(36).slice(2, 8);
     }
 
-    // ---------- senha (hash + salt) ----------
     function bytesParaHex(bytes) {
-        return Array.from(bytes, function (b) {
-            return b.toString(16).padStart(2, "0");
-        }).join("");
+        return Array.from(bytes, b =>
+            b.toString(16).padStart(2, "0")
+        ).join("");
     }
 
     function hexParaBytes(hex) {
-        var bytes = new Uint8Array(hex.length / 2);
-        for (var i = 0; i < bytes.length; i++) {
-            bytes[i] = parseInt(hex.substr(i * 2, 2), 16);
+        const bytes = new Uint8Array(hex.length / 2);
+
+        for (let i = 0; i < bytes.length; i++) {
+            bytes[i] = parseInt(hex.slice(i * 2, i * 2 + 2), 16);
         }
+
         return bytes;
     }
 
     function gerarSalt() {
-        return bytesParaHex(crypto.getRandomValues(new Uint8Array(16)));
+        return bytesParaHex(
+            crypto.getRandomValues(new Uint8Array(16))
+        );
     }
 
     async function derivarSenha(senha, saltHex) {
-        var chave = await crypto.subtle.importKey(
-            "raw", new TextEncoder().encode(senha), "PBKDF2", false, ["deriveBits"]
+        const chave = await crypto.subtle.importKey(
+            "raw",
+            new TextEncoder().encode(senha),
+            "PBKDF2",
+            false,
+            ["deriveBits"]
         );
-        var bits = await crypto.subtle.deriveBits(
-            { name: "PBKDF2", salt: hexParaBytes(saltHex), iterations: 100000, hash: "SHA-256" },
-            chave, 256
+
+        const bits = await crypto.subtle.deriveBits(
+            {
+                name: "PBKDF2",
+                salt: hexParaBytes(saltHex),
+                iterations: 100000,
+                hash: "SHA-256"
+            },
+            chave,
+            256
         );
+
         return bytesParaHex(new Uint8Array(bits));
     }
 
     function criptografiaDisponivel() {
-        return !!(window.crypto && window.crypto.subtle);
+        return Boolean(window.crypto?.subtle);
     }
 
-    var ERRO_CRIPTO = "Este navegador/endereço não suporta criptografia. Abra o site por https ou localhost.";
+    const ERRO_CRIPTO =
+        "Este navegador não suporta criptografia. Utilize HTTPS ou localhost.";
 
-    // ---------- operações ----------
-    // Lista para exibição: nunca inclui hash nem salt
     function listar() {
-        return ler().map(function (u) {
-            return {
-                id: u.id,
-                nome: u.nome,
-                usuario: u.usuario || "",
-                email: u.email,
-                nascimento: u.nascimento || "",
-                origem: u.origem,
-                temSenha: !!u.senhaHash,
-                criadoEm: u.criadoEm
-            };
-        });
+        return ler().map(u => ({
+            id: u.id,
+            nome: u.nome,
+            usuario: u.usuario || "",
+            email: u.email,
+            nascimento: u.nascimento || "",
+            origem: u.origem,
+            temSenha: Boolean(u.senhaHash),
+            criadoEm: u.criadoEm
+        }));
     }
 
-    // Cadastro feito pelo próprio usuário (página cadastro.html)
     async function cadastrar(dados) {
+        const idade = calcularIdade(dados.nascimento);
+
+        if (!Number.isFinite(idade) || idade < 0 || idade > 120) {
+            return {
+                ok: false,
+                campo: "nascimento",
+                erro: "Data de nascimento inválida."
+            };
+        }
+
+        if (idade < 12) {
+            return {
+                ok: false,
+                campo: "nascimento",
+                erro: "Você precisa ter pelo menos 12 anos para criar uma conta."
+            };
+        }
+
         if (!criptografiaDisponivel()) {
-            return { ok: false, campo: "email", erro: ERRO_CRIPTO };
+            return {
+                ok: false,
+                campo: "email",
+                erro: ERRO_CRIPTO
+            };
         }
 
-        var lista = ler();
-        var email = normalizarEmail(dados.email);
-        var usuario = String(dados.usuario).trim();
+        const lista = ler();
+        const email = normalizarEmail(dados.email);
+        const usuario = String(dados.usuario).trim();
 
-        var usuarioEmUso = lista.some(function (u) {
-            return u.usuario && u.usuario.toLowerCase() === usuario.toLowerCase();
-        });
+        const usuarioEmUso = lista.some(u =>
+            u.usuario?.toLowerCase() === usuario.toLowerCase()
+        );
+
         if (usuarioEmUso) {
-            return { ok: false, campo: "usuario", erro: "Este nome de usuário já está em uso." };
+            return {
+                ok: false,
+                campo: "usuario",
+                erro: "Este nome de usuário já está em uso."
+            };
         }
 
-        var existente = lista.find(function (u) { return u.email === email; });
-        if (existente && existente.senhaHash) {
-            return { ok: false, campo: "email", erro: "Este e-mail já está cadastrado." };
+        const existente = lista.find(u => u.email === email);
+
+        if (existente?.senhaHash) {
+            return {
+                ok: false,
+                campo: "email",
+                erro: "Este e-mail já está cadastrado."
+            };
         }
 
-        var salt = gerarSalt();
-        var senhaHash = await derivarSenha(dados.senha, salt);
+        const salt = gerarSalt();
+        const senhaHash = await derivarSenha(dados.senha, salt);
 
         if (existente) {
-            // E-mail pré-cadastrado pelo admin: completa o perfil existente
-            existente.nome = String(dados.nome).trim();
-            existente.usuario = usuario;
-            existente.nascimento = dados.nascimento;
-            existente.salt = salt;
-            existente.senhaHash = senhaHash;
+            Object.assign(existente, {
+                nome: String(dados.nome).trim(),
+                usuario,
+                nascimento: dados.nascimento,
+                salt,
+                senhaHash
+            });
         } else {
             lista.push({
                 id: novoId(),
                 nome: String(dados.nome).trim(),
-                usuario: usuario,
-                email: email,
+                usuario,
+                email,
                 nascimento: dados.nascimento,
-                salt: salt,
-                senhaHash: senhaHash,
+                salt,
+                senhaHash,
                 origem: "cadastro",
                 criadoEm: new Date().toISOString()
             });
@@ -135,19 +204,22 @@ var Usuarios = (function () {
         return { ok: true };
     }
 
-    // Cadastro feito pelo admin (só nome + e-mail, sem senha)
     function adicionarPeloAdmin(dados) {
-        var lista = ler();
-        var email = normalizarEmail(dados.email);
+        const lista = ler();
+        const email = normalizarEmail(dados.email);
 
-        if (lista.some(function (u) { return u.email === email; })) {
-            return { ok: false, campo: "email", erro: "Este e-mail já está cadastrado." };
+        if (lista.some(u => u.email === email)) {
+            return {
+                ok: false,
+                campo: "email",
+                erro: "Este e-mail já está cadastrado."
+            };
         }
 
         lista.push({
             id: novoId(),
             nome: String(dados.nome).trim(),
-            email: email,
+            email,
             origem: "admin",
             criadoEm: new Date().toISOString()
         });
@@ -156,47 +228,10 @@ var Usuarios = (function () {
         return { ok: true };
     }
 
-    function remover(id) {
-        var lista = ler().filter(function (u) { return u.id !== id; });
-        gravar(lista);
-
-        var sessao = usuarioLogado();
-        if (sessao && sessao.id === id) {
-            sair();
-        }
-    }
-
-    // Login
-    async function entrar(email, senha) {
-        if (!criptografiaDisponivel()) {
-            return { ok: false, erro: ERRO_CRIPTO };
-        }
-
-        var usuario = ler().find(function (u) { return u.email === normalizarEmail(email); });
-
-        if (usuario && !usuario.senhaHash) {
-            return { ok: false, erro: "Este e-mail ainda não tem senha. Conclua o cadastro na página Cadastro." };
-        }
-
-        var hash = usuario ? await derivarSenha(senha, usuario.salt) : null;
-
-        if (!usuario || hash !== usuario.senhaHash) {
-            return { ok: false, erro: "E-mail ou senha incorretos." };
-        }
-
-        localStorage.setItem(CHAVE_SESSAO, JSON.stringify({
-            id: usuario.id,
-            nome: usuario.nome,
-            usuario: usuario.usuario
-        }));
-        return { ok: true, nome: usuario.nome };
-    }
-
-    // Quem está logado neste navegador (ou null)
     function usuarioLogado() {
         try {
             return JSON.parse(localStorage.getItem(CHAVE_SESSAO));
-        } catch (e) {
+        } catch {
             return null;
         }
     }
@@ -205,55 +240,115 @@ var Usuarios = (function () {
         localStorage.removeItem(CHAVE_SESSAO);
     }
 
+    function remover(id) {
+        gravar(ler().filter(u => u.id !== id));
+
+        if (usuarioLogado()?.id === id) {
+            sair();
+        }
+    }
+
+    async function entrar(email, senha) {
+        if (!criptografiaDisponivel()) {
+            return { ok: false, erro: ERRO_CRIPTO };
+        }
+
+        const usuario = ler().find(
+            u => u.email === normalizarEmail(email)
+        );
+
+        if (usuario && !usuario.senhaHash) {
+            return {
+                ok: false,
+                erro: "Este e-mail ainda não tem senha. Conclua o cadastro."
+            };
+        }
+
+        const hash = usuario
+            ? await derivarSenha(senha, usuario.salt)
+            : null;
+
+        if (!usuario || hash !== usuario.senhaHash) {
+            return {
+                ok: false,
+                erro: "E-mail ou senha incorretos."
+            };
+        }
+
+        localStorage.setItem(CHAVE_SESSAO, JSON.stringify({
+            id: usuario.id,
+            nome: usuario.nome,
+            usuario: usuario.usuario
+        }));
+
+        return { ok: true, nome: usuario.nome };
+    }
+
     return {
-        listar: listar,
-        cadastrar: cadastrar,
-        adicionarPeloAdmin: adicionarPeloAdmin,
-        remover: remover,
-        entrar: entrar,
-        usuarioLogado: usuarioLogado,
-        sair: sair
+        listar,
+        cadastrar,
+        adicionarPeloAdmin,
+        remover,
+        entrar,
+        usuarioLogado,
+        sair
     };
 })();
 
-if (typeof module !== "undefined") { module.exports = Usuarios; }
+/* FORMULÁRIO DE CADASTRO */
 
-document.addEventListener("DOMContentLoaded", function () {
-    var form = document.getElementById("formCadastro");
+document.addEventListener("DOMContentLoaded", () => {
+    const $ = id => document.getElementById(id);
 
-    var etapa1 = document.getElementById("etapa1");
-    var etapa2 = document.getElementById("etapa2");
-    var barra2 = document.getElementById("barra2");
-    var textoEtapa = document.getElementById("textoEtapa");
-    var mensagem1 = document.getElementById("mensagem1");
-    var mensagem2 = document.getElementById("mensagem2");
+    const form = $("formCadastro");
+    if (!form) return;
 
-    var nome = document.getElementById("nome");
-    var usuario = document.getElementById("usuario");
-    var nascimento = document.getElementById("nascimento");
-    var email = document.getElementById("email");
-    var senha = document.getElementById("senha");
-    var confirmarSenha = document.getElementById("confirmarSenha");
+    const etapa1 = $("etapa1");
+    const etapa2 = $("etapa2");
+    const barra2 = $("barra2");
+    const textoEtapa = $("textoEtapa");
+    const mensagem1 = $("mensagem1");
+    const mensagem2 = $("mensagem2");
 
-    var btnContinuar = document.getElementById("btnContinuar");
-    var btnVoltar = document.getElementById("btnVoltar");
-    var btnCadastrar = document.getElementById("btnCadastrar");
+    const nome = $("nome");
+    const usuario = $("usuario");
+    const nascimento = $("nascimento");
+    const email = $("email");
+    const senha = $("senha");
+    const confirmarSenha = $("confirmarSenha");
 
-    var etapaAtual = 1;
+    const btnContinuar = $("btnContinuar");
+    const btnVoltar = $("btnVoltar");
+    const btnCadastrar = $("btnCadastrar");
 
-    // Impede datas futuras no campo de nascimento
-    nascimento.max = new Date().toISOString().split("T")[0];
+    let etapaAtual = 1;
 
-    // Botões Mostrar/Ocultar de cada campo de senha
-    document.querySelectorAll(".btn_senha").forEach(function (botao) {
-        botao.addEventListener("click", function () {
-            alternarVisibilidadeSenha(botao.dataset.alvo, botao);
+    // Impede a seleção de datas futuras.
+    const hoje = new Date();
+
+    nascimento.max = [
+        hoje.getFullYear(),
+        String(hoje.getMonth() + 1).padStart(2, "0"),
+        String(hoje.getDate()).padStart(2, "0")
+    ].join("-");
+
+    // Mostrar/ocultar senha.
+    document.querySelectorAll(".btn_senha").forEach(botao => {
+        botao.addEventListener("click", () => {
+            const campo = $(botao.dataset.alvo);
+            if (!campo) return;
+
+            const mostrar = campo.type === "password";
+
+            campo.type = mostrar ? "text" : "password";
+            botao.textContent = mostrar ? "Ocultar" : "Mostrar";
+            botao.setAttribute("aria-pressed", String(mostrar));
         });
     });
 
-    // Remove o destaque de erro quando o usuário volta a digitar
-    form.querySelectorAll("input").forEach(function (input) {
-        input.addEventListener("input", function () {
+    // Limpa os erros ao digitar.
+    form.querySelectorAll("input").forEach(input => {
+        input.addEventListener("input", () => {
             input.parentElement.classList.remove("invalido");
             mensagem1.textContent = "";
             mensagem2.textContent = "";
@@ -261,75 +356,76 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Continuar: valida a etapa 1 e mostra a etapa 2
-    btnContinuar.addEventListener("click", avancar);
+    function mostrarErro(erro, mensagem) {
+        mensagem.textContent = erro.texto;
+        erro.campo.parentElement.classList.add("invalido");
+        erro.campo.focus();
+    }
 
-    // Voltar: retorna para a etapa 1 (os dados digitados são mantidos)
-    btnVoltar.addEventListener("click", function () {
-        irParaEtapa(1);
-    });
-
-    form.addEventListener("submit", async function (event) {
-        event.preventDefault(); // o cadastro é salvo pelo JS (Usuarios.cadastrar)
-
-        // Enter na etapa 1 avança em vez de cadastrar
-        if (etapaAtual === 1) {
-            avancar();
-            return;
+    function validarEtapa1() {
+        if (nome.value.trim().length < 3) {
+            return {
+                campo: nome,
+                texto: "Digite seu nome completo."
+            };
         }
 
-        // Na etapa 2, valida tudo antes de salvar
-        var erro = validarEtapa1() || validarEtapa2();
-
-        if (erro) {
-            // Se o erro for de um campo da etapa 1, volta para ela
-            if (etapa1.contains(erro.campo)) {
-                irParaEtapa(1);
-                mostrarErro(erro, mensagem1);
-            } else {
-                mostrarErro(erro, mensagem2);
-            }
-            return;
+        if (!/^[A-Za-z0-9_.]{3,20}$/.test(usuario.value.trim())) {
+            return {
+                campo: usuario,
+                texto: "Usuário: 3 a 20 caracteres (letras, números, _ ou .)."
+            };
         }
 
-        btnCadastrar.disabled = true;
-        var resultado = await Usuarios.cadastrar({
-            nome: nome.value,
-            usuario: usuario.value,
-            nascimento: nascimento.value,
-            email: email.value,
-            senha: senha.value
-        });
-        btnCadastrar.disabled = false;
-
-        if (!resultado.ok) {
-            var campo = resultado.campo === "usuario" ? usuario : email;
-            var erroSalvar = { campo: campo, texto: resultado.erro };
-
-            if (etapa1.contains(campo)) {
-                irParaEtapa(1);
-                mostrarErro(erroSalvar, mensagem1);
-            } else {
-                mostrarErro(erroSalvar, mensagem2);
-            }
-            return;
+        if (!nascimento.value) {
+            return {
+                campo: nascimento,
+                texto: "Informe sua data de nascimento."
+            };
         }
 
-        mensagem2.classList.add("sucesso");
-        mensagem2.textContent = "Cadastro realizado! Redirecionando para o login...";
-        setTimeout(function () {
-            window.location.href = "entrar.html";
-        }, 1500);
-    });
+        const idade = calcularIdade(nascimento.value);
 
-    function avancar() {
-        var erro = validarEtapa1();
-
-        if (erro) {
-            mostrarErro(erro, mensagem1);
-            return;
+        if (!Number.isFinite(idade) || idade < 0 || idade > 120) {
+            return {
+                campo: nascimento,
+                texto: "Data de nascimento inválida."
+            };
         }
-        irParaEtapa(2);
+
+        if (idade < 12) {
+            return {
+                campo: nascimento,
+                texto: "Você precisa ter pelo menos 12 anos para criar uma conta."
+            };
+        }
+
+        return null;
+    }
+
+    function validarEtapa2() {
+        if (!email.checkValidity()) {
+            return {
+                campo: email,
+                texto: "Digite um e-mail válido."
+            };
+        }
+
+        if (senha.value.length < 8) {
+            return {
+                campo: senha,
+                texto: "A senha deve ter pelo menos 8 caracteres."
+            };
+        }
+
+        if (confirmarSenha.value !== senha.value) {
+            return {
+                campo: confirmarSenha,
+                texto: "As senhas não coincidem."
+            };
+        }
+
+        return null;
     }
 
     function irParaEtapa(numero) {
@@ -343,111 +439,197 @@ document.addEventListener("DOMContentLoaded", function () {
             ? "Etapa 1 de 2 · Sobre você"
             : "Etapa 2 de 2 · Dados de acesso";
 
-        // Foco no primeiro campo da etapa exibida
         (numero === 1 ? nome : email).focus();
     }
 
-    // Cada validação retorna o primeiro erro encontrado ou null
-    function validarEtapa1() {
-        if (nome.value.trim().length < 3) {
-            return { campo: nome, texto: "Digite seu nome completo." };
+    function avancar() {
+        const erro = validarEtapa1();
+
+        if (erro) {
+            mostrarErro(erro, mensagem1);
+            return;
         }
 
-        if (!/^[A-Za-z0-9_.]{3,20}$/.test(usuario.value.trim())) {
-            return {
-                campo: usuario,
-                texto: "Usuário: 3 a 20 caracteres (letras, números, _ ou .)."
+        irParaEtapa(2);
+    }
+
+    btnContinuar.addEventListener("click", avancar);
+
+    btnVoltar.addEventListener("click", () => {
+        irParaEtapa(1);
+    });
+
+    form.addEventListener("submit", async event => {
+        event.preventDefault();
+
+        if (etapaAtual === 1) {
+            avancar();
+            return;
+        }
+
+        const erro = validarEtapa1() || validarEtapa2();
+
+        if (erro) {
+            const primeiraEtapa = etapa1.contains(erro.campo);
+
+            if (primeiraEtapa) {
+                irParaEtapa(1);
+            }
+
+            mostrarErro(
+                erro,
+                primeiraEtapa ? mensagem1 : mensagem2
+            );
+
+            return;
+        }
+
+        btnCadastrar.disabled = true;
+
+        let resultado;
+
+        try {
+            resultado = await Usuarios.cadastrar({
+                nome: nome.value,
+                usuario: usuario.value,
+                nascimento: nascimento.value,
+                email: email.value,
+                senha: senha.value
+            });
+        } catch (erro) {
+            console.error("Erro no cadastro:", erro);
+
+            resultado = {
+                ok: false,
+                campo: "email",
+                erro: "Não foi possível concluir o cadastro."
             };
+        } finally {
+            btnCadastrar.disabled = false;
         }
 
-        if (!nascimento.value) {
-            return { campo: nascimento, texto: "Informe sua data de nascimento." };
+        if (!resultado.ok) {
+            const campos = {
+                nome,
+                usuario,
+                nascimento,
+                email,
+                senha
+            };
+
+            const campo = campos[resultado.campo] || email;
+            const primeiraEtapa = etapa1.contains(campo);
+
+            if (primeiraEtapa) {
+                irParaEtapa(1);
+            }
+
+            mostrarErro(
+                { campo, texto: resultado.erro },
+                primeiraEtapa ? mensagem1 : mensagem2
+            );
+
+            return;
         }
 
-        var idade = calcularIdade(nascimento.value);
-        if (idade < 0 || idade > 120) {
-            return { campo: nascimento, texto: "Data de nascimento inválida." };
-        }
+        mensagem2.classList.add("sucesso");
+        mensagem2.textContent =
+            "Cadastro realizado! Redirecionando para o login...";
 
-        return null;
-    }
-
-    function validarEtapa2() {
-        if (!email.checkValidity()) {
-            return { campo: email, texto: "Digite um e-mail válido." };
-        }
-
-        if (senha.value.length < 8) {
-            return { campo: senha, texto: "A senha deve ter pelo menos 8 caracteres." };
-        }
-
-        if (confirmarSenha.value !== senha.value) {
-            return { campo: confirmarSenha, texto: "As senhas não coincidem." };
-        }
-
-        return null;
-    }
-
-    function mostrarErro(erro, areaMensagem) {
-        areaMensagem.textContent = erro.texto;
-        erro.campo.parentElement.classList.add("invalido");
-        erro.campo.focus();
-    }
+        setTimeout(() => {
+            window.location.href = "entrar.html";
+        }, 1500);
+    });
 });
 
-// Calcula a idade a partir de uma data no formato AAAA-MM-DD
-function calcularIdade(dataStr) {
-    var hoje = new Date();
-    var nasc = new Date(dataStr);
-    var idade = hoje.getFullYear() - nasc.getFullYear();
-    var m = hoje.getMonth() - nasc.getMonth();
+/* CABEÇALHO E ANIMAÇÕES */
 
-    if (m < 0 || (m === 0 && hoje.getDate() < nasc.getDate())) {
-        idade--;
-    }
-    return idade;
-}
-
-// Mostra/oculta a senha do campo indicado
-function alternarVisibilidadeSenha(idCampo, botao) {
-    var campo = document.getElementById(idCampo);
-
-    if (campo.type === "password") {
-        campo.type = "text";
-        botao.textContent = "Ocultar";
-    } else {
-        campo.type = "password";
-        botao.textContent = "Mostrar";
-    }
-}
-
-/* Cabeçalho e animações exclusivos desta página. */
-/* Progressive visual enhancements. Does not override project business logic. */
 (() => {
-  const init = () => {
-    if (document.querySelector('.retro-masthead')) return;
-    const navigation = document.querySelector('nav.navbar,header.cabecalho');
-    if (!navigation) return;
-    const status = document.createElement('div');
-    status.className = 'retro-status';
-    status.innerHTML = '<span><span class="status-led" aria-hidden="true"></span><strong>AKIBA NETWORK</strong> // conectado ao universo otaku</span><span>EST. 2004 &nbsp; ◆ &nbsp; PORTAL V.2.0</span>';
-    const masthead = document.createElement('div');
-    masthead.className = 'retro-masthead';
-    masthead.innerHTML = '<a class="retro-brand" href="index.html" aria-label="Akiba Station — Página inicial"><img class="retro-main-logo" src="imgs/akiba-logo-rosa.png" alt="Akiba Station"></a>';
-    navigation.before(status, masthead);
-    const ticker = document.createElement('div');
-    ticker.className = 'retro-ticker';
-    ticker.innerHTML = '<span class="retro-ticker-label">◆ AKIBA UPDATE</span><span class="retro-ticker-copy">BEM-VINDO À <b>AKIBA STATION</b> &nbsp; // &nbsp; ANIMES • LANÇAMENTOS • NOTÍCIAS • COMUNIDADE &nbsp; // &nbsp; SUA PRÓXIMA AVENTURA COMEÇA AQUI</span>';
-    navigation.after(ticker);
-    const sections = document.querySelectorAll('.anime-section,.reviews-panel,.noticias-recentes,.noticia-destaque,main form');
-    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => { if(entry.isIntersecting){entry.target.classList.add('retro-visible');observer.unobserve(entry.target);} });
-      }, {threshold:0.06,rootMargin:'0px 0px 70px 0px'});
-      sections.forEach(el => {el.classList.add('retro-reveal');observer.observe(el);});
-    }
-  };
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init,{once:true});
-  else init();
-})();
+    const init = () => {
+        if (document.querySelector(".retro-masthead")) return;
 
+        const navigation = document.querySelector(
+            "nav.navbar, header.cabecalho"
+        );
+
+        if (!navigation) return;
+
+        const status = document.createElement("div");
+        status.className = "retro-status";
+        status.innerHTML = `
+            <span>
+                <span class="status-led" aria-hidden="true"></span>
+                <strong>AKIBA NETWORK</strong>
+                // conectado ao universo otaku
+            </span>
+            <span>EST. 2004 &nbsp; ◆ &nbsp; PORTAL V.2.0</span>
+        `;
+
+        const masthead = document.createElement("div");
+        masthead.className = "retro-masthead";
+        masthead.innerHTML = `
+            <a class="retro-brand" href="index.html"
+               aria-label="Akiba Station — Página inicial">
+                <img class="retro-main-logo"
+                     src="imgs/akiba-logo-rosa.png"
+                     alt="Akiba Station">
+            </a>
+        `;
+
+        navigation.before(status, masthead);
+
+        const ticker = document.createElement("div");
+        ticker.className = "retro-ticker";
+        ticker.innerHTML = `
+            <span class="retro-ticker-label">◆ AKIBA UPDATE</span>
+            <span class="retro-ticker-copy">
+                BEM-VINDO À <b>AKIBA STATION</b>
+                &nbsp; // &nbsp;
+                ANIMES • LANÇAMENTOS • NOTÍCIAS • COMUNIDADE
+                &nbsp; // &nbsp;
+                SUA PRÓXIMA AVENTURA COMEÇA AQUI
+            </span>
+        `;
+
+        navigation.after(ticker);
+
+        const sections = document.querySelectorAll(
+            ".anime-section, .reviews-panel, " +
+            ".noticias-recentes, .noticia-destaque, main form"
+        );
+
+        const reduzirMovimento = window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+        if ("IntersectionObserver" in window && !reduzirMovimento) {
+            const observer = new IntersectionObserver(
+                entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("retro-visible");
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                {
+                    threshold: 0.06,
+                    rootMargin: "0px 0px 70px 0px"
+                }
+            );
+
+            sections.forEach(elemento => {
+                elemento.classList.add("retro-reveal");
+                observer.observe(elemento);
+            });
+        }
+    };
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", init, {
+            once: true
+        });
+    } else {
+        init();
+    }
+})();

@@ -229,7 +229,6 @@
 
 
 /* Cabeçalho e animações exclusivos desta página. */
-/* Progressive visual enhancements. Does not override project business logic. */
 (() => {
   const init = () => {
     if (document.querySelector('.retro-masthead')) return;

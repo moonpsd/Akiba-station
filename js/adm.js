@@ -5,7 +5,6 @@
   usuarios.js - "banco de dados" do site, sem servidor.
   Os dados ficam no localStorage do navegador (chave "heads_usuarios").
   As senhas NUNCA são guardadas em texto puro: só um hash (PBKDF2) + salt.
-  Carregue este arquivo ANTES dos outros scripts da página.
 */
 var Usuarios = (function () {
     var CHAVE_USUARIOS = "heads_usuarios";
@@ -337,7 +336,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 /* Cabeçalho e animações exclusivos desta página. */
-/* Progressive visual enhancements. Does not override project business logic. */
 (() => {
   const init = () => {
     if (document.querySelector('.retro-masthead')) return;

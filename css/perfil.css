@@ -838,3 +838,36 @@ nav.navbar .menu img,.cabecalho .logo-area img{width:43px!important;height:37px!
 /* Sem filtro CRT ou scanlines. */
 body::before,body::after{display:none!important;content:none!important;}
 
+
+/* Banner padrão do perfil: neon rosa + rede geométrica.
+   O banner personalizado do usuário substitui esta arte automaticamente. */
+body:has(.banner) #banner.banner {
+  background-color: #141519 !important;
+  background-image: var(--profile-banner-image,
+    radial-gradient(ellipse 58% 95% at 78% 50%, rgba(255,0,170,.34), transparent 72%),
+    radial-gradient(ellipse 40% 90% at 18% 7%, rgba(255,126,212,.15), transparent 80%),
+    repeating-linear-gradient(115deg, transparent 0 42px, rgba(255,126,212,.055) 43px, transparent 44px 85px),
+    linear-gradient(120deg, #23252b 0%, #141519 52%, #2b1630 100%)
+  ) !important;
+  background-size: cover !important;
+  background-position: center !important;
+  overflow: hidden;
+}
+body:has(.banner) #banner.banner::before {
+  content: "AKIBA  /  STATION";
+  position: absolute;
+  top: 19%;
+  right: 4%;
+  color: rgba(255,126,212,.18);
+  font: italic 900 clamp(22px,5vw,65px)/1 'Arial Black',Impact,sans-serif;
+  letter-spacing: .06em;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 0;
+}
+body:has(.banner) #banner.banner.has-custom-banner::before { display: none; }
+.banner-shadow { pointer-events: none; z-index: 1; }
+.banner-content { z-index: 2; }
+/* As capas mantêm a proporção mesmo quando o texto da atividade é longo. */
+.activity-card img { display: block; height: 100%; min-height: 100px; object-fit: cover; }
+@media(max-width:480px) { .activity-card img { min-height: 90px; } }
