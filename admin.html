@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Admin</title>
+    <title>Admin | Akiba Station</title>
     <link rel="stylesheet" href="css/adm.css">
 
     <script src="js/adm.js" defer></script>
@@ -21,11 +21,12 @@
       <ul class="login">
         <li><a href="cadastro.html">Cadastro</a></li>
         <li><a href="entrar.html">Entrar</a></li>
-        <li><a href="adm.html">Admin</a></li>
+        <li><a href="admin.html">Admin</a></li>
         <li><a href="profile.html" class="active-link">Perfil</a></li>
       </ul>
     </nav>
 
+    <main class="admin-main">
     <div class="container">
       <form id="formAdmin" novalidate>
           <h2>Novo usuário</h2>
@@ -43,49 +44,42 @@
 
           <p id="mensagem" class="mensagem" aria-live="polite"></p>
 
-          <button type="submit" class="btn_principal">Cadastrar usuário</button>
+          <div class="admin-form-actions">
+            <button type="submit" class="btn_principal">Cadastrar</button>
+            <button type="button" class="admin-btn-secondary" id="limparCampos">Limpar campos</button>
+          </div>
       </form>
     </div>
 
-    <section class="lista_usuarios">
+    <section class="lista_usuarios" aria-labelledby="tituloUsuarios">
       <div class="lista_cabecalho">
-        <h2>Usuários cadastrados</h2>
-        <span id="contador" class="contador"></span>
+        <h2 id="tituloUsuarios">Usuários cadastrados</h2>
+        <span id="contador" class="contador" aria-live="polite"></span>
       </div>
-
-      <div id="tabelaScroll" class="tabela_scroll">
-        <table>
-          <thead>
-            <tr>
-              <th>Nome</th>
-              <th>Usuário</th>
-              <th>E-mail</th>
-              <th>Nascimento</th>
-              <th>Status</th>
-              <th>Cadastro em</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody id="corpoTabela"></tbody>
-        </table>
+      <div class="admin-tools">
+        <label for="pesquisaUsuarios">Pesquisar por nome ou e-mail</label>
+        <input id="pesquisaUsuarios" type="search" placeholder="Pesquisar usuários..." autocomplete="off">
+        <button type="button" id="excluirTodos" class="admin-btn-danger">Excluir todos</button>
       </div>
-
+      <ul id="listaUsuarios" class="admin-user-list" aria-live="polite"></ul>
       <p id="vazio" class="vazio">Nenhum usuário cadastrado ainda.</p>
     </section>
+  </main>
 
     <footer class="footer">
       <p>© 2026 - Todos os direitos reservados.</p>
 
       <div class="socials">
-        <a href="#">
-          <p>Curriculo Gabriel A.</p>
-        </a>
 
-        <a href="#">
+        <a href="https://eduardo-milanez-silva.github.io/curriculo/" target="_blank" rel="noopener noreferrer">
           <p>Curriculo Eduardo</p>
         </a>
 
-        <a href="https://moonpsd.github.io/Curriculo/">
+        <a href="https://moonpsd.github.io/Curriculo/" target="_blank" rel="noopener noreferrer">
+          <p>Curriculo Gabriel A.</p>
+        </a>
+
+        <a href="https://moonpsd.github.io/Curriculo/" target="_blank" rel="noopener noreferrer">
           <p>Curriculo Gabriel F.</p>
         </a>
       </div>

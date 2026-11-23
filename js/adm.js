@@ -217,122 +217,123 @@ var Usuarios = (function () {
 
 if (typeof module !== "undefined") { module.exports = Usuarios; }
 
-document.addEventListener("DOMContentLoaded", function () {
-    var form = document.getElementById("formAdmin");
-    var nome = document.getElementById("nome");
-    var email = document.getElementById("email");
-    var mensagem = document.getElementById("mensagem");
+document.addEventListener("DOMContentLoaded", () => {
+  const $ = (id) => document.getElementById(id);
+  const form = $("formAdmin");
+  if (!form) return;
 
-    var corpoTabela = document.getElementById("corpoTabela");
-    var tabelaScroll = document.getElementById("tabelaScroll");
-    var vazio = document.getElementById("vazio");
-    var contador = document.getElementById("contador");
+  const nome = $("nome");
+  const email = $("email");
+  const mensagem = $("mensagem");
+  const lista = $("listaUsuarios");
+  const pesquisa = $("pesquisaUsuarios");
+  const contador = $("contador");
+  const vazio = $("vazio");
+  const excluirTodos = $("excluirTodos");
 
-    renderizar();
+  const avisar = (texto, sucesso = false) => {
+    mensagem.textContent = texto;
+    mensagem.classList.toggle("sucesso", sucesso);
+  };
 
-    // Remove o destaque de erro quando o usuário volta a digitar
-    form.querySelectorAll("input").forEach(function (input) {
-        input.addEventListener("input", function () {
-            input.parentElement.classList.remove("invalido");
-            mensagem.textContent = "";
-            mensagem.classList.remove("sucesso");
-        });
-    });
+  function renderizar() {
+    const usuarios = Usuarios.listar().slice().reverse();
+    const termo = pesquisa.value.trim().toLocaleLowerCase("pt-BR");
+    const encontrados = usuarios.filter((u) =>
+      [u.nome, u.email].some((valor) =>
+        String(valor || "").toLocaleLowerCase("pt-BR").includes(termo)
+      )
+    );
 
-    form.addEventListener("submit", function (event) {
-        event.preventDefault();
+    contador.textContent = `${encontrados.length} de ${usuarios.length} usuário(s)`;
+    excluirTodos.disabled = usuarios.length === 0;
+    lista.replaceChildren();
+    vazio.hidden = encontrados.length > 0;
+    vazio.textContent = usuarios.length === 0
+      ? "Nenhum usuário cadastrado ainda."
+      : "Nenhum usuário encontrado para esta pesquisa.";
 
-        var erro = validar();
-        if (!erro) {
-            var resultado = Usuarios.adicionarPeloAdmin({ nome: nome.value, email: email.value });
-            if (!resultado.ok) {
-                erro = { campo: email, texto: resultado.erro };
-            }
-        }
+    encontrados.forEach((u) => {
+      const item = document.createElement("li");
+      item.className = "admin-user-item";
 
-        if (erro) {
-            mensagem.classList.remove("sucesso");
-            mensagem.textContent = erro.texto;
-            erro.campo.parentElement.classList.add("invalido");
-            erro.campo.focus();
-            return;
-        }
+      const dados = document.createElement("div");
+      dados.className = "admin-user-data";
+      const titulo = document.createElement("strong");
+      titulo.textContent = u.nome || u.usuario || "Sem nome";
+      const detalhe = document.createElement("span");
+      detalhe.textContent = `E-mail: ${u.email || "—"}`;
+      const data = document.createElement("time");
+      const dataValida = u.criadoEm && !Number.isNaN(new Date(u.criadoEm).getTime());
+      if (dataValida) data.dateTime = new Date(u.criadoEm).toISOString();
+      data.textContent = `Cadastro: ${dataValida ? new Date(u.criadoEm).toLocaleString("pt-BR") : "Não informada"}`;
+      dados.append(titulo, detalhe, data);
 
-        form.reset();
-        mensagem.textContent = "Usuário cadastrado com sucesso!";
-        mensagem.classList.add("sucesso");
+      const remover = document.createElement("button");
+      remover.type = "button";
+      remover.className = "btn_remover";
+      remover.textContent = "Excluir";
+      remover.setAttribute("aria-label", `Excluir ${u.nome || u.email}`);
+      remover.addEventListener("click", () => {
+        if (!confirm(`Excluir o usuário ${u.nome || u.email}?`)) return;
+        Usuarios.remover(u.id);
         renderizar();
+        avisar("Usuário excluído.", true);
+      });
+      item.append(dados, remover);
+      lista.appendChild(item);
     });
+  }
 
-    // Retorna o primeiro erro encontrado ou null
-    function validar() {
-        if (nome.value.trim().length < 3) {
-            return { campo: nome, texto: "Digite o nome do usuário (mínimo 3 caracteres)." };
-        }
+  form.addEventListener("submit", (evento) => {
+    evento.preventDefault();
+    const valorNome = nome.value.trim();
+    const valorEmail = email.value.trim();
 
-        if (!email.checkValidity()) {
-            return { campo: email, texto: "Digite um e-mail válido." };
-        }
-
-        return null;
+    if (valorNome.length < 3) {
+      avisar("Digite um nome de usuário com pelo menos 3 caracteres.");
+      nome.focus();
+      return;
+    }
+    if (!email.checkValidity() || !valorEmail) {
+      avisar("Digite um e-mail válido.");
+      email.focus();
+      return;
     }
 
-    // Desenha a tabela com os usuários salvos
-    function renderizar() {
-        var lista = Usuarios.listar().reverse(); // mais recentes primeiro
-
-        contador.textContent = lista.length + (lista.length === 1 ? " usuário" : " usuários");
-        tabelaScroll.hidden = lista.length === 0;
-        vazio.hidden = lista.length > 0;
-        corpoTabela.textContent = "";
-
-        lista.forEach(function (u) {
-            var linha = document.createElement("tr");
-
-            linha.appendChild(celula(u.nome));
-            linha.appendChild(celula(u.usuario || "—"));
-            linha.appendChild(celula(u.email));
-            linha.appendChild(celula(u.nascimento ? formatarNascimento(u.nascimento) : "—"));
-
-            var status = document.createElement("span");
-            status.className = "status " + (u.temSenha ? "completo" : "pendente");
-            status.textContent = u.temSenha ? "Completo" : "Aguardando senha";
-            var tdStatus = document.createElement("td");
-            tdStatus.appendChild(status);
-            linha.appendChild(tdStatus);
-
-            linha.appendChild(celula(new Date(u.criadoEm).toLocaleDateString("pt-BR")));
-
-            var botao = document.createElement("button");
-            botao.type = "button";
-            botao.className = "btn_remover";
-            botao.textContent = "Remover";
-            botao.addEventListener("click", function () {
-                if (confirm("Remover o usuário " + u.nome + "?")) {
-                    Usuarios.remover(u.id);
-                    renderizar();
-                }
-            });
-            var tdAcao = document.createElement("td");
-            tdAcao.appendChild(botao);
-            linha.appendChild(tdAcao);
-
-            corpoTabela.appendChild(linha);
-        });
+    const resultado = Usuarios.adicionarPeloAdmin({ nome: valorNome, email: valorEmail });
+    if (!resultado.ok) {
+      avisar(resultado.erro);
+      email.focus();
+      return;
     }
+    form.reset();
+    avisar("Usuário cadastrado com sucesso!", true);
+    renderizar();
+    nome.focus();
+  });
 
-    // textContent evita que nomes digitados virem HTML (XSS)
-    function celula(texto) {
-        var td = document.createElement("td");
-        td.textContent = texto;
-        return td;
-    }
+  $("limparCampos").addEventListener("click", () => {
+    form.reset();
+    avisar("");
+    form.querySelectorAll(".invalido").forEach((el) => el.classList.remove("invalido"));
+    nome.focus();
+  });
 
-    // AAAA-MM-DD -> DD/MM/AAAA
-    function formatarNascimento(data) {
-        var p = data.split("-");
-        return p[2] + "/" + p[1] + "/" + p[0];
-    }
+  excluirTodos.addEventListener("click", () => {
+    const usuarios = Usuarios.listar();
+    if (!usuarios.length || !confirm(`Excluir os ${usuarios.length} usuários cadastrados? Esta ação não pode ser desfeita.`)) return;
+    // Remove na mesma chave JSON usada pelos cadastros e encerra a sessão associada.
+    localStorage.setItem("heads_usuarios", JSON.stringify([]));
+    localStorage.removeItem("heads_sessao");
+    sessionStorage.removeItem("usuarioLogado");
+    renderizar();
+    avisar("Todos os usuários foram excluídos.", true);
+  });
+
+  pesquisa.addEventListener("input", renderizar);
+  [nome, email].forEach((campo) => campo.addEventListener("input", () => avisar("")));
+  renderizar();
 });
 
 /* Cabeçalho e animações exclusivos desta página. */
