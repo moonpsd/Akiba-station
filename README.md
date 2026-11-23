@@ -6,6 +6,10 @@ O **Akiba Station** é um site dedicado à cultura otaku, desenvolvido com uma i
 
 Construído com **HTML, CSS e JavaScript**, o site reúne informações sobre animes, notícias, perfis de usuários e recursos interativos.
 
+### 🌐 Acesse o projeto
+
+**[🎌 Clique aqui para acessar o Akiba Station](https://moonpsd.github.io/Akiba-station/)**
+
 ---
 
 ## 📖 Sobre o projeto
@@ -24,7 +28,8 @@ Além da interface, o projeto utiliza JavaScript para manipulação dinâmica de
 - **Login:** autenticação local dos usuários cadastrados.
 - **Perfil:** visualização de informações do usuário, listas de animes e atividades.
 - **Painel administrativo:** cadastro, pesquisa, listagem e exclusão de usuários.
-- **Armazenamento local:** persistência de dados utilizando a API Local Storage.
+- **Armazenamento local:** persistência de dados utilizando a API Web Storage.
+- **Acessibilidade:** ajuste de tamanho da fonte, espaçamento do texto, tema claro e escuro e modo de alto contraste.
 - **Interface responsiva:** adaptação do layout a diferentes tamanhos de tela.
 - **Animações e interatividade:** transições suaves e elementos dinâmicos.
 
@@ -35,14 +40,16 @@ Além da interface, o projeto utiliza JavaScript para manipulação dinâmica de
 | HTML5 | Estrutura e organização das páginas |
 | CSS3 | Estilização, responsividade e animações |
 | JavaScript | Interatividade, validações e manipulação do DOM |
-| Local Storage | Armazenamento local dos usuários |
+| DOM API | Manipulação dinâmica dos elementos HTML |
+| Web Storage API | Armazenamento local de informações dos usuários |
 | AniList API | Consulta de informações e imagens de animes |
-| Git e GitHub | Versionamento e hospedagem do código |
+| Git e GitHub | Versionamento e hospedagem do projeto |
+| GitHub Pages | Publicação do site |
 
 ## 📂 Estrutura do projeto
 
 ```text
-Akiba-Station/
+Akiba-station/
 │
 ├── index.html
 ├── noticias.html
@@ -76,9 +83,7 @@ Cada página possui seus próprios arquivos CSS e JavaScript, facilitando a orga
 
 ## 🎨 Identidade visual
 
-A identidade visual do Akiba Station foi inspirada em websites e portais de entretenimento dos anos 2000.
-
-O design utiliza elementos como barras de navegação, painéis destacados, contrastes fortes e animações suaves, preservando a estética nostálgica com uma navegação atual.
+A identidade visual do Akiba Station foi inspirada nos websites e portais de entretenimento dos anos 2000, utilizando elementos retrô com uma abordagem moderna.
 
 **Paleta de cores:**
 
@@ -88,7 +93,28 @@ O design utiliza elementos como barras de navegação, painéis destacados, cont
 - Fundo dos cards: `#23252b`
 - Texto secundário: `#a0a0a0`
 
+O projeto utiliza barras de navegação, painéis destacados, cards de animes e animações suaves, criando uma experiência nostálgica sem comprometer a usabilidade.
+
+## ♿ Acessibilidade
+
+O Akiba Station possui recursos de personalização visual que buscam facilitar a navegação e a leitura.
+
+Entre as funcionalidades disponíveis estão:
+
+- **Aumentar e diminuir fontes:** permite ajustar o tamanho dos textos.
+- **Espaçamento do texto:** oferece maior separação para facilitar a leitura.
+- **Tema claro e escuro:** possibilita alternar a aparência da interface.
+- **Alto contraste:** aumenta a diferenciação visual entre textos, elementos e fundos.
+
 ## 🚀 Como executar
+
+**Opção 1 — Acessar online**
+
+Acesse diretamente pelo GitHub Pages:
+
+https://moonpsd.github.io/Akiba-station/
+
+**Opção 2 — Executar localmente**
 
 1. Clone o repositório:
 
@@ -97,32 +123,28 @@ O design utiliza elementos como barras de navegação, painéis destacados, cont
    ```
 
 2. Abra a pasta do projeto no Visual Studio Code.
-
-3. Execute o arquivo `index.html` utilizando um servidor local, como a extensão Live Server.
-
+3. Execute `index.html` utilizando um servidor local, como a extensão Live Server.
 4. Navegue pelo site e explore suas funcionalidades.
-
-**Observação:** algumas funcionalidades dependem de conexão com a internet para consultar informações externas.
 
 ## 💾 Armazenamento de dados
 
-O sistema utiliza a API **Web Storage**, por meio do `localStorage`, para armazenar informações de usuários diretamente no navegador.
+O sistema utiliza a **Web Storage API**, principalmente o `localStorage`, para armazenar informações de usuários diretamente no navegador.
 
-O painel administrativo permite cadastrar, visualizar, pesquisar e excluir registros, utilizando JavaScript e manipulação do DOM.
+A aplicação permite cadastrar, consultar, pesquisar e excluir registros por meio de JavaScript e manipulação do DOM.
 
-Por se tratar de um projeto acadêmico de front-end, o armazenamento local não substitui um sistema de autenticação com servidor e banco de dados.
+Por se tratar de um projeto acadêmico de front-end, os dados são armazenados localmente e o sistema não substitui uma autenticação com servidor e banco de dados.
 
 ## 🎓 Objetivo acadêmico
 
-O desenvolvimento do Akiba Station busca demonstrar conhecimentos práticos em:
+O Akiba Station foi desenvolvido para demonstrar a aplicação prática de conceitos de Programação Web Front-end, incluindo:
 
-- Estruturação de páginas com HTML semântico.
-- Estilização e responsividade com CSS.
-- Manipulação dinâmica do DOM com JavaScript.
-- Desenvolvimento e validação de formulários.
-- Armazenamento e gerenciamento de dados com Local Storage.
-- Organização e manutenção de código-fonte.
-- Versionamento com Git e GitHub.
+- Desenvolvimento de páginas com HTML semântico.
+- Estilização e layouts responsivos com CSS.
+- Manipulação do DOM com JavaScript.
+- Validação e processamento de formulários.
+- Persistência de dados com Web Storage.
+- Operações de cadastro, pesquisa e exclusão de usuários.
+- Organização do código e versionamento com Git e GitHub.
 
 ## 👨‍💻 Participantes
 
