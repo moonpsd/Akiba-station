@@ -6,6 +6,9 @@
   <title>moonpsd | Akiba Station</title>
   <link rel="icon" href="./icons/he.ico">
   <link rel="stylesheet" href="./css/perfil.css">
+  <link rel="stylesheet" href="css/accessibility-themes.css">
+  <link rel="stylesheet" href="css/accessibility.css">
+  <script src="js/accessibility.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -15,6 +18,9 @@
       <ul class="menu">
         <li><a href="index.html">Home</a></li>
         <li><a href="noticias.html">Noticias</a></li>
+        <li class="access-nav-item">
+          <button type="button" class="access-launcher" aria-haspopup="dialog">Acessibilidade</button>
+        </li>
       </ul>
 
       <ul class="login">
@@ -28,7 +34,7 @@
   <header class="banner" id="banner">
     <div class="banner-shadow"></div>
     <div class="banner-content">
-      <img id="avatar" class="avatar" src="" alt="Avatar de moonpsd">
+      <img id="avatar" class="avatar" src="./imgs/user.png" alt="Avatar de moonpsd">
       <div>
         <h1>moonpsd</h1>
         <span>Perfil de usuário</span>
@@ -46,7 +52,8 @@
 
   <main class="container">
 
-    <section id="overview" class="tab-page active">
+    <section id="overview" class="tab-page active" aria-labelledby="overview-title">
+      <h2 id="overview-title" class="visually-hidden">Visão geral</h2>
       <div class="layout">
 
         <aside class="sidebar">
@@ -60,7 +67,7 @@
           </div>
 
           <section class="section">
-            <h2>Histórico de Atividade</h2>
+            <h3>Histórico de Atividade</h3>
             <div class="panel">
               <div class="history-grid" id="historyGrid"></div>
               <div class="history-legend">
@@ -76,7 +83,7 @@
           </section>
 
           <section class="section">
-            <h2>Gêneros Favoritos</h2>
+            <h3>Gêneros Favoritos</h3>
             <div class="panel">
               <div class="genre-grid">
                 <div class="genre comedy"><strong>Comedy</strong><span>20 Entries</span></div>
@@ -94,21 +101,21 @@
           </section>
 
           <section class="section">
-            <h2>Anime</h2>
+            <h3>Anime</h3>
             <div class="panel">
               <div class="poster-grid" id="animePreview"></div>
             </div>
           </section>
 
           <section class="section">
-            <h2>Manga</h2>
+            <h3>Manga</h3>
             <div class="panel">
               <div class="poster-grid" id="mangaPreview"></div>
             </div>
           </section>
 
           <section class="section">
-            <h2>Characters</h2>
+            <h3>Characters</h3>
             <div class="panel">
               <div class="character-grid" id="characterPreview"></div>
             </div>
@@ -118,7 +125,8 @@
 
         <div class="main-column">
 
-          <section class="stats-panel">
+          <section class="stats-panel" aria-labelledby="stats-panel-title">
+            <h3 id="stats-panel-title" class="visually-hidden">Resumo de estatísticas</h3>
             <div class="stats-row">
               <div class="stat"><strong>54</strong><span>Total Anime</span></div>
               <div class="stat"><strong>26.5</strong><span>Days Watched</span></div>
@@ -138,7 +146,7 @@
 
           <section class="section">
             <div class="section-title">
-              <h2>Atividade</h2>
+              <h3>Atividade</h3>
               <select id="activityFilter">
                 <option value="all">Todos</option>
                 <option value="completed">Concluídos</option>
@@ -198,7 +206,7 @@
           <p>Curriculo Eduardo</p>
         </a>
 
-        <a href="https://moonpsd.github.io/Curriculo/" target="_blank" rel="noopener noreferrer">
+        <a href="https://gabrielalberine7-star.github.io/CurriculumVitae---Gabriel-Alberini/" target="_blank" rel="noopener noreferrer">
           <p>Curriculo Gabriel A.</p>
         </a>
 

@@ -1,0 +1,224 @@
+html[data-access-theme="light"] {
+  color-scheme: light;
+  --dark-bg: #fff9fc;
+  --card-bg: #f2e8ef;
+  --text: #251b23;
+  --text-muted: #594954;
+  --primary-pink: #8c0759;
+  --hover-pink: #701244;
+  --access-on-accent: #fff;
+  --access-control-border: #76616e;
+  --access-image-accent: #ffc3e5;
+  --erro: #9f1731;
+  --sucesso: #146333;
+}
+
+html[data-access-theme="contrast"] {
+  color-scheme: dark;
+  --dark-bg: #000;
+  --card-bg: #121212;
+  --text: #fff;
+  --text-muted: #f1f1f1;
+  --primary-pink: #ffea00;
+  --hover-pink: #fff67a;
+  --access-on-accent: #000;
+  --access-control-border: #fff;
+  --access-image-accent: #ffea00;
+  --erro: #ffb5b5;
+  --sucesso: #aaffc2;
+}
+
+html:is([data-access-theme="light"], [data-access-theme="contrast"]) {
+  --texto: var(--text);
+  --borda: var(--access-control-border);
+}
+
+html:is([data-access-theme="light"], [data-access-theme="contrast"]) ::selection {
+  color: var(--access-on-accent);
+}
+
+html:is([data-access-theme="light"], [data-access-theme="contrast"]) :is(body, .home-content, .anime-card h3, .review-user, .review-anime,
+  .cabecalho-secao h2, .modal-corpo #modal-texto, .about-card p) {
+  color: var(--text);
+}
+
+html:is([data-access-theme="light"], [data-access-theme="contrast"]) :is(.anime-section h2, nav.navbar li a, .btn, .nav-arrow, .cards-arrow) {
+  color: var(--text) !important;
+}
+
+html:is([data-access-theme="light"], [data-access-theme="contrast"]) :is(.btn-primary, button[type="submit"], input[type="submit"],
+  .badge, .sub-dub, .pular-conteudo, .botao-carregar, .genre strong,
+  nav.navbar li a:hover, nav.navbar a.active-link,
+  .nav-arrow:hover, .nav-arrow:focus-visible, .cards-arrow:hover, .cards-arrow:focus-visible,
+  .btn_principal:hover) {
+  color: var(--access-on-accent) !important;
+  text-shadow: none;
+}
+
+html:is([data-access-theme="light"], [data-access-theme="contrast"]) :is(.retro-status strong, .retro-masthead-right, .activity-content a, .load-more:hover) {
+  color: var(--text);
+}
+
+html:is([data-access-theme="light"], [data-access-theme="contrast"]) .retro-brand {
+  color: var(--text) !important;
+}
+
+html:is([data-access-theme="light"], [data-access-theme="contrast"]) :is(.retro-ticker-label, .nav-tab.active) {
+  color: var(--access-on-accent);
+  background-color: var(--primary-pink);
+}
+
+html:is([data-access-theme="light"], [data-access-theme="contrast"]) .activity-content a:hover {
+  color: var(--primary-pink);
+}
+
+html:is([data-access-theme="light"], [data-access-theme="contrast"]) :is(.footer .socials a, .anime-card p) {
+  color: var(--text-muted);
+}
+
+html:is([data-access-theme="light"], [data-access-theme="contrast"]) :is(.footer .socials a, .link_alternativo a, .activity-content a, .about-card a) {
+  text-decoration: underline;
+  text-underline-offset: .15em;
+}
+
+html:is([data-access-theme="light"], [data-access-theme="contrast"]) .slide-overlay {
+  background: linear-gradient(90deg, rgb(0 0 0 / 93%), rgb(0 0 0 / 76%) 70%, rgb(0 0 0 / 68%)) !important;
+}
+
+html:is([data-access-theme="light"], [data-access-theme="contrast"]) .slide-title {
+  text-shadow: 0 2px 8px #000;
+}
+
+html:is([data-access-theme="light"], [data-access-theme="contrast"]) .slide-description {
+  color: #fff;
+}
+
+html:is([data-access-theme="light"], [data-access-theme="contrast"]) .slide-meta .rating {
+  color: var(--access-image-accent);
+}
+
+html:is([data-access-theme="light"], [data-access-theme="contrast"]) .indicator {
+  background-color: #e5e5e5;
+  border: 1px solid #161616;
+}
+
+html:is([data-access-theme="light"], [data-access-theme="contrast"]) .indicator.active {
+  background-color: var(--primary-pink);
+}
+
+html:is([data-access-theme="light"], [data-access-theme="contrast"]) .indicator.active .indicator-progress {
+  background-color: var(--access-on-accent);
+}
+
+html:is([data-access-theme="light"], [data-access-theme="contrast"]) #banner.banner .banner-shadow {
+  background: linear-gradient(0deg, rgb(0 0 0 / 90%), rgb(0 0 0 / 72%) 62%, transparent);
+}
+
+html:is([data-access-theme="light"], [data-access-theme="contrast"]) :is(.banner-content h1, .banner-content span) {
+  color: #fff;
+}
+
+html:is([data-access-theme="light"], [data-access-theme="contrast"]) .about-card {
+  background: linear-gradient(135deg, var(--card-bg), var(--dark-bg));
+}
+
+html:is([data-access-theme="light"], [data-access-theme="contrast"]) :is(input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]), textarea, select) {
+  background: var(--dark-bg) !important;
+  border-color: var(--access-control-border) !important;
+  color: var(--text) !important;
+  box-shadow: none !important;
+}
+
+html:is([data-access-theme="light"], [data-access-theme="contrast"]) :is(input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]), textarea, select):focus {
+  border-color: var(--primary-pink) !important;
+}
+
+html:is([data-access-theme="light"], [data-access-theme="contrast"]) :is(input, textarea)::placeholder {
+  color: var(--text-muted);
+  opacity: 1;
+}
+
+html:is([data-access-theme="light"], [data-access-theme="contrast"]) input:-webkit-autofill {
+  -webkit-text-fill-color: var(--text) !important;
+  box-shadow: 0 0 0 100px var(--dark-bg) inset !important;
+}
+
+html[data-access-theme="light"] .campo_data input[type="date"] {
+  color-scheme: light;
+}
+
+html:is([data-access-theme="light"], [data-access-theme="contrast"]) :is(.campo_data label,
+  .campo input:focus ~ label,
+  .campo input:not(:placeholder-shown) ~ label,
+  .container_email input:focus ~ label,
+  .container_email input:not(:placeholder-shown) ~ label,
+  .container_senha input:focus ~ label,
+  .container_senha input:not(:placeholder-shown) ~ label) {
+  background-color: var(--card-bg);
+}
+
+html:is([data-access-theme="light"], [data-access-theme="contrast"]) :is(.campo.invalido input, .campo.invalido input:focus) {
+  border-color: var(--erro) !important;
+}
+
+html:is([data-access-theme="light"], [data-access-theme="contrast"]) .campo.invalido label {
+  color: var(--erro);
+}
+
+html:is([data-access-theme="light"], [data-access-theme="contrast"]) :is(#formEntrar #mensagem, .admin-user-data strong) {
+  color: var(--text) !important;
+}
+
+html:is([data-access-theme="light"], [data-access-theme="contrast"]) :is(.admin-tools label, .admin-user-data span, .admin-user-data time) {
+  color: var(--text-muted);
+}
+
+html:is([data-access-theme="light"], [data-access-theme="contrast"]) .admin-main .lista_usuarios {
+  background: var(--card-bg);
+  border-top-color: var(--primary-pink);
+}
+
+html:is([data-access-theme="light"], [data-access-theme="contrast"]) .admin-user-item {
+  background: var(--dark-bg);
+  border-color: var(--access-control-border);
+}
+
+html:is([data-access-theme="light"], [data-access-theme="contrast"]) :is(.admin-btn-secondary, .admin-btn-danger) {
+  background: var(--card-bg);
+  border-color: var(--access-control-border);
+  color: var(--text);
+}
+
+html:is([data-access-theme="light"], [data-access-theme="contrast"]) .admin-btn-danger {
+  border-color: var(--erro);
+}
+
+html:is([data-access-theme="light"], [data-access-theme="contrast"]) :is(.admin-btn-secondary, .admin-btn-danger):enabled:hover {
+  background: var(--primary-pink);
+  border-color: var(--primary-pink);
+  color: var(--access-on-accent);
+}
+
+html:is([data-access-theme="light"], [data-access-theme="contrast"]) :is(a, button, input, textarea, select):focus-visible {
+  outline: 2px solid var(--hover-pink) !important;
+  outline-offset: 3px;
+}
+
+html[data-access-theme="light"] .hero-slider :is(a, button):focus-visible {
+  outline-color: #fff !important;
+}
+
+html[data-access-theme="contrast"] :is(.anime-section, .reviews-panel, .anime-card, .card-noticia, .about-card,
+  .nav-arrow, .cards-arrow, .load-more, .botao-fechar) {
+  border: 1px solid var(--access-control-border) !important;
+  box-shadow: none !important;
+}
+
+html[data-access-theme="contrast"] :is(.btn, .nav-arrow, .cards-arrow, button[type="submit"]):hover {
+  filter: none !important;
+}
+
+html[data-access-theme="contrast"] .reviews-window {
+  -webkit-mask-image: none;
+  mask-image: none;
+}

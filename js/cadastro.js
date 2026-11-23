@@ -1,6 +1,3 @@
-
-/* AKIBA STATION — CADASTRO */
-
 function calcularIdade(dataStr) {
     if (typeof dataStr !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(dataStr)) {
         return NaN;
@@ -30,7 +27,6 @@ function calcularIdade(dataStr) {
     return idade;
 }
 
-/* GERENCIAMENTO DE USUÁRIOS */
 
 var Usuarios = (() => {
     const CHAVE_USUARIOS = "heads_usuarios";
@@ -295,8 +291,6 @@ var Usuarios = (() => {
     };
 })();
 
-/* FORMULÁRIO DE CADASTRO */
-
 document.addEventListener("DOMContentLoaded", () => {
     const $ = id => document.getElementById(id);
 
@@ -323,7 +317,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let etapaAtual = 1;
 
-    // Impede a seleção de datas futuras.
     const hoje = new Date();
 
     nascimento.max = [
@@ -346,7 +339,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Limpa os erros ao digitar.
     form.querySelectorAll("input").forEach(input => {
         input.addEventListener("input", () => {
             input.parentElement.classList.remove("invalido");
@@ -541,8 +533,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 1500);
     });
 });
-
-/* CABEÇALHO E ANIMAÇÕES */
 
 (() => {
     const init = () => {

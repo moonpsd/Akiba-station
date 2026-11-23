@@ -10,6 +10,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const slideDuration = 6000;
   let slideInterval;
 
+  function isReflowActive() {
+    return document.documentElement.hasAttribute("data-access-reflow");
+  }
+
   if (indicatorsContainer) {
     slides.forEach((_, index) => {
       const indicator = document.createElement("button");
@@ -53,6 +57,11 @@ document.addEventListener("DOMContentLoaded", () => {
         bar.style.width = "0%";
         indicator.classList.add("active");
 
+        if (isReflowActive()) {
+          bar.style.width = "100%";
+          return;
+        }
+
         void bar.offsetWidth;
 
         bar.style.transition = `width ${slideDuration}ms linear`;
@@ -88,6 +97,10 @@ document.addEventListener("DOMContentLoaded", () => {
     clearInterval(slideInterval);
 
     updateSlides();
+
+    if (isReflowActive()) {
+      return;
+    }
 
     slideInterval = setInterval(() => {
       nextSlide();
@@ -165,6 +178,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   if (slides.length > 0) {
+    new MutationObserver(startAutoPlay).observe(document.documentElement, {
+      attributeFilter: ["data-access-reflow"],
+    });
     startAutoPlay();
   }
 });

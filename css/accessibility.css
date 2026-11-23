@@ -1,0 +1,285 @@
+.access-launcher,
+#access-panel {
+  --access-panel-bg: var(--card-bg, #23252b);
+  --access-panel-text: var(--text, #fff);
+  --access-panel-border: var(--access-control-border, #a0a0a0);
+  --access-panel-accent: var(--hover-pink, #ff7ed4);
+  background: var(--access-panel-bg);
+  border: 1px solid var(--access-panel-border);
+  color: var(--access-panel-text);
+  font: 1rem / 1.5 Tahoma, Verdana, sans-serif;
+}
+
+nav.navbar .menu .access-nav-item {
+  display: block;
+  max-width: 100%;
+}
+
+.access-launcher {
+  min-height: 44px;
+  max-width: 100%;
+  padding: 6px 12px;
+  border-color: var(--access-panel-accent);
+  border-radius: 2px;
+  color: var(--access-panel-accent);
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+#access-panel {
+  width: calc(100% - 24px);
+  max-width: 30rem;
+  max-height: calc(100% - 24px);
+  margin: auto;
+  padding: 16px;
+  border-top: 4px solid var(--access-panel-accent);
+  border-radius: 4px;
+  overflow: auto;
+  overflow-wrap: anywhere;
+}
+
+#access-panel::backdrop {
+  background: rgba(0, 0, 0, 0.65);
+}
+
+#access-panel h2 {
+  margin: 0 0 16px;
+  color: inherit;
+  font-size: 1.25em;
+}
+
+#access-panel fieldset {
+  min-width: 0;
+  margin: 0 0 12px;
+  padding: 6px 10px;
+  border: 1px solid var(--access-panel-border);
+}
+
+#access-panel legend {
+  padding: 0 4px;
+  font-weight: bold;
+}
+
+#access-panel .access-font-controls,
+#access-panel .access-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+#access-panel .access-actions {
+  justify-content: flex-end;
+}
+
+#access-panel .access-choice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  margin: 0;
+  cursor: pointer;
+}
+
+#access-panel>.access-choice {
+  margin-bottom: 12px;
+}
+
+#access-panel .access-choice input {
+  flex: none;
+  width: 1em;
+  height: 1em;
+  margin: 0;
+  accent-color: var(--access-panel-accent);
+}
+
+#access-panel button {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 6px 10px;
+  background: var(--access-panel-bg);
+  border: 1px solid var(--access-panel-border);
+  border-radius: 4px;
+  color: var(--access-panel-text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.access-launcher:hover,
+#access-panel button:hover {
+  border-color: var(--access-panel-accent);
+  text-decoration: underline;
+}
+
+#access-panel button[aria-disabled="true"] {
+  color: var(--text-muted, #a0a0a0);
+  cursor: default;
+  text-decoration: none;
+}
+
+#access-panel output {
+  min-width: 4ch;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+html[data-access-spacing] body :where(h1, h2, h3, h4, h5, h6, p, a, button, label, legend,
+  input, textarea, select, option, li, span, time, blockquote, dd, dt) {
+  letter-spacing: 0.12em !important;
+  word-spacing: 0.16em !important;
+  line-height: 1.5 !important;
+}
+
+html[data-access-spacing] body p {
+  margin-block-end: 2em;
+}
+
+html[data-access-reflow] body :where(h1, h2, h3, h4, p, a, label) {
+  overflow-wrap: anywhere;
+}
+
+html[data-access-reflow] nav.navbar,
+html[data-access-reflow] .footer .socials,
+html[data-access-reflow] .profile-nav,
+html[data-access-reflow] .retro-ticker,
+html[data-access-reflow] .banner-content {
+  flex-wrap: wrap;
+}
+
+html[data-access-reflow] .retro-ticker {
+  white-space: normal;
+}
+
+html[data-access-reflow] .retro-ticker-copy {
+  min-width: 0;
+  overflow: visible;
+  overflow-wrap: anywhere;
+}
+
+html[data-access-reflow] .hero-slider {
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none;
+}
+
+html[data-access-reflow] .slides-container {
+  display: grid;
+  height: auto;
+}
+
+html[data-access-reflow] .slide {
+  position: relative;
+  grid-area: 1 / 1;
+  min-width: 0;
+  min-height: 360px;
+  height: auto;
+  transform: none;
+}
+
+html[data-access-reflow] .slide-content {
+  width: 100%;
+  min-width: 0;
+  padding: 40px 44px 60px !important;
+  animation: none;
+}
+
+html[data-access-reflow] .slide-description {
+  display: block;
+  overflow: visible;
+}
+
+html[data-access-reflow] .slide-description,
+html[data-access-reflow] .review-text,
+html[data-access-reflow] .activity-text {
+  -webkit-line-clamp: unset;
+}
+
+html[data-access-reflow] :is(.campo, .container_email, .container_senha):not(.oculto) {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+html[data-access-reflow] :is(.campo, .container_email, .container_senha) label {
+  position: static;
+  order: -1;
+  padding: 0 !important;
+  background: transparent !important;
+  transform: none;
+  font-size: 1rem !important;
+}
+
+html[data-access-reflow] :is(.campo, .container_email, .container_senha) input {
+  padding-right: 12px !important;
+}
+
+html[data-access-reflow] :is(.campo .btn_senha, .container_senha #btnSenha) {
+  position: static;
+  align-self: flex-end;
+  min-height: 44px;
+  transform: none;
+  font-size: 0.875rem;
+}
+
+html[data-access-reflow] .banner {
+  display: grid;
+  align-content: end;
+  height: auto;
+  min-height: 210px;
+}
+
+html[data-access-reflow] .banner-content {
+  position: relative;
+  inset: auto;
+  margin: 0 auto;
+  transform: none;
+}
+
+html[data-access-reflow] .banner-content>div {
+  flex: 1 1 12rem;
+  min-width: 0;
+}
+
+html[data-access-reflow] .stats-row {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  overflow-wrap: anywhere;
+}
+
+html[data-access-font] :is(.btn_principal, .btn_voltar, #btnEntrar, #btnSenha, .btn_senha,
+  #formEntrar input, #pesquisaUsuarios, #activityFilter, #animeSearch) {
+  font-size: 0.833333rem;
+}
+
+html[data-access-reflow] .hero-slider .nav-arrow {
+  top: 29px;
+}
+
+html[data-access-reflow] .slider-indicators {
+  top: 22px;
+  right: 50%;
+  bottom: auto;
+  transform: translateX(50%);
+}
+
+html[data-access-reflow] .indicator {
+  width: 36px;
+  height: 12px;
+}
+
+@media (max-width: 480px) {
+  html[data-access-reflow] .stats-detail {
+    grid-template-columns: minmax(0, 1fr);
+    overflow-wrap: anywhere;
+  }
+
+  html[data-access-reflow] .page-heading {
+    flex-wrap: wrap;
+  }
+
+  html[data-access-reflow] #animeSearch {
+    max-width: 100%;
+  }
+}

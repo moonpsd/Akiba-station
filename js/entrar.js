@@ -1,16 +1,7 @@
-/* Akiba Station — lógica de entrar e efeitos visuais locais. */
-
-/* Gerenciamento de usuários incorporado nesta página. */
-/*
-  usuarios.js - "banco de dados" do site, sem servidor.
-  Os dados ficam no localStorage do navegador (chave "heads_usuarios").
-  As senhas NUNCA são guardadas em texto puro: só um hash (PBKDF2) + salt.
-*/
 var Usuarios = (function () {
     var CHAVE_USUARIOS = "heads_usuarios";
     var CHAVE_SESSAO = "heads_sessao";
 
-    // ---------- armazenamento ----------
     function ler() {
         try {
             return JSON.parse(localStorage.getItem(CHAVE_USUARIOS)) || [];
@@ -31,7 +22,6 @@ var Usuarios = (function () {
         return Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
     }
 
-    // ---------- senha (hash + salt) ----------
     function bytesParaHex(bytes) {
         return Array.from(bytes, function (b) {
             return b.toString(16).padStart(2, "0");
@@ -67,8 +57,6 @@ var Usuarios = (function () {
 
     var ERRO_CRIPTO = "Este navegador/endereço não suporta criptografia. Abra o site por https ou localhost.";
 
-    // ---------- operações ----------
-    // Lista para exibição: nunca inclui hash nem salt
     function listar() {
         return ler().map(function (u) {
             return {
@@ -84,7 +72,7 @@ var Usuarios = (function () {
         });
     }
 
-    // Cadastro feito pelo próprio usuário (página cadastro.html)
+  
     async function cadastrar(dados) {
         if (!criptografiaDisponivel()) {
             return { ok: false, campo: "email", erro: ERRO_CRIPTO };
@@ -134,7 +122,6 @@ var Usuarios = (function () {
         return { ok: true };
     }
 
-    // Cadastro feito pelo admin (só nome + e-mail, sem senha)
     function adicionarPeloAdmin(dados) {
         var lista = ler();
         var email = normalizarEmail(dados.email);
@@ -165,7 +152,6 @@ var Usuarios = (function () {
         }
     }
 
-    // Login
     async function entrar(email, senha) {
         if (!criptografiaDisponivel()) {
             return { ok: false, erro: ERRO_CRIPTO };
@@ -191,7 +177,6 @@ var Usuarios = (function () {
         return { ok: true, nome: usuario.nome };
     }
 
-    // Quem está logado neste navegador (ou null)
     function usuarioLogado() {
         try {
             return JSON.parse(localStorage.getItem(CHAVE_SESSAO));
@@ -234,7 +219,6 @@ document.addEventListener("DOMContentLoaded", function () {
         mensagem.style.color = sucesso ? "#4ade80" : "#ff5c5c";
     }
 
-    // Mostra a senha após pressionar Enter no e-mail
     emailInput.addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
             event.preventDefault();
@@ -249,11 +233,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Limpa a mensagem ao digitar
     emailInput.addEventListener("input", function () { mostrarMensagem(""); });
     senhaInput.addEventListener("input", function () { mostrarMensagem(""); });
 
-    // Login: confere e-mail e senha cadastrados
     form.addEventListener("submit", async function (event) {
         event.preventDefault();
 
@@ -278,7 +260,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// Alterna a visibilidade uma vez por clique.
 const botaoMostrarSenha = document.getElementById("btnSenha");
 const campoSenha = document.getElementById("senha");
 
@@ -291,7 +272,6 @@ botaoMostrarSenha?.addEventListener("click", () => {
     botaoMostrarSenha.setAttribute("aria-label", visivel ? "Ocultar senha" : "Mostrar senha");
 });
 
-/* Cabeçalho e animações exclusivos desta página. */
 (() => {
   const init = () => {
     if (document.querySelector('.retro-masthead')) return;

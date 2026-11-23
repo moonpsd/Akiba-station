@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Cadastro</title>
     <link rel="stylesheet" href="css/cadastro.css">
+    <link rel="stylesheet" href="css/accessibility-themes.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+    <script src="js/accessibility.js"></script>
 
     <script src="js/cadastro.js" defer></script>
   
@@ -16,6 +19,9 @@
       <ul class="menu">
         <li><a href="index.html">Home</a></li>
         <li><a href="noticias.html">Noticias</a></li>
+        <li class="access-nav-item">
+          <button type="button" class="access-launcher" aria-haspopup="dialog">Acessibilidade</button>
+        </li>
       </ul>
 
       <ul class="login">
@@ -28,7 +34,7 @@
 
     <div class="container">
       <form id="formCadastro" novalidate>
-          <h2>Cadastro</h2>
+          <h1>Cadastro</h1>
 
           <!-- Indicador de etapas -->
           <div class="progresso" aria-hidden="true">
@@ -38,7 +44,7 @@
           <p id="textoEtapa" class="texto_etapa">Etapa 1 de 2 &middot; Sobre você</p>
 
           <!-- ETAPA 1: nome, usuário e data de nascimento -->
-          <section id="etapa1" class="etapa">
+          <div id="etapa1" class="etapa">
               <div class="campo">
                   <input type="text" id="nome" name="nome" placeholder=" " autocomplete="name" required>
                   <label for="nome">Nome completo</label>
@@ -51,7 +57,7 @@
               </div>
 
               <div class="campo campo_data">
-                  <input type="date" id="nascimento" name="nascimento" placeholder=" " autocomplete="bday" required>
+                  <input type="date" id="nascimento" name="nascimento" autocomplete="bday" required>
                   <label for="nascimento">Data de nascimento</label>
               </div>
 
@@ -59,10 +65,10 @@
               <p id="mensagem1" class="mensagem" aria-live="polite"></p>
 
               <button type="button" id="btnContinuar" class="btn_principal">Continuar</button>
-          </section>
+          </div>
 
           <!-- ETAPA 2: e-mail e senhas -->
-          <section id="etapa2" class="etapa oculto">
+          <div id="etapa2" class="etapa oculto">
               <div class="campo">
                   <input type="email" id="email" name="email" placeholder=" " autocomplete="email" required>
                   <label for="email">E-mail</label>
@@ -86,7 +92,7 @@
 
               <button type="submit" id="btnCadastrar" class="btn_principal">Cadastrar</button>
               <button type="button" id="btnVoltar" class="btn_voltar">Voltar</button>
-          </section>
+          </div>
 
           <p class="link_alternativo">Já tem conta? <a href="entrar.html">Entrar</a></p>
       </form>
@@ -101,7 +107,7 @@
           <p>Curriculo Eduardo</p>
         </a>
 
-        <a href="https://moonpsd.github.io/Curriculo/" target="_blank" rel="noopener noreferrer">
+        <a href="https://gabrielalberine7-star.github.io/CurriculumVitae---Gabriel-Alberini/" target="_blank" rel="noopener noreferrer">
           <p>Curriculo Gabriel A.</p>
         </a>
 

@@ -1,11 +1,3 @@
-/* Akiba Station — lógica de adm e efeitos visuais locais. */
-
-/* Gerenciamento de usuários incorporado nesta página. */
-/*
-  usuarios.js - "banco de dados" do site, sem servidor.
-  Os dados ficam no localStorage do navegador (chave "heads_usuarios").
-  As senhas NUNCA são guardadas em texto puro: só um hash (PBKDF2) + salt.
-*/
 var Usuarios = (function () {
     var CHAVE_USUARIOS = "heads_usuarios";
     var CHAVE_SESSAO = "heads_sessao";
@@ -31,7 +23,6 @@ var Usuarios = (function () {
         return Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
     }
 
-    // ---------- senha (hash + salt) ----------
     function bytesParaHex(bytes) {
         return Array.from(bytes, function (b) {
             return b.toString(16).padStart(2, "0");
@@ -67,8 +58,6 @@ var Usuarios = (function () {
 
     var ERRO_CRIPTO = "Este navegador/endereço não suporta criptografia. Abra o site por https ou localhost.";
 
-    // ---------- operações ----------
-    // Lista para exibição: nunca inclui hash nem salt
     function listar() {
         return ler().map(function (u) {
             return {
@@ -84,7 +73,6 @@ var Usuarios = (function () {
         });
     }
 
-    // Cadastro feito pelo próprio usuário (página cadastro.html)
     async function cadastrar(dados) {
         if (!criptografiaDisponivel()) {
             return { ok: false, campo: "email", erro: ERRO_CRIPTO };
@@ -110,7 +98,6 @@ var Usuarios = (function () {
         var senhaHash = await derivarSenha(dados.senha, salt);
 
         if (existente) {
-            // E-mail pré-cadastrado pelo admin: completa o perfil existente
             existente.nome = String(dados.nome).trim();
             existente.usuario = usuario;
             existente.nascimento = dados.nascimento;
@@ -134,7 +121,6 @@ var Usuarios = (function () {
         return { ok: true };
     }
 
-    // Cadastro feito pelo admin (só nome + e-mail, sem senha)
     function adicionarPeloAdmin(dados) {
         var lista = ler();
         var email = normalizarEmail(dados.email);
@@ -165,7 +151,6 @@ var Usuarios = (function () {
         }
     }
 
-    // Login
     async function entrar(email, senha) {
         if (!criptografiaDisponivel()) {
             return { ok: false, erro: ERRO_CRIPTO };
@@ -191,7 +176,6 @@ var Usuarios = (function () {
         return { ok: true, nome: usuario.nome };
     }
 
-    // Quem está logado neste navegador (ou null)
     function usuarioLogado() {
         try {
             return JSON.parse(localStorage.getItem(CHAVE_SESSAO));
@@ -323,7 +307,6 @@ document.addEventListener("DOMContentLoaded", () => {
   excluirTodos.addEventListener("click", () => {
     const usuarios = Usuarios.listar();
     if (!usuarios.length || !confirm(`Excluir os ${usuarios.length} usuários cadastrados? Esta ação não pode ser desfeita.`)) return;
-    // Remove na mesma chave JSON usada pelos cadastros e encerra a sessão associada.
     localStorage.setItem("heads_usuarios", JSON.stringify([]));
     localStorage.removeItem("heads_sessao");
     sessionStorage.removeItem("usuarioLogado");
@@ -336,7 +319,6 @@ document.addEventListener("DOMContentLoaded", () => {
   renderizar();
 });
 
-/* Cabeçalho e animações exclusivos desta página. */
 (() => {
   const init = () => {
     if (document.querySelector('.retro-masthead')) return;

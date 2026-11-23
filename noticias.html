@@ -1,16 +1,18 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta
       name="description"
-      content="Notícias de anime, mangá, cinema e cultura japonesa. Acompanhe trailers, lançamentos e novidades no Akiba."
-    />
-    <meta name="theme-color" content="#0e0e11" />
+      content="Notícias de anime, mangá, cinema e cultura japonesa. Acompanhe trailers, lançamentos e novidades no Akiba.">
+    <meta name="theme-color" content="#0e0e11">
     <title>Notícias | Akiba</title>
-    <link rel="stylesheet" href="css/noticias.css" />
-    <link rel="icon" href="imgs/akiba-logo-rosa.png" type="image/png" />
+    <link rel="stylesheet" href="css/noticias.css">
+    <link rel="stylesheet" href="css/accessibility-themes.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+    <script src="js/accessibility.js"></script>
+    <link rel="icon" href="imgs/akiba-logo-rosa.png" type="image/png">
     <script src="js/noticias.js" defer></script>
     
   </head>
@@ -21,6 +23,9 @@
           <ul class="menu">
             <li><a href="index.html">Home</a></li>
             <li><a href="noticias.html">Noticias</a></li>
+            <li class="access-nav-item">
+              <button type="button" class="access-launcher" aria-haspopup="dialog">Acessibilidade</button>
+            </li>
           </ul>
 
           <ul class="login">
@@ -30,7 +35,6 @@
             <li><a href="profile.html" class="active-link">Perfil</a></li>
           </ul>
         </nav>
-      </nav>
     </header>
 
     <main id="conteudo" class="container" tabindex="-1">
@@ -43,7 +47,7 @@
           </p>
         </div>
         <p class="abertura-assuntos">
-          Anime, mangá e cultura japonesa.<br /><span
+          Anime, mangá e cultura japonesa.<br><span
             >As novidades se encontram aqui.</span
           >
         </p>
@@ -70,8 +74,7 @@
               height="720"
               alt="Personagens de Megane, Tokidoki, Yankee-kun sobre fundo vermelho"
               fetchpriority="high"
-              decoding="async"
-            />
+              decoding="async">
             <figcaption>EM DESTAQUE</figcaption>
           </figure>
           <div class="info-noticia">
@@ -146,8 +149,7 @@
                 height="640"
                 alt="Pôster de Jujutsu Kaisen com os personagens da série"
                 loading="lazy"
-                decoding="async"
-              />
+                decoding="async">
             </figure>
             <div class="info-card">
               <span class="categoria">Anime</span>
@@ -196,8 +198,7 @@
                 height="344"
                 alt="Personagens de animes isekai reunidos em uma ilustração"
                 loading="lazy"
-                decoding="async"
-              />
+                decoding="async">
             </figure>
             <div class="info-card">
               <span class="categoria">Listas</span>
@@ -246,8 +247,7 @@
                 height="336"
                 alt="Crocs amarelos inspirados no Pochita, de Chainsaw Man"
                 loading="lazy"
-                decoding="async"
-              />
+                decoding="async">
             </figure>
             <div class="info-card">
               <span class="categoria">Merch</span>
@@ -293,8 +293,7 @@
                 height="488"
                 alt="Ilustração de personagens de uma obra de Tatsuki Fujimoto"
                 loading="lazy"
-                decoding="async"
-              />
+                decoding="async">
             </figure>
             <div class="info-card">
               <span class="categoria">Mangá</span>
@@ -340,8 +339,7 @@
                 height="320"
                 alt="Capa do mangá Historie com Eumenes"
                 loading="lazy"
-                decoding="async"
-              />
+                decoding="async">
             </figure>
             <div class="info-card">
               <span class="categoria">Estreia</span>
@@ -391,8 +389,7 @@
                 height="259"
                 alt="Cena de combate entre personagens de anime"
                 loading="lazy"
-                decoding="async"
-              />
+                decoding="async">
             </figure>
             <div class="info-card">
               <span class="categoria">Listas</span>
@@ -441,8 +438,7 @@
                 height="640"
                 alt="Arte de Naruto com personagens de diferentes gerações"
                 loading="lazy"
-                decoding="async"
-              />
+                decoding="async">
             </figure>
             <div class="info-card">
               <span class="categoria">Clássicos</span>
@@ -491,8 +487,7 @@
                 height="640"
                 alt="Pôster de Naruto diante de uma árvore em chamas"
                 loading="lazy"
-                decoding="async"
-              />
+                decoding="async">
             </figure>
             <div class="info-card">
               <span class="categoria">Cinema</span>
@@ -541,8 +536,7 @@
                 height="640"
                 alt="Pôster do filme Summer Wars"
                 loading="lazy"
-                decoding="async"
-              />
+                decoding="async">
             </figure>
             <div class="info-card">
               <span class="categoria">Review</span>
@@ -591,8 +585,7 @@
                 height="270"
                 alt="Hinata e Kageyama na quadra de vôlei em Haikyuu!!"
                 loading="lazy"
-                decoding="async"
-              />
+                decoding="async">
             </figure>
             <div class="info-card">
               <span class="categoria">Filmes</span>
@@ -642,8 +635,7 @@
                 height="640"
                 alt="Capa do mangá de terror Gannibal"
                 loading="lazy"
-                decoding="async"
-              />
+                decoding="async">
             </figure>
             <div class="info-card">
               <span class="categoria">Mangá</span>
@@ -693,8 +685,7 @@
                 height="265"
                 alt="Participantes e cosplayers reunidos no Iberanime"
                 loading="lazy"
-                decoding="async"
-              />
+                decoding="async">
             </figure>
             <div class="info-card">
               <span class="categoria">Eventos</span>
@@ -740,8 +731,7 @@
                 height="584"
                 alt="Capa ilustrada de Solo Leveling com Sung Jinwoo"
                 loading="lazy"
-                decoding="async"
-              />
+                decoding="async">
             </figure>
             <div class="info-card">
               <span class="categoria">Opinião</span>
@@ -790,8 +780,7 @@
                 height="341"
                 alt="Cena do mangá Berserk com um eclipse ao fundo"
                 loading="lazy"
-                decoding="async"
-              />
+                decoding="async">
             </figure>
             <div class="info-card">
               <span class="categoria">Artigos</span>
@@ -840,8 +829,7 @@
                 height="640"
                 alt="Pôster de Dragon Ball Daima com Goku"
                 loading="lazy"
-                decoding="async"
-              />
+                decoding="async">
             </figure>
             <div class="info-card">
               <span class="categoria">Anime</span>
@@ -890,8 +878,7 @@
                 height="271"
                 alt="Personagens de The One Piece com o título da série ao fundo"
                 loading="lazy"
-                decoding="async"
-              />
+                decoding="async">
             </figure>
             <div class="info-card">
               <span class="categoria">Anime</span>
@@ -940,8 +927,7 @@
                 height="268"
                 alt="Personagens de Oshi no Ko sobre fundo rosa e roxo"
                 loading="lazy"
-                decoding="async"
-              />
+                decoding="async">
             </figure>
             <div class="info-card">
               <span class="categoria">Estreia</span>
@@ -987,8 +973,7 @@
                 height="574"
                 alt="Capa do mangá Kagurabachi com Chihiro e sua espada"
                 loading="lazy"
-                decoding="async"
-              />
+                decoding="async">
             </figure>
             <div class="info-card">
               <span class="categoria">Anúncio</span>
@@ -1037,8 +1022,7 @@
                 height="640"
                 alt="Capa ilustrada de Dandadan"
                 loading="lazy"
-                decoding="async"
-              />
+                decoding="async">
             </figure>
             <div class="info-card">
               <span class="categoria">Ranking</span>
@@ -1087,8 +1071,7 @@
                 height="221"
                 alt="Logotipo de Genshin Impact sobre fundo preto"
                 loading="lazy"
-                decoding="async"
-              />
+                decoding="async">
             </figure>
             <div class="info-card">
               <span class="categoria">Trailer</span>
@@ -1137,8 +1120,7 @@
                 height="460"
                 alt="Chinatsu em uma quadra esportiva, em Blue Box"
                 loading="lazy"
-                decoding="async"
-              />
+                decoding="async">
             </figure>
             <div class="info-card">
               <span class="categoria">Review</span>
@@ -1188,8 +1170,7 @@
                 height="269"
                 alt="Ichigo e personagens de Bleach em uma ilustração vermelha"
                 loading="lazy"
-                decoding="async"
-              />
+                decoding="async">
             </figure>
             <div class="info-card">
               <span class="categoria">Anime</span>
@@ -1235,8 +1216,7 @@
                 height="594"
                 alt="Pôster de Sword Art Online com os protagonistas"
                 loading="lazy"
-                decoding="async"
-              />
+                decoding="async">
             </figure>
             <div class="info-card">
               <span class="categoria">Filmes</span>
@@ -1282,8 +1262,7 @@
                 height="588"
                 alt="Pôster de Re:Zero com Emilia e personagens da série"
                 loading="lazy"
-                decoding="async"
-              />
+                decoding="async">
             </figure>
             <div class="info-card">
               <span class="categoria">Sucesso</span>
@@ -1329,8 +1308,7 @@
                 height="585"
                 alt="Capa amarela de Sakamoto Days com personagem de máscara"
                 loading="lazy"
-                decoding="async"
-              />
+                decoding="async">
             </figure>
             <div class="info-card">
               <span class="categoria">Elenco</span>
@@ -1376,8 +1354,7 @@
                 height="591"
                 alt="Capa do mangá Vagabond com retrato de Miyamoto Musashi"
                 loading="lazy"
-                decoding="async"
-              />
+                decoding="async">
             </figure>
             <div class="info-card">
               <span class="categoria">Eventos</span>
@@ -1465,8 +1442,7 @@
             alt="Imagem da notícia em destaque"
             width="1280"
             height="720"
-            loading="lazy"
-          />
+            loading="lazy">
         </figure>
         <div class="modal-corpo">
           <span id="modal-cat" class="categoria"></span>
@@ -1486,7 +1462,7 @@
           <p>Curriculo Eduardo</p>
         </a>
 
-        <a href="https://moonpsd.github.io/Curriculo/" target="_blank" rel="noopener noreferrer">
+        <a href="https://gabrielalberine7-star.github.io/CurriculumVitae---Gabriel-Alberini/" target="_blank" rel="noopener noreferrer">
           <p>Curriculo Gabriel A.</p>
         </a>
 
